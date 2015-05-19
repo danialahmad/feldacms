@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="decorators/theme">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+<title>Building Form</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<form id="escForm" method="POST" action="administration/sla/save"
+			th:object="${escForm}">
+           <input type="hidden" th:field="*{id}" />
+
+
+<div class="row-fluid">
+                            
+                           
+                            <div class="span12">
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>SLA Plan</h2>                                        
+                                    </div>
+                                    <div class="content np">
+                                    <div class="controls-row">
+								<div class="span2">Title :</div>
+								<div class="span10">
+									<span th:text="${escForm.title}"></span>
+								</div>
+							</div>
+		<div class="controls-row">
+								<div class="span2">Description :</div>
+								<div class="span10">
+									<span th:text="${escForm.description}"></span>
+								</div>
+							</div>
+
+							<div class="controls-row">
+								<div class="span2">Case Group:</div>
+								<div class="span10">
+									<span th:text="${escForm.ticketGroup.name}" th:if="${escForm.ticketGroup.name != null}"></span>
+									<span th:if="${escForm.ticketGroup.name == null}" >ALL</span>
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Case Category:</div>
+								<div class="span10">
+									<span th:text="${escForm.ticketCategory.name}" th:if="${escForm.ticketCategory.name != null}" ></span>
+									<span th:if="${escForm.ticketCategory.name == null}">ALL</span>
+								</div>
+							</div>
+
+
+							<div class="controls-row">
+								<div class="span2">Status :</div>
+								<div class="span10">
+									<span th:text="${escForm.status.name}" th:if="${escForm.status.name !=null}"></span>
+									<span th:if="${escForm.status.name ==null}">ALL</span>
+								</div>
+							</div>
+
+							<div class="controls-row">
+								<div class="span2">Priority :</div>
+								<div class="span10">
+							<span th:text="${escForm.priority.name}" th:if="${escForm.priority.name !=null}"></span>
+							<span th:if="${escForm.priority.name ==null}">ALL</span>
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Reminder :</div>
+								<div class="span10">
+									<span th:text="${escForm.reminder}"></span> <span th:if="${escForm.reminderUnit == 'H'}">Hour(s)</span>
+									<span th:if="${escForm.reminderUnit == 'M'}">Minute(s)</span><span th:if="${escForm.reminderUnit == 'D'}">Day(s)</span>
+									<span class="help-inline">Before breach</span>
+							</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Limit Time :</div>
+								<div class="span10">
+									<span th:text="${escForm.time}"></span><span th:if="${escForm.timeUnit == 'H'}">Hour(s)</span>
+									<span th:if="${escForm.timeUnit == 'M'}">Minute(s)</span><span th:if="${escForm.timeUnit == 'D'}">Day(s)</span>
+									
+							</div>
+							</div>
+                                    
+                                    
+                                    
+                                    
+                                    </div>
+                                 </div>
+                              </div>
+      </div>
+
+<div th:each="esc, rowStat: *{listSe}">
+			<div class="row-fluid">
+				<div class="span12">
+					<div class="block">
+						<div class="head">
+							<h2 th:text="${esc.escalation.action}"></h2>
+						</div>
+						<div class="content np">
+<input type="hidden" th:field="*{listSe[__${rowStat.index}__].id}" />
+
+						<div th:if="${esc.escalation.id==1}"  class="controls-row">
+								<div class="span2">Actions :</div>
+								<div class="span10">
+									<label class="checkbox-uni"><input th:field="*{listSe[__${rowStat.index}__].sendToOwner}" type="checkbox" class="uni"/>
+									Send To Owner
+									</label>
+									<label class="checkbox-uni"><input th:field="*{listSe[__${rowStat.index}__].sendToAssignee}" type="checkbox" class="uni"/>
+									Send To Assignee
+									</label>
+									<label class="checkbox-uni"><input th:field="*{listSe[__${rowStat.index}__].sendToSupervisor}" type="checkbox" class="uni"/>
+									Send To Supervisor
+									</label>
+								</div>
+							</div>
+							
+							<div th:if="${esc.escalation.id==2}" class="controls-row">
+								<div class="span2">Status :</div>
+								<div class="span10">
+									<select th:field="*{listSe[__${rowStat.index}__].status.id}">
+										<option value="">-Please Select-</option>
+										<option th:each="obj : ${statusList}" th:text="${obj.name}"
+											th:value="${obj.id}"></option>
+									</select>
+
+								</div>
+							</div>
+							<div th:if="${esc.escalation.id==3}" class="controls-row">
+								<div class="span2">Priority :</div>
+								<div class="span10">
+									<select th:field="*{listSe[__${rowStat.index}__].priority.id}">
+										<option value="-1">-Please Select-</option>
+										<option th:each="obj : ${priorityList}" th:text="${obj.name}"
+											th:value="${obj.id}"></option>
+									</select>
+
+								</div>
+							</div>
+							
+
+						</div>
+
+                   <div class="footer" th:if="${rowStat.index == #lists.size(escForm.listSe)-1}" >
+							<div class="side fr">
+								<div class="btn-group">
+									<button class="btn" type="button"
+										onClick="window.history.back();">Close</button>
+									<button class="btn btn-primary btn-request" type="submit">Submit</button>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+</div>
+	
+
+		
+
+
+
+
+		</form>
+	</div>
+	<div layout:fragment="javascript_endpage">
+		<script type='text/javascript'
+			th:src="@{/resources/js/select2/select2.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/uniform/jquery.uniform.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/tagsinput/jquery.tagsinput.min.js}" charset="utf-8"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/multiselect/jquery.multi-select.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/ibutton/jquery.ibutton.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/colorpicker/colorpicker.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/timepicker/jquery-ui-timepicker-addon.js}"></script>
+
+
+
+		<script type='text/javascript'
+			th:src="@{/resources/js/validationengine/languages/jquery.validationEngine-en.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/validationengine/jquery.validationEngine.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/maskedinput/jquery.maskedinput.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/javascript/utils/load-combo-box.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/javascript/administration/sla/escalation.js}"></script>
+
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+			});
+		</script>
+
+	</div>
+</body>
+</html>

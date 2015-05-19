@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="decorators/theme">
+<head>
+<title>Knowledge Base Form</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="row-fluid">
+
+			<div class="span12">
+				<form id="validate" method="POST" th:action="@{/complaint/request/save}" th:object="${knowledgeForm}" enctype="multipart/form-data">
+				<input type="hidden" id="id" th:field="*{id}" />
+					<div class="block">
+						<div class="head">
+							<h2>Knowledge Base</h2>
+							
+						</div>
+						<div class="content np">
+
+							<div class="controls-row">
+								<div class="span2">Tajuk :</div>
+								<div class="span10">
+									<input type="text" class="validate[required,maxSize[100]]" th:field="*{title}" />
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Kategori :</div>
+								<div class="span10">
+									<select id="ticketGroup" th:field="*{knowledgeCategory.id}">
+										<option value="">- Sila Pilih -</option>
+										<option th:each="obj : ${knowledgeCategoryList}" th:text="${obj.name}" th:value="${obj.id}"></option>							
+									</select>
+									
+								</div>
+							</div>
+							<!--  div class="controls-row" id="catBlock">
+								<div class="span2">Case Category:</div>
+								<div class="span10">
+									<select id="ticketCategory" th:field="*{ticketCategoryId}">
+										<option value="">- Select One -</option>
+										
+									</select>
+								</div>
+							</div>
+							<div class="controls-row" id="remarkBlock">
+								<div class="span2">Remarks :</div>
+								<div class="span10">
+									<textarea rows="1" cols="5" th:field="*{remarks}"></textarea>
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Priority :</div>
+								<div class="span10">
+									<select id="ticketGroup" th:field="*{priorityId}">
+										<option value="">- Select One -</option>
+										<option th:each="obj : ${priorityList}" th:text="${obj.name}" th:value="${obj.id}"></option>							
+									</select>
+								</div>
+							</div-->
+							<div class="controls-row">
+								<div class="span2">Keterangan :</div>
+								<div class="span10">
+									<textarea rows="10" cols="5" class="input-xxlarge" th:field="*{description}"></textarea>
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Penyelesaian :</div>
+								<div class="span10">
+									<textarea rows="10" cols="5" class="input-xxlarge" th:field="*{solution}"></textarea>
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2"></div>
+								<div class="span10">
+									<label class="checkbox-uni"><input th:field="*{staffOnly}" type="checkbox" class="uni"/>
+									Papar untuk staf sahaja ?
+									</label>
+									
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Status :</div>
+								<div class="span10">
+									<select id="ticketGroup" th:field="*{status}">
+										<option value="DRAFT">DRAFT</option>
+										<option value="PUBLISHED">PUBLISHED</option>							
+									</select>
+									
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Lampiran :</div>
+								<div class="span10">
+									<span id="attachmentList">
+									<input type="file" name="files[0]"  class="uni" />
+									</span>
+									
+									<span id="addFile" title="Add file" style="cursor: pointer; color:#50769E;" class="i-plus-2"></span>
+									
+								</div>
+								
+							</div>
+                          
+
+
+						</div>
+						<div class="footer">
+							<div class="side fr">
+								<div class="btn-group">
+									<button class="btn" type="button"
+										onClick="window.history.back();">Tutup</button>
+									<button class="btn btn-primary btn-request" type="submit">Hantar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
+					
+				</form>
+
+			</div>
+
+		</div>
+
+
+
+
+
+
+
+	</div>
+	<div layout:fragment="javascript_endpage">
+		<script type='text/javascript' th:src="@{/resources/js/select2/select2.min.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/uniform/jquery.uniform.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/tagsinput/jquery.tagsinput.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/multiselect/jquery.multi-select.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/ibutton/jquery.ibutton.min.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/colorpicker/colorpicker.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/timepicker/jquery-ui-timepicker-addon.js}"></script>
+	
+	
+	
+    <script type='text/javascript' th:src="@{/resources/js/validationengine/languages/jquery.validationEngine-en.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/validationengine/jquery.validationEngine.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/maskedinput/jquery.maskedinput.min.js}"></script>
+    <script type='text/javascript' th:src="@{/javascript/utils/load-combo-box.js}"></script>
+    <script type='text/javascript' th:src="@{/javascript/knowledge/form.js}"></script>
+  
+	
+		<script type="text/javascript">
+			$(document).ready(function() {
+			  
+			});
+			
+			
+			
+		</script>
+
+	</div>
+</body>
+</html>

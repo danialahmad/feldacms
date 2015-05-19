@@ -1,0 +1,134 @@
+
+	<form id="viewActivity" method="POST" th:action="@{/complaint/request/save}" th:object="${activityForm}" enctype="multipart/form-data">
+		<input type="hidden" th:field="*{id}" />
+		<input type="hidden" id="ticketId" th:field="*{ticket.id}" />
+		<input type="hidden" th:field="*{assignment.id}" />
+	    <input type="hidden" id="action" th:value="${action}" />   
+         <div class="row-fluid">
+                            
+                           
+                            <div class="span12">
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>Tindakan</h2>                                        
+                                    </div>
+                                    
+                                    <div class="content  ">
+                         <div class="controls-row">
+								<div class="span2">Jenis Tindakan <span class="text-error">*</span> :</div>
+								<div class="span10">
+									<select id="activityType" th:field="*{activityTypeId}">
+										<option value="">- Sila Pilih -</option>
+										<option th:each="obj : ${activityTypeList}" th:text="${obj.name}" th:value="${obj.id}"></option>							
+									
+									</select>
+								</div>
+							</div>
+							
+							
+							
+							<div class="commonBlock" style="display: none;">
+							  <div class="meeting controls-row">
+                                            <div class="span2">Agenda <span class="text-error">*</span> :</div>
+                                            <div class="span10">
+                                                <input type="text" th:field="*{agenda}" class="input-large"/>                                 
+                                            </div>
+                                        </div>
+                              <div class="meeting controls-row">
+                                            <div class="span2">Lokasi <span class="text-error">*</span> :</div>
+                                            <div class="span10"> 
+                                                <input type="text" th:field="*{location}" class="input-large"/>                                 
+                                            </div>
+                                        </div>
+							  <div class="controls-row">
+                                            <div class="span2">Tarikh/Masa Mula <span class="text-error">*</span> :</div>
+                                            <div class="span10">
+                                                <div class="input-prepend">
+                                                    <span class="add-on"><i class="i-star"></i></span>
+                                                    <input type="text" th:field="*{startTime}" class="datetimepicker input-small"/>
+                                                </div>                                                 
+                                            </div>
+                                        </div>
+                                       <div class="controls-row">
+                                            <div class="span2">Tarikh/Masa Tamat <span class="text-error">*</span> :</div>
+                                            <div class="span10">
+                                                <div class="input-prepend">
+                                                    <span class="add-on"><i class="i-star"></i></span>
+                                                    <input type="text" th:field="*{endTime}" class="datetimepicker input-small"/>
+                                                </div>                                                 
+                                            </div>
+                                        </div>
+                                      
+                      
+							</div>
+							
+							     <div class="controls-row desc">
+							<div class="span2">Keterangan <span class="text-error">*</span> :</div>
+								<div class="span10">
+									<textarea th:field="*{description}" rows="5" cols="5" ></textarea>
+								</div>
+								
+							</div>
+							
+							<div class="controls-row">
+								<div class="span2">Lampiran :</div>
+								<div class="span10">
+									<span id="attachmentList">
+									<input type="file" name="files[0]"  class="uni" />
+								
+									</span>
+									
+									<span id="addFile" title="Add file" style="cursor: pointer; color:#50769E;" class="i-plus-2"></span>
+									<br/><span class="text-success">Saiz fail tidak melebihi 4 MB</span>
+									<br/><span class="text-success">Format fail yang dibenarkan adalah : jpg, img, gif, pdf, xls, doc, dan docx</span>
+								</div>
+								
+							</div>
+							<!--  -div class="emailBlock" style="display: none;">
+							 <div class="controls-row">
+                                            <div class="span2">To :</div>
+                                            <div class="span10">
+                                                <select class="select2 input-block-level" th:field="*{to}"  multiple="multiple">
+                                                   
+                                                     <option th:each="obj : ${contactList}" th:text="${obj.name}" th:value="${obj.email}"></option>							
+									  
+                                                                                           
+                                                </select>                                               
+                                            </div>
+                                        </div>
+                              <div class="controls-row">
+                                            <div class="span2">Subject :</div>
+                                            <div class="span10">
+                                                <input type="text" th:field="*{subject}" class="input-block-level"/>                                 
+                                            </div>
+                                        </div>
+							            
+            <textarea th:field="*{message}" name="text" id="mail_wysiwyg" style="width: 523px; height: 158px;"></textarea>
+   
+							</div-->
+							
+							
+							
+							
+							
+							
+                                    
+                                    </div>
+                                    
+                                    <div class="footer">
+							<div class="side fr">
+								<div class="btn-group">
+									<button class="btn" id="btnClose" type="button">Tutup</button>
+									<button class="btn btn-primary btn-request" id="sbt" type="submit">Simpan</button>
+								</div>
+							</div>
+						</div>
+                                    
+                                </div>
+                            </div>
+         </div> 
+         
+          
+		
+		</form>
+	

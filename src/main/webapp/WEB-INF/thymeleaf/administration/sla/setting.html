@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="decorators/theme">
+<head>
+<title>SLA Plan</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<form id="" method="POST" action="administration/sla/save"
+			th:object="${slaForm}">
+           <input type="hidden" th:field="*{id}" />
+
+
+			<div class="row-fluid">
+				<div class="span12">
+					<div class="block">
+						<div class="head">
+							<h2>SLA Info</h2>
+						</div>
+						<div class="content np">
+
+
+		<div class="controls-row">
+								<div class="span2">Title :</div>
+								<div class="span10">
+									<input type="text" class="validate[required,maxSize[100]]" th:field="*{title}" />
+								</div>
+							</div>
+		<div class="controls-row">
+								<div class="span2">Description :</div>
+								<div class="span10">
+									<textarea rows="2" cols="5" th:field="*{description}"></textarea>
+								</div>
+							</div>
+
+					
+
+
+
+
+
+
+						</div>
+
+
+
+					</div>
+
+				</div>
+
+			</div>
+
+<div class="row-fluid">
+				<div class="span12">
+					<div class="block">
+						<div class="head">
+							<h2>Criteria Setting</h2>
+						</div>
+						<div class="content np">
+								<div class="controls-row">
+								<div class="span2">Case Category :</div>
+								<div class="span10">
+									
+									 <select class="multiselect_custom" th:field="*{ticketGroupItems}" multiple="multiple">
+                                                 <option th:each="obj : ${ticketGroupList}" th:text="${obj.name}" th:value="${obj.id}"></option>
+                                     </select>
+								</div>
+							</div>
+							<!--  div class="controls-row">
+								<div class="span2">Case Category:</div>
+								<div class="span10">
+									<select id="ticketCategory" th:field="*{ticketCategoryId}">
+										<option value="-1">- ALL -</option>
+										<option th:each="obj : ${ticketCategoryList}"
+											th:text="${obj.name}" th:value="${obj.id}"></option>
+									</select>
+								</div>
+							</div -->
+
+
+							<div class="controls-row">
+								<div class="span2">Status :</div>
+								<div class="span10">
+ 									<select class="multiselect_custom" th:field="*{statusItems}" multiple="multiple">
+                                                 <option th:each="obj : ${statusList}" th:text="${obj.name}" th:value="${obj.id}"></option>
+                                     </select>
+								</div>
+							</div>
+
+							<div class="controls-row">
+								<div class="span2">Priority :</div>
+								<div class="span10">
+									<select class="multiselect_custom" th:field="*{priorityItems}" multiple="multiple">
+                                                 <option th:each="obj : ${priorityList}" th:text="${obj.name}" th:value="${obj.id}"></option>
+                                     </select>
+								</div>
+							</div>
+							
+					
+						
+						
+						</div>
+					</div>
+				</div>
+</div>
+
+			<div class="row-fluid all-area" id="list-area">
+				<div class="span12">
+
+					<div class="block">
+						<div class="head">
+							<h2>Escalation Times</h2>
+						</div>
+
+						<div class="content np">
+												
+	<div class="controls-row">
+								<div class="span2">Reminder :</div>
+								<div class="span10">
+									<input type="text" class="span1" id="" th:field="*{reminder}" /> <select
+										class="span2" th:field="*{reminderUnit}">
+										<option value="M">Minute(s)</option>
+										<option value="H">Hour(s)</option>
+										<option value="D">Day(s)</option>
+									</select> <span class="help-inline">Before breach</span>
+								</div>
+							</div>
+						<div class="controls-row">
+								<div class="span2">Limit Time :</div>
+								<div class="span10">
+									<input type="text" class="span1" id="" th:field="*{time}" /> <select
+										class="span2" th:field="*{timeUnit}">
+										<option value="H">Hour(s)</option>
+										<option value="D">Day(s)</option>
+									</select>
+								</div>
+							</div>
+
+	
+						
+						</div>
+
+					
+
+
+
+					</div>
+
+				</div>
+			</div>
+
+
+
+
+<div th:each="esc, rowStat: ${escalationList}">
+			<div class="row-fluid">
+				<div class="span12">
+					<div class="block">
+						<div class="head">
+							<h2 th:text="${esc.action}"></h2>
+							 <div class="side fr">
+                                            <input type="checkbox" class="ibutton" th:value="${esc.id}" th:field="*{checkedItems}" />
+                              </div>  
+						</div>
+						<div class="content np">
+
+
+						<div th:if="${esc.id==1}"  class="controls-row">
+								<div class="span2">Actions :</div>
+								<div class="span10">
+									<label class="checkbox-uni"><input th:field="*{sendToOwner}" type="checkbox" class="uni"/>
+									Send To Owner
+									</label>
+									<label class="checkbox-uni"><input th:field="*{sendToAssignee}" type="checkbox" class="uni"/>
+									Send To Assignee
+									</label>
+									<label class="checkbox-uni"><input th:field="*{sendToSupervisor}" type="checkbox" class="uni"/>
+									Send To Supervisor
+									</label>
+								</div>
+							</div>
+							
+						<div th:if="${esc.id==2}" class="controls-row">
+								<div class="span2">Status :</div>
+								<div class="span10">
+									<select th:field="*{statusId}">
+										<option value="">-Please Select-</option>
+										<option th:each="obj : ${statusList}" th:text="${obj.name}"
+											th:value="${obj.id}"></option>
+									</select>
+
+								</div>
+							</div>
+							<div th:if="${esc.id==3}" class="controls-row">
+								<div class="span2">Priority :</div>
+								<div class="span10">
+									<select th:field="*{priorityId}">
+										<option value="-1">-Please Select-</option>
+										<option th:each="obj : ${priorityList}" th:text="${obj.name}"
+											th:value="${obj.id}"></option>
+									</select>
+
+								</div>
+							</div>	
+							
+
+						</div>
+
+                   
+
+					</div>
+
+				</div>
+
+			</div>
+</div>
+
+
+	  <div class="row-fluid">
+                            
+                            <div class="span12">
+                                <div class="block">
+			<div class="head">
+                                             
+                       <div class="side fr">
+								<div class="btn-group">
+									<button class="btn" type="button"
+										onClick="window.history.back();">Close</button>
+									<button class="btn btn-primary btn-request" type="submit">Submit</button>
+								</div>
+							</div>                       
+                    </div>
+			</div>
+			</div>
+			</div>
+
+
+
+		</form>
+	</div>
+	<div layout:fragment="javascript_endpage">
+		<script type='text/javascript'
+			th:src="@{/resources/js/select2/select2.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/uniform/jquery.uniform.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/tagsinput/jquery.tagsinput.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/multiselect/jquery.multi-select.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/ibutton/jquery.ibutton.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/colorpicker/colorpicker.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/timepicker/jquery-ui-timepicker-addon.js}"></script>
+
+
+
+		<script type='text/javascript'
+			th:src="@{/resources/js/validationengine/languages/jquery.validationEngine-en.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/validationengine/jquery.validationEngine.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/maskedinput/jquery.maskedinput.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/javascript/utils/load-combo-box.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/javascript/administration/sla/setting.js}"></script>
+
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+			});
+		</script>
+
+	</div>
+</body>
+</html>

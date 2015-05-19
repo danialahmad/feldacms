@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="decorators/theme2">
+<head>
+<title>Rules/Regulations And Policies</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="row-fluid">
+
+			<div class="span12">
+				<form id="validate" method="POST"  enctype="multipart/form-data">
+					<div class="block">
+						<div class="head">
+							<h2>Rules/Regulations And Policies</h2>
+							<div class="side fr">
+								<button class="btn" onClick="clear_form('#validate');"
+									type="button">Clear form</button>
+							</div>
+						</div>
+						<div class="content np">
+
+							<div class="controls-row">
+								<div class="span2">Title :</div>
+								<div class="span10">
+									<input type="text"  />
+								</div>
+							</div>
+							
+							
+							<div class="controls-row">
+								<div class="span2">Approved By :</div>
+								<div class="span10">
+									<input type="text"  />
+								</div>
+							</div>
+							 <div class="controls-row">
+                                            <div class="span2">Approved Date/Time :</div>
+                                            <div class="span10">
+                                                <div class="input-prepend">
+                                                    <span class="add-on"><i class="i-star"></i></span>
+                                                    <input type="text"  class="datetimepicker input-small"/>
+                                                </div>                                                 
+                                            </div>
+                             </div>
+                             
+                             <div class="controls-row">
+								<div class="span2">Owner :</div>
+								<div class="span10">
+									<input type="text"  />
+								</div>
+							</div>
+							
+							<div class="controls-row">
+								<div class="span2">Effective Date :</div>
+								<div class="span10">
+								<div class="input-prepend">
+                                                    <span class="add-on"><i class="i-calendar"></i></span>
+									<input type="text" class="datepicker input-small" />
+									</div>
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Description :</div>
+								<div class="span10">
+								    <div class="block">
+								    <div class="content np">
+									<textarea id="mail_wysiwyg" style="width: 523px; height: 158px;"></textarea>
+								    </div>
+								    </div>
+								</div>
+							</div>
+
+							
+                          
+
+
+						</div>
+						<div class="footer">
+							<div class="side fr">
+								<div class="btn-group">
+									<button class="btn" type="button"
+										onClick="window.history.back();">Close</button>
+									<button class="btn btn-primary btn-request" type="submit">Submit</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
+					
+				</form>
+
+			</div>
+
+		</div>
+
+
+
+
+
+
+
+	</div>
+	<div layout:fragment="javascript_endpage">
+		<script type='text/javascript' th:src="@{/resources/js/select2/select2.min.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/uniform/jquery.uniform.min.js}"></script>
+			 <script type='text/javascript' th:src="@{/resources/js/cleditor/jquery.cleditor.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/tagsinput/jquery.tagsinput.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/multiselect/jquery.multi-select.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/ibutton/jquery.ibutton.min.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/colorpicker/colorpicker.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/timepicker/jquery-ui-timepicker-addon.js}"></script>
+	
+	
+	
+    <script type='text/javascript' th:src="@{/resources/js/validationengine/languages/jquery.validationEngine-en.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/validationengine/jquery.validationEngine.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/maskedinput/jquery.maskedinput.min.js}"></script>
+    <script type='text/javascript' th:src="@{/javascript/utils/load-combo-box.js}"></script>
+    <script type='text/javascript' th:src="@{/javascript/complaint/request/form.js}"></script>
+  
+	
+		<script type="text/javascript">
+			$(document).ready(function() {
+			  
+			});
+			
+			
+			
+		</script>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>        
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />    
+    <!--[if gt IE 8]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />        
+    <![endif]-->                
+    <title>CMS - Success</title>
+    <link rel="icon" type="image/ico" th:href="@{/resources/favicon.ico}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/stylesheets.css}"/>
+    
+    <!--[if lte IE 7]>
+        <script type='text/javascript' src='js/other/lte-ie7.js'></script>
+    <![endif]-->    
+    
+    <script type='text/javascript' th:src='@{/resources/js/jquery/jquery-2.0.0.min.js}'></script>
+    <script type='text/javascript' th:src="@{/resources/js/jquery/jquery-ui-1.10.3.custom.min.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/jquery/jquery-migrate-1.1.1.min.js}"></script>
+        <script type='text/javascript' th:src="@{/resources/js/form/jquery.form.min.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/jquery/globalize.js}"></script>
+    
+    <script type='text/javascript' th:src="@{/resources/js/bootstrap/bootstrap.min.js}"></script>
+    
+    <script type='text/javascript' th:src="@{/resources/js/plugins.js}"></script>    
+    <script type='text/javascript' th:src="@{/resources/js/actions.js}"></script>
+   
+</head>
+<body>        
+    <div id="wrapper" class="screen_wide sidebar_off">  
+     <div id="header">
+            
+            <div class="wrap">
+                
+                <a href="#" class="logo"></a>
+                
+             
+                
+          
+                
+            </div>
+            
+        </div>     
+        <div id="layout">
+            <div id="content">   
+             <div class="wrap">                     
+                <div class="content">            
+                    
+                  <div class="row-fluid">
+                        <div class="span12">
+                           <div class="alert alert-success">            
+                                  <span th:utext="${alert}" ></span>  
+                            </div>   
+                           </div> 
+                        </div>
+                    
+                </div>
+                </div>
+            </div>
+        </div>               
+        
+    </div>
+
+	<span th:text="@{/}" id="web-context-root" style="display:none;"></span>	
+	<span th:text="${#ctx.locale.language}" id="app-locale" style="display:none"></span>
+	<div style="display:none;" id="ajax-loader"><img th:src="@{/resources/img/loader.gif}" /></div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>        
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />    
+    <!--[if gt IE 8]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />        
+    <![endif]-->                
+    <title>Error Page</title>
+    <link rel="icon" type="image/ico" th:href="@{/resources/favicon.ico}"/>
+    
+    <link th:href="@{/resources/css/stylesheets.css}" rel="stylesheet" type="text/css" />
+    
+    <!--[if lte IE 7]>
+        <script type='text/javascript' src='js/other/lte-ie7.js'></script>
+    <![endif]-->    
+    
+    <script type='text/javascript' th:src='@{/resources/js/jquery/jquery-2.0.0.min.js}'></script>
+    <script type='text/javascript' th:src='@{/resources/js/jquery/jquery-ui-1.10.3.custom.min.js}'></script>
+    <script type='text/javascript' th:src='@{/resources/js/jquery/jquery-migrate-1.1.1.min.js}'></script>
+    <script type='text/javascript' th:src='@{/resources/js/jquery/globalize.js}'></script>
+    
+    <script type='text/javascript' th:src='@{/resources/js/bootstrap/bootstrap.min.js}'></script>
+    <script type='text/javascript' th:src='@{/resources/js/cookies/jquery.cookies.2.2.0.min.js}'></script>
+    
+    <script type='text/javascript' th:src='@{/resources/js/scrollup/jquery.scrollUp.min.js}'></script>
+    
+    <script type='text/javascript' th:src='@{/resources/js/plugins.js}'></script>    
+    <script type='text/javascript' th:src='@{/resources/js/actions.js}'></script>
+    <script  type='text/javascript'>
+$(document).ready(function() {
+
+	$('#btnMain').click(function(){
+		document.location.href = $('#web-context-root').text();
+	});
+	
+	
+	
+	
+});
+</script>
+</head>
+<body>        
+<span th:text="@{/}" id="web-context-root" style="display:none;"></span>
+    <div id="wrapper" class="screen_wide sidebar_off">       
+        <div id="layout">
+            <div id="content">                        
+                <div class="wrap nm">            
+                    
+                    <div class="errorPage">        
+                        <p class="name" th:text="${errorCode}">503</p>
+                        <p class="description" th:text="${errorMessage}"></p>        
+                        <p><button class="btn btn-primary" id="btnMain">Back to main</button> <button class="btn" onClick="history.back();">Previous page</button></p>
+                    </div>                
+                    
+                </div>
+            </div>
+        </div>               
+        
+    </div>
+    
+</body>
+
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="decorators/theme">
+<head>
+<title>Aduan/Cadangan</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="row-fluid">
+
+			<div class="span12">
+				<form id="validate" method="POST" th:action="@{/complaint/request/save}" th:object="${complaintForm}" enctype="multipart/form-data">
+					<div class="block">
+						<div class="head">
+							<h2>Maklumat Aduan/Cadangan</h2>
+							<div class="side fr">
+								<!--  button class="btn" onClick="clear_form('#validate');"
+									type="button">Clear form</button-->
+							</div>
+						</div>
+						<div class="content np">
+
+							<div class="controls-row">
+								<div class="span2">Tajuk <span class="text-error">*</span> :</div>
+								<div class="span10">
+									<input type="text"  th:field="*{ticketTitle}" />
+								</div>
+							</div>
+						<div class="controls-row">
+								<div class="span2">Jenis :</div>
+								<div class="span10" >
+									<select th:field="*{ticketType}">
+									 <option value="A">ADUAN</option>
+									 <option value="C">CADANGAN</option>
+									 <option value="T">PERTANYAAN</option>
+									</select>
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Kategori Aduan/Cadangan <span class="text-error">*</span> :</div>
+								<div class="span10" >
+									<select th:field="*{category.id}">
+									<option value="">- Sila Pilih -</option>
+										<option th:each="obj : ${categoryList}" th:text="${obj.name}" th:value="${obj.id}"></option>	
+									</select>
+								</div>
+							</div>
+							
+							<!-- div class="controls-row">
+								<div class="span2">Case Group:</div>
+								<div class="span10">
+									<select id="ticketGroup" th:field="*{ticketGroupId}">
+										<option value="">- Select One -</option>
+										<option th:each="obj : ${ticketGroupList}" th:text="${obj.name}" th:value="${obj.id}"></option>							
+									</select>
+									
+								</div>
+							</div>
+							<div class="controls-row" id="catBlock">
+								<div class="span2">Case Category:</div>
+								<div class="span10">
+									<select id="ticketCategory" th:field="*{ticketCategoryId}">
+										<option value="">- Select One -</option>
+										
+									</select>
+								</div>
+							</div>
+							<div class="controls-row" id="remarkBlock">
+								<div class="span2">Remarks :</div>
+								<div class="span10">
+									<textarea rows="1" cols="5" th:field="*{remarks}"></textarea>
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Priority :</div>
+								<div class="span10">
+									<select id="ticketGroup" th:field="*{priorityId}">
+										<option value="">- Select One -</option>
+										<option th:each="obj : ${priorityList}" th:text="${obj.name}" th:value="${obj.id}"></option>							
+									</select>
+								</div>
+							</div-->
+							<div class="controls-row">
+								<div class="span2">Keterangan :<span class="text-error">*</span> :</div>
+								<div class="span10">
+									<textarea rows="10" cols="5" class="input-xxlarge" th:field="*{description}"></textarea>
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Tindakan Yang Pernah Diambil Pengadu:<span class="text-error">*</span> :</div>
+								<div class="span10">
+									<textarea rows="5" cols="5" th:field="*{action}"></textarea>
+								</div>
+							</div>
+
+							<div class="controls-row">
+								<div class="span2">Lampiran :</div>
+								<div class="span10">
+									<span id="attachmentList">
+									<input type="file" name="files[0]"  class="uni" />
+								
+									</span>
+									
+									<span id="addFile" title="Add file" style="cursor: pointer; color:#50769E;" class="i-plus-2"></span>
+									<br/><span class="text-success">Saiz fail tidak melebihi 4 MB</span>
+									<br/><span class="text-success">Format fail yang dibenarkan adalah : jpg, img, gif, pdf, xls, doc, dan docx</span>
+								</div>
+								
+							</div>
+                          
+
+
+						</div>
+						<div class="footer">
+							<div class="side fr">
+								<div class="btn-group">
+									<button class="btn" type="button"
+										onClick="window.history.back();">Tutup</button>
+									<button class="btn btn-primary btn-request block_loading" type="submit"  onClick="confirm('.block_loading','#validate','Anda pasti untuk hantar aduan?');return false;">Hantar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
+					
+				</form>
+
+			</div>
+
+		</div>
+
+
+
+
+
+
+
+	</div>
+	<div layout:fragment="javascript_endpage">
+		<script type='text/javascript' th:src="@{/resources/js/select2/select2.min.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/uniform/jquery.uniform.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/tagsinput/jquery.tagsinput.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/multiselect/jquery.multi-select.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/ibutton/jquery.ibutton.min.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/colorpicker/colorpicker.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/timepicker/jquery-ui-timepicker-addon.js}"></script>
+	
+	
+	
+    <script type='text/javascript' th:src="@{/resources/js/validationengine/languages/jquery.validationEngine-en.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/validationengine/jquery.validationEngine.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/maskedinput/jquery.maskedinput.min.js}"></script>
+    <script type='text/javascript' th:src="@{/javascript/utils/load-combo-box.js}"></script>
+    <script type='text/javascript' th:src="@{/javascript/complaint/request/form.js}"></script>
+  
+	
+		<script type="text/javascript">
+			$(document).ready(function() {
+			  
+			});
+			
+			
+			
+		</script>
+
+	</div>
+</body>
+</html>

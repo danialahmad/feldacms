@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	layout:decorator="decorators/theme">
+<head>
+<title>Dashboard</title>
+</head>
+<body>
+
+ <div layout:fragment="head" class="head">
+                        <div class="info">
+                            <h1>Dashboard</h1>
+                            <ul class="breadcrumb">
+                                <li><a href="#">Home</a> <span class="divider">-</span></li>
+                                <li><a href="#">One more</a> <span class="divider">-</span></li>
+                                <li class="active">Dashboard</li>
+                            </ul>
+                        </div>
+                        
+                                              
+                    </div>
+
+	<div layout:fragment="content">
+	                
+	            <div class="row-fluid">
+                           
+                            
+                             <div class="span12">
+                               <div class="block">
+                                    <div class="head">
+                                        <h2>Case Status</h2>                                        
+                                                                     
+                                    </div> 
+                                    <div class="content nbb npr">
+                                        <div id="chart-status" style="height: 300px; width: 300px; margin: 0px auto;"></div>
+                                    </div>                                                                    
+                                    <div  class="content np">
+                                        <table id="tableStatus" cellpadding="0" cellspacing="0" width="100%" class="list">
+                                            <thead>
+                                                <tr>
+                                                    <th width="50%">Status</th>
+                                                    <th width="50%">Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                                                                             
+                                            </tbody>
+                                           
+                                        </table>
+                                    </div>                                                                        
+                                </div>                                
+                            </div>   
+                      </div>
+                      
+                      
+                        <div class="row-fluid">
+                           
+                            
+                             <div class="span12">
+                               <div class="block">
+                                    <div class="head">
+                                        <h2>Case Priority</h2>                                        
+                                                                     
+                                    </div> 
+                                    <div class="content nbb npr">
+                                        <div id="chart-widget1" style="height: 300px; width: 300px; margin: 0px auto;"></div>
+                                    </div>                                                                    
+                                    <div  class="content np">
+                                        <table id="tablePriority2" cellpadding="0" cellspacing="0" width="100%" class="list">
+                                            <thead>
+                                                <tr>
+                                                    <th width="50%">Priority</th>
+                                                    <th width="50%">Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                                                                             
+                                            </tbody>
+                                           
+                                        </table>
+                                    </div>                                                                        
+                                </div>                                
+                            </div>   
+                      </div>  
+                      
+                      
+                      
+                            
+                           <div class="row-fluid">  
+                             <div class="span12">
+                                
+                                
+                                    <div class="block">
+                                    <div class="head">
+                                        <h2>Case total by year</h2>                                        
+                                                                     
+                                    </div>
+                                                                                                        
+                                    <div  class="content np">
+                                        <table id="tableYearStat" cellpadding="0" cellspacing="0" width="100%" class="list">
+                                            <thead>
+                                                <tr>
+                                                    <th width="50%">Year</th>
+                                                    <th width="50%">Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                                                                             
+                                            </tbody>
+                                           
+                                        </table>
+                                    </div>                                                                        
+                                </div>
+                                
+                                
+                                                               
+                            </div>
+                            
+                            
+                            
+                            
+                                                     
+                        </div>      
+	                
+	                
+	                        
+	
+	             
+	</div>
+	
+	<div layout:fragment="javascript_endpage">
+	   <script th:src="@{/resources/js/datatables/jquery.dataTables.min.js}"></script>
+		<script th:src="@{/resources/js/datatables/jquery.dataTables.fnPagingInfo.js}"></script>
+	<script type='text/javascript' th:src="@{/resources/js/charts/excanvas.min.js}"></script>    
+    <script type='text/javascript' th:src="@{/resources/js/charts/jquery.flot.js}"></script>    
+    <script type='text/javascript' th:src="@{/resources/js/charts/jquery.flot.stack.js}"></script>    
+    <script type='text/javascript' th:src="@{/resources/js/charts/jquery.flot.pie.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/charts/jquery.flot.resize.js}"></script>  
+	
+	
+		<script type='text/javascript' th:src="@{/javascript/report/caseStat.js}"></script>  
+		<script type="text/javascript">
+            
+         </script>
+	
+	</div>
+</body>
+</html>

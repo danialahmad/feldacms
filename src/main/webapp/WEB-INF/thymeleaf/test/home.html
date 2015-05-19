@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="decorators/theme2">
+<head>
+<title>Building Form</title>
+</head>
+<body>
+	<div layout:fragment="content">
+	
+                                
+                                <div class="block">
+                                    <div class="block_wrapper">
+                                        <div class="input-append wide_elements">
+                                            <input type="text" value=""/>
+                                            <button class="btn" type="button"><span class="i-calendar"></span></button>
+                                            <button class="btn" type="button">Search</button>
+                                        </div>                                         
+                                    </div>
+                                </div>                                
+                                
+                                <div class="block">
+                                    <div class="head">
+                                        <div class="side fl">
+                                            
+                                            <div class="btn-group">
+                                                <button class="btn btn-primary">Forward</button>
+                                                <button class="btn btn-primary">Remove</button>
+                                                <button class="btn btn-primary">Spam</button>
+                                            </div>
+                                            
+                                            <div class="btn-group">                                                
+                                                <button class="btn dropdown-toggle" data-toggle="dropdown">More <span class="caret"></span></button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">Move to saved</a></li>
+                                                    <li><a href="#">Move to important</a></li>
+                                                    <li><a href="#">Set as read</a></li>
+                                                    <li><a href="#">Set as unread</a></li>                                                    
+                                                </ul>                                                    
+                                            </div>                 
+                                            
+                                        </div>
+                                        <ul class="buttons">
+                                            <li><a href="#" class="block_loading"><span class="i-cycle"></span></a></li>
+                                            <li><a href="#" class="block_toggle"><span class="i-arrow-down-3"></span></a></li>                                            
+                                        </ul>
+                                    </div>
+                                    <div class="content np">
+                                        <table cellpadding="0" cellspacing="0" width="100%" class="list">
+                                            <thead>
+                                                <tr>
+                                                    <th><input type="checkbox" class="checkall"/></th>
+                                                    <th></th>
+                                                    <th width="20%">From</th>
+                                                    <th>Subject</th>
+                                                    <th>Date</th>                                                                                                                            
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><input type="checkbox" name="checkbox"/></td>
+                                                    <td><span class="icon-folder-close"></span></td>
+                                                    <td>aqvatarius@domain.com</td>
+                                                    <td><strong><a href="#">Re: Look at this awesome photo!!</a></strong></td>
+                                                    <td>12:32</td>                                                    
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox" name="checkbox"/></td>
+                                                    <td><span class="icon-folder-close"></span></td>
+                                                    <td>alexey@domain.com</td>
+                                                    <td><strong><a href="#">Phasellus ut diam quis dolor mollis tristique.</a></strong></td>
+                                                    <td>11:11</td>                                                    
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox" name="checkbox"/></td>
+                                                    <td><span class="icon-folder-close"></span></td>
+                                                    <td>olga@domain.com</td>
+                                                    <td><strong><a href="#">Re: Re: Donec mauris sapien...</a></strong></td>
+                                                    <td>10:43</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox" name="checkbox"/></td>
+                                                    <td><span class="icon-folder-open"></span></td>
+                                                    <td>olga@domain.com</td>
+                                                    <td><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></td>
+                                                    <td>9:00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="5" class="heading">Yesterday</td>
+                                                </tr>                                
+                                                <tr>
+                                                    <td><input type="checkbox" name="checkbox"/></td>
+                                                    <td><span class="icon-folder-open"></span></td>
+                                                    <td>alexandr@domain.com</td>
+                                                    <td><a href="#">Cras nec risus dolor, ut tristique neque.</a></td>
+                                                    <td>8 Nov</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox" name="checkbox"/></td>
+                                                    <td><span class="icon-folder-open"></span></td>
+                                                    <td>john@domain.com</td>
+                                                    <td><a href="#">Dolor mollis tristique!!!</a></td>
+                                                    <td>8 Nov</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox" name="checkbox"/></td>
+                                                    <td><span class="icon-folder-open"></span></td>
+                                                    <td>helen@domain.com</td>
+                                                    <td><a href="#">Diam quis dolor mollis tristique.</a></td>
+                                                    <td>8 Nov</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="5" class="heading">Wednesday</td>
+                                                </tr>                                                                
+                                                <tr>
+                                                    <td><input type="checkbox" name="checkbox"/></td>
+                                                    <td><span class="icon-folder-open"></span></td>
+                                                    <td>dmitry@domain.com</td>
+                                                    <td><a href="#">Re: Analytics...</a></td>
+                                                    <td>7 Nov</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox" name="checkbox"/></td>
+                                                    <td><span class="icon-folder-open"></span></td>
+                                                    <td>dmitry@domain.com</td>
+                                                    <td><a href="#">Analytics...</a></td>
+                                                    <td>7 Nov</td>                                                    
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox" name="checkbox"/></td>
+                                                    <td><span class="icon-folder-open"></span></td>
+                                                    <td>aqvatarius@domain.com</td>
+                                                    <td><a href="#">Quis dolor mollis tristique.</a></td>
+                                                    <td>7 Nov</td>                                                    
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox" name="checkbox"/></td>
+                                                    <td><span class="icon-folder-open"></span></td>
+                                                    <td>alexandr@domain.com</td>
+                                                    <td><a href="#">Lorem ipsum dolor sit amet</a></td>
+                                                    <td>7 Nov</td>
+                                                </tr>                                  
+                                            </tbody>
+                                        </table>                                          
+                                    </div>
+                                    <div class="footer">
+                                        <div class="side fl">
+                                            <select class="input-mini">
+                                                <option value="10" selected="selected">10</option>
+                                                <option value="20">20</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                            </select>
+                                        </div>
+                                        <div class="side fr">
+                                            <div class="pagination">
+                                                <ul>
+                                                    <li class="disabled"><a href="#">«</a></li>
+                                                    <li class="active"><a href="#">1</a></li>
+                                                    <li><a href="#">2</a></li>
+                                                    <li><a href="#">3</a></li>
+                                                    <li><a href="#">4</a></li>
+                                                    <li><a href="#">5</a></li>
+                                                    <li><a href="#">»</a></li>
+                                                </ul>
+                                            </div>                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                 
+
+
+
+
+	</div>
+	<div layout:fragment="javascript_endpage">
+		<script type='text/javascript' th:src="@{/resources/js/select2/select2.min.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/uniform/jquery.uniform.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/tagsinput/jquery.tagsinput.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/multiselect/jquery.multi-select.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/ibutton/jquery.ibutton.min.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/colorpicker/colorpicker.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/timepicker/jquery-ui-timepicker-addon.js}"></script>
+		<script th:src="@{/resources/js/datatables/jquery.dataTables.min.js}"></script>
+		<script th:src="@{/resources/js/datatables/jquery.dataTables.fnPagingInfo.js}"></script>
+	
+	
+    <script type='text/javascript' th:src="@{/resources/js/validationengine/languages/jquery.validationEngine-en.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/validationengine/jquery.validationEngine.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/maskedinput/jquery.maskedinput.min.js}"></script>
+    <script type='text/javascript' th:src="@{/javascript/utils/load-combo-box.js}"></script>
+    <script type='text/javascript' th:src="@{/javascript/complaint/request/form.js}"></script>
+  
+	
+		<script type="text/javascript">
+			$(document).ready(function() {
+				 if($("table.sortx").length > 0)
+				        $("table.sortx").dataTable({"iDisplayLength": 3, "aLengthMenu": [5,10,25,50,100], "sPaginationType": "full_numbers", "aoColumns": [ { "bSortable": false },null, null, null, 
+				                                                                                                                                            null, null, null, null]});
+				    /* EOF datatables */
+			});
+			
+			
+			
+		</script>
+
+	</div>
+</body>
+</html>

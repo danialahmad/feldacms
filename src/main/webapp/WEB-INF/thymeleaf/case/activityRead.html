@@ -1,0 +1,110 @@
+
+	<form id="viewActivity" method="POST" th:action="@{/complaint/request/save}" th:object="${activityForm}" enctype="multipart/form-data">
+		<input type="hidden" th:field="*{id}" />
+		<input type="hidden" id="ticketId" th:field="*{ticket.id}" />
+		<input type="hidden" th:field="*{assignment.id}" />
+	    <input type="hidden" id="action" th:value="${action}" />   
+         <div class="row-fluid">
+                            
+                           
+                            <div class="span12">
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>Tindakan</h2>                                        
+                                    </div>
+                                    
+                                    <div class="content  ">
+                         <div class="controls-row">
+								<div class="span2">Jenis Tindakan :</div>
+								<div class="span10">
+									<span th:text="${activityForm.activityType.name}" th:if="${activityForm.activityType !=null}"></span>
+								</div>
+							</div>
+							
+							
+							
+							<div class="commonBlock" style="display: none;">
+							  <div class="meeting controls-row">
+                                            <div class="span2">Agenda :</div>
+                                            <div class="span10">
+                                            <span th:text="${activityForm.agenda}" th:if="${activityForm.agenda !=null}"></span>
+                                                                               
+                                            </div>
+                                        </div>
+                              <div class="meeting controls-row">
+                                            <div class="span2">Lokasi :</div>
+                                            <div class="span10"> 
+                                                <span th:text="${activityForm.location}" th:if="${activityForm.location !=null}"></span>
+                                                                          
+                                            </div>
+                                        </div>
+							  <div class="controls-row">
+                                            <div class="span2">Tarikh/Masa Mula :</div>
+                                            <div class="span10">
+                                              <span th:text="${#dates.format(activityForm.startTime, 'dd/MM/yyyy HH:mm a')}" th:if="${activityForm.startTime !=null}">10/12/2013 3:00 am</span>                                             
+                                            </div>
+                                        </div>
+                                       <div class="controls-row">
+                                            <div class="span2">Tarikh/Masa Tamat :</div>
+                                            <div class="span10">
+                                                 <span th:text="${#dates.format(activityForm.endTime, 'dd/MM/yyyy HH:mm a')}" th:if="${activityForm.endTime !=null}">10/12/2013 3:00 am</span>                                            
+                                            </div>
+                                        </div>
+                                      
+                      
+							</div>
+							     <div class="controls-row desc">
+							<div class="span2">Keterangan :</div>
+								<div class="span10">
+								<span th:text="${activityForm.description}" th:if="${activityForm.description !=null}"></span>
+								</div>
+								
+							</div>
+							
+							<!--  -div class="emailBlock" style="display: none;">
+							 <div class="controls-row">
+                                            <div class="span2">To :</div>
+                                            <div class="span10">
+                                                <select class="select2 input-block-level" th:field="*{to}"  multiple="multiple">
+                                                   
+                                                     <option th:each="obj : ${contactList}" th:text="${obj.name}" th:value="${obj.email}"></option>							
+									  
+                                                                                           
+                                                </select>                                               
+                                            </div>
+                                        </div>
+                              <div class="controls-row">
+                                            <div class="span2">Subject :</div>
+                                            <div class="span10">
+                                                <input type="text" th:field="*{subject}" class="input-block-level"/>                                 
+                                            </div>
+                                        </div>
+							            
+            <textarea th:field="*{message}" name="text" id="mail_wysiwyg" style="width: 523px; height: 158px;"></textarea>
+   
+							</div-->
+							
+							
+							
+							
+							
+							
+                                    
+                                    </div>
+                                    
+                                    <div class="footer">
+							<div class="side fr">
+								<div class="btn-group">
+									<button class="btn" id="btnClose" type="button">Tutup</button>
+								</div>
+							</div>
+						</div>
+                                    
+                                </div>
+                            </div>
+         </div> 
+         
+          
+		
+		</form>
+	

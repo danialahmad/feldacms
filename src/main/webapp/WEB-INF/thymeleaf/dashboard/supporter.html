@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	layout:decorator="decorators/theme">
+<head>
+<title>Dashboard</title>
+</head>
+<body>
+
+ <div layout:fragment="head" class="head">
+                        <div class="info">
+                            <h1>Dashboard</h1>
+                           <p></p>
+                        </div>
+          
+                                              
+                    </div>
+
+	<div layout:fragment="content">
+	
+	  <div class="row-fluid all-area" id="list-area" sec:authorize="hasAnyRole('ROLE_SUPPORTER')">
+	        <div class="span12">
+	            
+	            <div class="block">
+	                <div class="head">
+	                    <h2>Senarai Kes Baru Diterima</h2>                                     
+	                </div>
+	               
+	                <div class="content np table-sorting">
+	                    
+	                    <table id="list-meeting-room3" cellpadding="0" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Case ID</th>
+									<th>Title</th>
+									<th>Created On</th>
+									<th>Priority</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>                                      
+	                    
+	                </div>
+	            </div>
+	            
+	        </div>
+		</div> 	
+	                 <div class="row-fluid">
+                                 
+                                 
+                                  <div class="span6">
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>Senarai Kes Anda</h2>                                        
+                                                                             
+                                    </div>  
+                                     <div class="content">
+                                        <ul class="boxes nmt">
+                                            <li id="today"></li>
+                                            <li id="week"></li>
+                                            <li id="month"></li>
+                                            
+                                        </ul>
+                                                                           
+                                    </div>                                                                      
+                                    <div id="latestCaseByProfile" class="content np">
+                                        <table cellpadding="0" cellspacing="0" width="100%" class="list">
+                                            <thead>
+                                                <tr>
+                                                    <th width="50">Date Assigned</th>
+                                                    <th>Title</th>
+                                                    <th width="40">Priority</th>
+                                                    <th width="50">Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                                                                             
+                                            </tbody>
+                                           <tfoot>
+<tr>
+<td align="right" colspan="4">
+<button class="btn btn-small btn-primary">More...</button>
+</td>
+</tr>
+</tfoot>
+                                        </table>
+                                    </div>                                                                        
+                                </div>
+                                
+                                    <!--  div class="block">
+                                    <div class="head">
+                                        <h2>Case total by year</h2>                                        
+                                                                     
+                                    </div>                                                                    
+                                    <div  class="content np">
+                                        <table id="tableYearStat" cellpadding="0" cellspacing="0" width="100%" class="list">
+                                            <thead>
+                                                <tr>
+                                                    <th width="50%">Year</th>
+                                                    <th width="50%">Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                                                                             
+                                            </tbody>
+                                           
+                                        </table>
+                                    </div>                                                                        
+                                </div-->
+                                
+                                
+                                                               
+                            </div>
+                            
+                             <div class="span6">
+                              
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>Supporter Task Summary</h2>
+                                        
+                                    </div>
+                                    <div class="content">
+                                    <div class="block_info">    
+                                     <p>
+                                     You have <span class="badge badge-info" id="infoMyCase">2</span> case (s) assigned
+                                     </p>
+                                      <p>
+                                     You have <span class="badge badge-important">0</span> critical case (s)
+                                      </p>
+                                      <p>
+                                     You have <span class="badge badge-important">0</span> SLA breach
+                                      </p>
+                                       <p>
+                                    <span class="badge badge-info" id="infoMyGroupCase">0</span> case (s) has been created in your group
+                                     </p>
+                                     
+                                     </div>
+                                    </div>
+                                </div>
+                                 
+                                 <div class="block">                            
+                                    <div class="head">
+                                        <h2>Your Case Priority</h2>
+                                       
+                                    </div>
+                                    <div class="content nbb npr">
+                                        <div id="chart-widget2" style="height: 179px; width: 179px;  margin: 0px auto;"></div>
+                                    </div>                     
+                                    <div class="content np">
+                                        <table id="tablePriority" cellpadding="0" cellspacing="0" width="100%" class="list">
+                                            <thead>
+                                                <tr>
+                                                    <th width="50%">Priority</th>
+                                                    <th width="50%">Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                                                                             
+                                            </tbody>
+                                           
+                                        </table>                                                                                                                  
+                                    </div>
+                                </div>
+                               
+                                
+                               <!--  div class="block">
+                                    <div class="head">
+                                        <h2>Case Status</h2>                                        
+                                                                     
+                                    </div>                                                                    
+                                    <div  class="content np">
+                                        <table id="tableStatus" cellpadding="0" cellspacing="0" width="100%" class="list">
+                                            <thead>
+                                                <tr>
+                                                    <th width="50%">Status</th>
+                                                    <th width="50%">Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                                                                             
+                                            </tbody>
+                                           
+                                        </table>
+                                    </div>                                                                        
+                                </div-->
+                                
+                                 
+                                
+                             
+                                 
+                                                                
+                            </div>   
+                            
+                            
+                      
+                            
+                            
+                            
+                            
+                                                     
+                        </div>
+	                
+	                            
+
+	    
+	    
+	    	
+	    
+	             
+	</div>
+	<div layout:fragment="modal">
+<div id="caseModal" class="modal hide fade" role="dialog" >
+	        <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+	            <h3>Case</h3>
+	        </div>
+	       <div class="modal-body" >
+       <!-- remote content will be inserted here via jQuery load() -->
+          </div>        
+</div>
+
+
+</div>
+	<div layout:fragment="javascript_endpage">
+	   <script th:src="@{/resources/js/datatables/jquery.dataTables.min.js}"></script>
+		<script th:src="@{/resources/js/datatables/jquery.dataTables.fnPagingInfo.js}"></script>
+	<script type='text/javascript' th:src="@{/resources/js/charts/excanvas.min.js}"></script>    
+    <script type='text/javascript' th:src="@{/resources/js/charts/jquery.flot.js}"></script>    
+    <script type='text/javascript' th:src="@{/resources/js/charts/jquery.flot.stack.js}"></script>    
+    <script type='text/javascript' th:src="@{/resources/js/charts/jquery.flot.pie.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/charts/jquery.flot.resize.js}"></script>  
+	
+	
+		<script type='text/javascript' th:src="@{/javascript/dashboard/supporter.js}"></script>
+		<script type='text/javascript' th:src="@{/javascript/dashboard/tableCase.js}"></script> 
+		<script type='text/javascript' th:src="@{/javascript/index.js}"  ></script> 
+		<script type="text/javascript">
+            
+         </script>
+	
+	</div>
+</body>
+</html>

@@ -1,0 +1,214 @@
+
+<form id="register" method="POST" th:action="@{/registration/save}"
+	th:object="${userForm}" enctype="multipart/form-data">
+	<div id="wrapper" class="screen_wide sidebar_off">
+
+		<script type='text/javascript'
+			th:src="@{/resources/js/uniform/jquery.uniform.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/ibutton/jquery.ibutton.min.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/plugins.js}"></script>
+			<script type='text/javascript' th:src="@{/javascript/utils/load-combo-box.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/validation/jquery.validate.min.js}"></script>
+	 <script type='text/javascript' th:src="@{/javascript/registration.js}"></script>
+		 
+		<div id="content">
+			<div class="wrap">
+				<div class="content">
+					<div class="row-fluid">
+						<div class="span12">
+							<div class="block">
+								<div class="head">
+									<h2>Account details</h2>
+								</div>
+								<div class="content np">
+									<div class="controls-row">
+										<div class="span3">
+											<img th:src="@{/resources/img/examples/users/no-photo.jpg}"
+												class="img-polaroid" style="margin-bottom: 5px;" />
+										</div>
+										<div class="span9">
+											<p class="np nm">
+												<strong>File:</strong> <span class="muted" id="imgPath"></span>
+											</p>
+											<input type="file" th:field="*{file}" class="uni" />
+										</div>
+									</div>
+										
+									<div class="controls-row">
+									
+									<div class="controls-row">
+										<div class="span3">User Category :</div>
+										<div class="span9">
+											<select id="personCategory" th:field="*{personCategory.id}">
+										<option value="">- Select One -</option>
+										<option th:each="obj : ${personCategoryList}" th:text="${obj.name}" th:value="${obj.id}"></option>							
+									</select>
+										</div>
+									</div>
+									<div class="controls-row">
+										<div class="span3">Felda's Relation :</div>
+										<div class="span9">
+											<select>
+										<option value="">- Select One -</option>
+										<option value="">Anak Peneroka</option>	
+										<option value="">Cucu Peneroka</option>				
+									</select>
+										</div>
+									</div>
+									
+										<div class="controls-row">
+											<div class="span3">Name :</div>
+											<div class="span9">
+												<input type="text" class="validate[required]" th:field="*{name}" />
+											</div>
+										</div>
+											<div class="controls-row">
+										<div class="span3">ID No (IC/Registration no) :</div>
+										<div class="span9">
+											<input type="text" value="" th:field="*{icNo}" />
+										</div>
+									</div>
+									<div class="controls-row felda">
+										<div class="span3">Settler No :</div>
+										<div class="span9">
+											<input type="text" value="" th:field="*{settlerNo}" />
+										</div>
+									</div>
+									<div class="controls-row staffB">
+										<div class="span3">Staff ID :</div>
+										<div class="span9">
+											<input type="text" value="" th:field="*{staffNo}" />
+										</div>
+									</div>
+										<div class="controls-row">
+											<div class="span3">Username :</div>
+											<div class="span9">
+												<input type="text" class="validate[required]" th:field="*{username}" />
+											</div>
+										</div>
+										<div class="controls-row">
+											<div class="span3">Password :</div>
+											<div class="span9">
+												<input type="password" class="validate[required]" id="password" th:field="*{password}" />
+											</div>
+										</div>
+										 <div class="controls-row">
+                                                <div class="span3">Confirm Password:</div>
+                                                <div class="span9">
+                                                    <input type="password" class="validate[required,equals[password]]"/>
+                                                </div>
+                                            </div> 
+										<div class="controls-row">
+											<div class="span3">Email :</div>
+											<div class="span9">
+												<input type="text" class="validate[email]" th:field="*{email}" />
+
+											</div>
+
+										</div>
+									</div>
+
+
+
+								</div>
+							</div>
+
+							<div class="block">
+								<div class="head">
+									<h2>User Profile</h2>
+								</div>
+								<div class="content np">
+								<div class="controls-row felda">
+										<div class="span3">Region :</div>
+										<div class="span9">
+											<select id="region" th:field="*{region.id}">
+										<option value="">- Select One -</option>
+										<option th:each="obj : ${regionList}" th:text="${obj.name}" th:value="${obj.id}"></option>							
+									</select>
+										</div>
+									</div>
+							<div class="controls-row felda">
+										<div class="span3">Plan :</div>
+										<div class="span9">
+											<select id="plan" th:field="*{plan.id}">
+										<option value="">- Select One -</option>
+										
+									</select>
+										</div>
+									</div>
+									<div class="controls-row">
+										<div class="span3">Address :</div>
+										<div class="span4">
+											<div class="input-prepend">
+												<input type="text" value="" th:field="*{address1}" />
+											</div>
+											<div class="input-append">
+												<input type="text" value="" th:field="*{address2}" />
+											</div>
+										</div>
+									</div>
+									<div class="controls-row">
+										<div class="span3">City :</div>
+										<div class="span9">
+											<input type="text" value="" th:field="*{city}" />
+										</div>
+									</div>
+									<div class="controls-row">
+										<div class="span3">Country :</div>
+										<div class="span9">
+											<select id="country" th:field="*{country.id}">
+										<option value="">- Select One -</option>
+										<option th:each="obj : ${countryList}" th:text="${obj.country}" th:value="${obj.id}"></option>							
+									</select>
+										</div>
+									</div>
+									<div class="controls-row">
+										<div class="span3">State :</div>
+										<div class="span9">
+											<select id="state" th:field="*{state.id}">
+										<option value="">- Select One -</option>
+										
+									</select>
+										</div>
+									</div>
+									<div class="controls-row">
+										<div class="span3">Tel No (M) :</div>
+										<div class="span9">
+											<input type="text"  th:field="*{phoneNo}" />
+										</div>
+									</div>
+									<div class="controls-row">
+										<div class="span3">Tel No (H/O) :</div>
+										<div class="span9">
+											<input type="text"  th:field="*{mobileNo}" />
+
+										</div>
+									</div>
+									<div class="controls-row">
+										<div class="span3">Fax No (H/O) :</div>
+										<div class="span9">
+											<input type="text" th:field="*{faxNo}" />
+
+										</div>
+									</div>
+
+
+
+								</div>
+							</div>
+
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" aria-hidden="true">Submit</button>
+		<button class="btn btn-warning" aria-hidden="true"
+			data-dismiss="modal">Close</button>
+	</div>
+</form>

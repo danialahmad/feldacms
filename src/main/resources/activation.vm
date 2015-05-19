@@ -1,0 +1,28 @@
+<html>
+<body>
+	<div>Dear ${receiver},</div>
+<br/>
+	<div>Welcome to Complaint Management System (CMS),
+	<br/>To activate your account, you must follow the activation link below:
+
+<br/>${actUrl}
+	
+	
+	
+	<br/>Thank You.</div>
+<br/>
+
+<br/>
+<div>
+<a href="${sysAddress}">Click Here</a> to go to the System
+</div>
+
+
+<br/>
+<div stye="font-family:Arial,Helvetica,sans-serif;font-size:10px;">
+<b>Note :</b> This e-mail is computer generated. Please DO NOT REPLY.
+</div>
+
+</body>
+
+</html>

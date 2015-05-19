@@ -1,0 +1,25 @@
+<html>
+<body>
+	<div>Dear ${receiver},</div>
+<br/>
+	<div>Your case has been received.  
+	<br> Your Ticket ID :<strong> ${application.id} </strong>
+	<br>Thank You.</div>
+<br/>
+
+	
+
+<br/>
+<div>
+<a href="${sysAddress}">Click Here</a> to go to the System
+</div>
+
+
+<br/>
+<div stye="font-family:Arial,Helvetica,sans-serif;font-size:10px;">
+<b>Note :</b> This e-mail is computer generated. Please DO NOT REPLY.
+</div>
+
+</body>
+
+</html>

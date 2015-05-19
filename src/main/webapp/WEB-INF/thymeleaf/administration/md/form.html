@@ -1,0 +1,104 @@
+
+	<form id="mdForm" method="POST" th:action="@{/complaint/request/save}" th:object="${masterForm}" enctype="multipart/form-data">
+		<input type="hidden" th:field="*{id}" th:if="${id==false}"/>
+	    <input type="hidden" id="action" th:value="${action}" />   
+         <div class="row-fluid">
+                            
+                           
+                            <div class="span12">
+                                <div class="block">
+                                    <div class="head">
+                                        <h2 th:text="${title}"></h2>                                        
+                                    </div>
+                                    
+                                    <div class="content  ">
+                               <div class="controls-row" th:if="${caseGroup}">
+								<div class="span2">Case Group:</div>
+								<div class="span10">
+									<select id="ticketGroup" th:field="*{ticketGroup.id}">
+										<option value="">- Select One -</option>
+										<option th:each="obj : ${ticketGroupList}" th:text="${obj.name}" th:value="${obj.id}"></option>							
+									</select>
+									
+								</div>
+							</div>
+                           <div class="controls-row"  th:if="${id}">
+								<div class="span2">ID :</div>
+								<div class="span10">
+									  <input type="text" th:field="*{id}" />
+								</div>
+							</div>         
+                         <div class="controls-row">
+								<div class="span2">Name :</div>
+								<div class="span10">
+									  <input type="text" th:field="*{name}" />
+								</div>
+							</div>
+							<div class="controls-row" th:if="${rank}">
+								<div class="span2">Rank :</div>
+								<div class="span10">
+									  <input type="text" th:field="*{rank}" />
+								</div>
+							</div>
+								<div class="controls-row " th:if="${region}">
+										<div class="span2">Region :</div>
+										<div class="span10">
+											<select id="region" th:field="*{region.id}">
+										<option value="">- Select One -</option>
+										<option th:each="obj : ${regionList}" th:text="${obj.name}" th:value="${obj.id}"></option>							
+									</select>
+										</div>
+								</div>
+								<div class="controls-row" th:if="${address}">
+										<div class="span2">Address :</div>
+										<div class="span10">
+											<div class="input-prepend">
+												<input type="text" value="" th:field="*{address1}" />
+											</div>
+											<div class="input-append">
+												<input type="text" value="" th:field="*{address2}" />
+											</div>
+										</div>
+									</div>
+									<div class="controls-row" th:if="${address}">
+										<div class="span2">City :</div>
+										<div class="span10">
+											<input type="text" value="" th:field="*{city}" />
+										</div>
+									</div>
+									<div class="controls-row" th:if="${address}">
+										<div class="span2">State :</div>
+										<div class="span10">
+											<select id="country" th:field="*{state.id}">
+										<option value="">- Select One -</option>
+										<option th:each="obj : ${stateList}" th:text="${obj.name}" th:value="${obj.id}"></option>							
+									</select>
+										</div>
+									</div>
+									
+							
+							
+						
+						
+                                    
+                                    </div>
+                                    
+                                    <div class="footer">
+							<div class="side fr">
+								<div class="btn-group">
+									<button class="btn" type="button"
+										data-dismiss="modal">Close</button>
+									<button class="btn btn-primary btn-request" type="submit">Submit</button>
+								</div>
+							</div>
+						</div>
+                                    
+                                </div>
+                            </div>
+         </div> 
+         
+          
+		
+		</form>
+		
+	

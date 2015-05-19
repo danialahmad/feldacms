@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[3.2.0.201303060654-RELEASE]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[true]]></enableImports>
+	<configs>
+		<config>src/main/resources/cms-cache.xml</config>
+		<config>src/main/resources/cms-config.xml</config>
+		<config>src/main/resources/cms-datasource.xml</config>
+		<config>src/main/resources/cms-jdbc.xml</config>
+		<config>src/main/resources/cms-jpa.xml</config>
+		<config>src/main/resources/cms-mail.xml</config>
+		<config>src/main/resources/cms-scheduler.xml</config>
+		<config>src/main/resources/cms-security.xml</config>
+		<config>src/main/resources/cms-service.xml</config>
+		<config>src/main/resources/cms-transaction.xml</config>
+	</configs>
+	<configSets>
+	</configSets>
+</beansProjectDescription>

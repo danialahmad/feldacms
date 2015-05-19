@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="decorators/theme">
+<head>
+<title>Aduan</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<form id="newCase" method="POST" th:action="@{/case/helpdesk/save}"
+			th:object="${complaintForm}" enctype="multipart/form-data">
+
+			<div class="row-fluid">
+
+				<div class="span12">
+					<div class="block">
+						<div class="head">
+							<h2>Maklumat Pengadu</h2>
+							<!-- div class="side fr">
+								<button class="btn" onClick="clear_form('#validate');"
+									type="button">Clear form</button>
+							</div-->
+						</div>
+						<div class="content np">
+							<div class="controls-row">
+								<div class="span2">Kategori Pengguna <span class="text-error">*</span> :</div>
+								<div class="span10">
+									<select id="personCategory" th:field="*{personCategory.id}">
+										<option value="">- Sila Pilih -</option>
+										<option th:each="obj : ${personCategoryList}"
+											th:text="${obj.name}" th:value="${obj.id}"></option>
+									</select>
+								</div>
+							</div>
+							<div class="controls-row relate">
+								<div class="span2">Status Bersama Felda :</div>
+								<div class="span10">
+									<select id="relation" th:field="*{relation.id}">
+										
+										<option th:each="obj : ${relationList}"
+											th:text="${obj.name}" th:value="${obj.id}"></option>
+									</select>
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Nama <span class="text-error">*</span> :</div>
+								<div class="span10">
+									<input type="text" class="validate[required,maxSize[100]]"
+										th:field="*{name}" />
+								</div>
+							</div>
+
+							<div class="controls-row">
+								<div class="span2">No. Kad Pengenalan/No. Pendaftaran <span class="text-error">*</span> :</div>
+								<div class="span10">
+									<input type="text" maxlength="14" value="" th:field="*{icNo}" />
+									<span class="help-inline"><span class="text-success">Contoh : (841210-XX-XXXX)</span></span>
+								</div>
+							</div>
+						
+							<div class="controls-row staffB">
+								<div class="span2">No. Staff <span class="text-error">*</span> :</div>
+								<div class="span10">
+									<input type="text" value="" th:field="*{staffNo}" />
+								</div>
+							</div>
+							<!-- div class="controls-row felda">
+								<div class="span2">Settler No :</div>
+								<div class="span10">
+									<input type="text" value="" th:field="*{settlerNo}" />
+								</div>
+							</div-->
+							<div class="controls-row felda">
+								<div class="span2">Wilayah <span class="text-error">*</span> :</div>
+								<div class="span10">
+									<select id="region" th:field="*{region.id}">
+										<option value="">- Sila Pilih -</option>
+										<option th:each="obj : ${regionList}" th:text="${obj.name}"
+											th:value="${obj.id}"></option>
+									</select>
+								</div>
+							</div>
+							<div class="controls-row felda">
+								<div class="span2">Tanah Rancangan <span class="text-error">*</span> :</div>
+								<div class="span10">
+									<select id="plan" th:field="*{plan.id}">
+										<option value="">- Sila Pilih -</option>
+
+									</select>
+								</div>
+							</div>
+
+							<div class="controls-row">
+								<div class="span2">Email <span class="text-error">*</span> :</div>
+								<div class="span10">
+									<input type="text" class="validate[required,maxSize[100]]"
+										th:field="*{email}" />
+								</div>
+							</div>
+							
+							<div class="controls-row">
+								<div class="span2">No. Telefon (M) <span class="text-error">*</span> :</div>
+								<div class="span10">
+									<input type="text" class="validate[required,maxSize[100]]"
+										th:field="*{mobileNo}" />
+									<span class="help-inline"><span class="text-success">Contoh : (01X-XXXXXXX)</span></span>
+								</div>
+							</div>
+
+							
+
+
+
+						</div>
+
+					</div>
+
+
+
+
+
+				</div>
+
+			</div>
+
+			<div class="row-fluid">
+
+				<div class="span12">
+					<div class="block">
+						<div class="head">
+							<h2>Maklumat Aduan</h2>
+
+						</div>
+						<div class="content np">
+
+							<div class="controls-row">
+								<div class="span2">Tajuk <span class="text-error">*</span> :</div>
+								<div class="span10">
+									<input type="text" class="validate[required,maxSize[100]]"
+										th:field="*{ticketTitle}" />
+								</div>
+							</div>
+								<div class="controls-row">
+								<div class="span2">Jenis :</div>
+								<div class="span10" >
+									<select th:field="*{ticketType}">
+									 <option value="A">ADUAN</option>
+									 <option value="C">CADANGAN</option>
+									 <option value="T">PERTANYAAN</option>
+									</select>
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Kategori Aduan/Cadangan <span class="text-error">*</span> :</div>
+								<div class="span10" >
+									<select th:field="*{category.id}">
+									<option value="">- Sila Pilih -</option>
+										<option th:each="obj : ${categoryList}" th:text="${obj.name}" th:value="${obj.id}"></option>	
+									</select>
+								</div>
+							</div>
+							<!-- div class="controls-row">
+								<div class="span2">Case Category:</div>
+								<div class="span10">
+									<select id="ticketGroup" th:field="*{ticketGroupId}">
+										<option value="">- Select One -</option>
+										<option th:each="obj : ${ticketGroupList}"
+											th:text="${obj.name}" th:value="${obj.id}"></option>
+									</select>
+
+								</div>
+							</div -->
+							<!--  div class="controls-row">
+								<div class="span2">Case Category:</div>
+								<div class="span10">
+									<select id="ticketCategory" th:field="*{ticketCategoryId}">
+										<option value="">- Select One -</option>
+
+									</select>
+								</div>
+							</div-->
+							<!--  div class="controls-row">
+								<div class="span2">Priority:</div>
+								<div class="span10">
+									<select id="ticketGroup" th:field="*{priorityId}">
+										<option value="">- Select One -</option>
+										<option th:each="obj : ${priorityList}" th:text="${obj.name}"
+											th:value="${obj.id}"></option>
+									</select>
+
+								</div>
+							</div-->
+							<div class="controls-row">
+								<div class="span2">Sumber Aduan <span class="text-error">*</span> :</div>
+								<div class="span10">
+									<select id="ticketCategory" th:field="*{originatorId}">
+										<option value="">- Sila Pilih -</option>
+										<option th:each="obj : ${originatorList}"
+											th:text="${obj.name}" th:value="${obj.id}"></option>
+									</select>
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Keterangan <span class="text-error">*</span> :</div>
+								<div class="span10">
+									<textarea class="input-xxlarge" rows="5" cols="5" th:field="*{description}"></textarea>
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Tindakan Yang Pernah Diambil Pengadu:<span class="text-error">*</span> :</div>
+								<div class="span10">
+									<textarea rows="5" cols="5" th:field="*{action}"></textarea>
+								</div>
+							</div>
+
+							<div class="controls-row">
+								<div class="span2">Lampiran :</div>
+								<div class="span10">
+									<span id="attachmentList"> <input type="file"
+										name="files[0]" class="uni" />
+									</span> <span id="addFile" title="Add file"
+										style="cursor: pointer; color: #50769E;" class="i-plus-2"></span>
+										<br/><span class="text-success">Saiz fail tidak melebihi 4 MB</span>
+										<br/><span class="text-success">Format fail yang dibenarkan adalah : jpg, img, gif, pdf, xls, doc, dan docx</span>
+									
+								</div>
+
+							</div>
+
+
+
+						</div>
+					
+					</div>
+
+
+
+
+
+				</div>
+
+			</div>
+
+<div class="row-fluid">
+
+				<div class="span12">
+					<div class="block">
+						<div class="head">
+							<h2>Maklumat Lengkap Pengadu</h2>
+							<!-- div class="side fr">
+								<button class="btn" onClick="clear_form('#validate');"
+									type="button">Clear form</button>
+							</div-->
+						</div>
+						<div class="content np">
+						
+							<div class="controls-row">
+								<div class="span2">Alamat :</div>
+								<div class="span5">
+									<input type="text" class="validate[required,maxSize[100]]"
+										th:field="*{address1}" /> <input type="text"
+										class="validate[required,maxSize[100]]" th:field="*{address2}" />
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Bandar :</div>
+								<div class="span10">
+									<input type="text" class="validate[required,maxSize[100]]"
+										th:field="*{city}" />
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Negara :</div>
+								<div class="span10">
+									<select id="country" th:field="*{country.id}">
+										<option value="">- Sila Pilih -</option>
+										<option th:each="obj : ${countryList}"
+											th:text="${obj.country}" th:value="${obj.id}"></option>
+									</select>
+
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Negeri :</div>
+								<div class="span10">
+									<select id="state" th:field="*{state.id}">
+										<option value="">- Sila Pilih -</option>
+
+									</select>
+								</div>
+							</div>
+						<div class="controls-row">
+								<div class="span2">No. Telefon (Rumah/Pejabat) :</div>
+								<div class="span10">
+									<input type="text" class="validate[required,maxSize[100]]"
+										th:field="*{phoneNo}" />
+										<span class="help-inline"><span class="text-success">Contoh : (0X-XXXXXXX)</span></span>
+								</div>
+							</div>
+						
+						
+						</div>
+							<div class="footer">
+							<div class="side fr">
+								<div class="btn-group">
+									<button class="btn" type="button"
+										onClick="window.history.back();">Tutup</button>
+									<button class="btn btn-primary btn-request" type="submit">Hantar</button>
+								</div>
+							</div>
+						</div>
+				</div>
+				</div>
+</div>
+
+
+
+		</form>
+
+	</div>
+	<div layout:fragment="javascript_endpage">
+		<script type='text/javascript'
+			th:src="@{/resources/js/select2/select2.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/uniform/jquery.uniform.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/tagsinput/jquery.tagsinput.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/multiselect/jquery.multi-select.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/ibutton/jquery.ibutton.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/colorpicker/colorpicker.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/timepicker/jquery-ui-timepicker-addon.js}"></script>
+
+
+
+		<script type='text/javascript'
+			th:src="@{/resources/js/validationengine/languages/jquery.validationEngine-en.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/validationengine/jquery.validationEngine.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/maskedinput/jquery.maskedinput.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/javascript/utils/load-combo-box.js}"></script>
+		<script type='text/javascript' th:src="@{/javascript/case/newForm.js}"></script>
+
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+			});
+		</script>
+
+	</div>
+</body>
+</html>

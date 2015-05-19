@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="decorators/theme">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+<title>Notification Settings for Complaint</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<form id="validate" method="POST" action="administration/sla/save"
+			th:object="${masterForm}">
+			<input type="hidden" th:field="*{id}" />
+
+			<div class="row-fluid">
+				<div class="span12">
+
+					<div class="block">
+						<div class="head">
+							<h2>Notification Settings for Complaint</h2>
+						
+						</div>
+						<div class="content np">
+							<table cellpadding="0" cellspacing="0" width="100%" th:each="esc, rowStat: *{listNoti}">
+								<thead>
+									<tr>
+										<th width="10%">Status</th>
+										<th width="40%">Action</th>
+										<th width="25%">Mail's Subject</th>
+										<th width="25%">Template</th>
+									</tr>
+									
+								</thead>
+								<tbody >
+							
+								    <tr>
+									  <td rowspan="6"><input type="text" class="input-small" th:field="*{listNoti[__${rowStat.index}__].id}"/></td>
+									  <td><label class="checkbox-uni"><input th:field="*{listNoti[__${rowStat.index}__].sendToComplainant}" type="checkbox" class="uni"/>Send to Complainant</label></td>
+									  <td><textarea class="input-medium"  th:field="*{listNoti[__${rowStat.index}__].complainantSubject}"></textarea></td>
+									  <td>
+									  <select class="input-medium" th:field="*{listNoti[__${rowStat.index}__].refVelocityMailTemplateByComplainantTemplate.id}">
+										<option value="">-Please Select-</option>
+										<option th:each="obj : ${templateList}" th:text="${obj.name}"
+											th:value="${obj.id}"></option>
+									</select>
+									  </td>
+									</tr>
+									<tr>
+									  <td><label class="checkbox-uni"><input th:field="*{listNoti[__${rowStat.index}__].sendToHelpdesk}" type="checkbox" class="uni"/>Send to Helpdesk</label></td>
+									  <td><textarea class="input-medium" th:field="*{listNoti[__${rowStat.index}__].helpdeskSubject}"></textarea></td>
+									  <td>
+									   <select class="input-medium" th:field="*{listNoti[__${rowStat.index}__].refVelocityMailTemplateByHelpdeskTemplate.id}">
+										<option value="">-Please Select-</option>
+										<option th:each="obj : ${templateList}" th:text="${obj.name}"
+											th:value="${obj.id}"></option>
+									</select>
+									  </td>
+									</tr>
+									<tr>
+									  <td><label class="checkbox-uni"><input th:field="*{listNoti[__${rowStat.index}__].sendToSupervisor}" type="checkbox" class="uni"/>Send to Supervisor</label></td>
+									  <td><textarea class="input-medium"  th:field="*{listNoti[__${rowStat.index}__].supervisorSubject}"></textarea></td>
+									  <td>
+									    <select class="input-medium" th:field="*{listNoti[__${rowStat.index}__].refVelocityMailTemplateBySupervisorTemplate.id}">
+										<option value="">-Please Select-</option>
+										<option th:each="obj : ${templateList}" th:text="${obj.name}"
+											th:value="${obj.id}"></option>
+									</select>
+									  
+									  </td>
+									</tr>
+									<tr>
+									  <td><label class="checkbox-uni"><input th:field="*{listNoti[__${rowStat.index}__].sendAllSupervisor}" type="checkbox" class="uni"/>Send to all Supervisors in department</label></td>
+									  <td><textarea class="input-medium"  th:field="*{listNoti[__${rowStat.index}__].allSupervisorSubject}"></textarea></td>
+									  <td>
+									    <select class="input-medium" th:field="*{listNoti[__${rowStat.index}__].refVelocityMailTemplateByAllSupervisorTemplate.id}">
+										<option value="">-Please Select-</option>
+										<option th:each="obj : ${templateList}" th:text="${obj.name}"
+											th:value="${obj.id}"></option>
+									</select>
+									  
+									  </td>
+									</tr>
+									<tr>
+									  <td><label class="checkbox-uni"><input th:field="*{listNoti[__${rowStat.index}__].sendToAssignee}" type="checkbox" class="uni"/>Send to Assignee</label></td>
+									  <td><textarea class="input-medium"  th:field="*{listNoti[__${rowStat.index}__].assigneeSubject}"></textarea></td>
+									  <td>
+									    <select class="input-medium" th:field="*{listNoti[__${rowStat.index}__].refVelocityMailTemplateByAssigneeTemplate.id}">
+										<option value="">-Please Select-</option>
+										<option th:each="obj : ${templateList}" th:text="${obj.name}"
+											th:value="${obj.id}"></option>
+									</select>
+									  
+									  </td>
+									</tr>
+									<tr>
+									  <td><label class="checkbox-uni"><input th:field="*{listNoti[__${rowStat.index}__].sendToManager}" type="checkbox" class="uni"/>Send to Manager</label></td>
+									  <td><textarea class="input-medium" th:field="*{listNoti[__${rowStat.index}__].managerSubject}"></textarea></td>
+									  <td>
+									    <select class="input-medium" th:field="*{listNoti[__${rowStat.index}__].refVelocityMailTemplateByManagerTemplate.id}">
+										<option value="">-Please Select-</option>
+										<option th:each="obj : ${templateList}" th:text="${obj.name}"
+											th:value="${obj.id}"></option>
+									</select>
+									  
+									  </td>
+									</tr>
+									<tr>
+									  <th colspan="4"></th>
+									</tr>
+									
+									
+								</tbody>
+							</table>
+						</div>
+						
+						     <div class="footer" >
+							<div class="side fr">
+								<div class="btn-group">
+									<button class="btn" type="button"
+										onClick="window.history.back();">Close</button>
+									<button class="btn btn-primary btn-request" type="submit">Submit</button>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+
+
+
+		</form>
+	</div>
+	<div layout:fragment="javascript_endpage">
+		<script type='text/javascript'
+			th:src="@{/resources/js/select2/select2.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/uniform/jquery.uniform.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/tagsinput/jquery.tagsinput.min.js}"
+			charset="utf-8"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/multiselect/jquery.multi-select.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/ibutton/jquery.ibutton.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/colorpicker/colorpicker.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/timepicker/jquery-ui-timepicker-addon.js}"></script>
+
+
+
+		<script type='text/javascript'
+			th:src="@{/resources/js/validationengine/languages/jquery.validationEngine-en.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/validationengine/jquery.validationEngine.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/maskedinput/jquery.maskedinput.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/javascript/utils/load-combo-box.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/javascript/administration/notification/complaint.js}"></script>
+
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+			});
+		</script>
+
+	</div>
+</body>
+</html>

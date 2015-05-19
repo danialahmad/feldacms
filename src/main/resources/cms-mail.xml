@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+        <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+                <property name="host" value="${mail.smtp.host}"></property>
+                <property name="port" value="${mail.smtp.port}"></property>
+                <property name="username" value="${mail.smtp.username}"></property>
+                <property name="password" value="${mail.smtp.password}"></property>
+                <property name="javaMailProperties">
+	                <props>
+	                        <prop key="mail.smtp.auth">true</prop>
+	                        <prop key="mail.smtp.starttls.enable">true</prop>
+	                        <prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+	                </props>
+                </property>
+        </bean>
+     <bean id="emailSender" class="com.huemedia.cms.component.mail.EmailSenderImpl">
+		<property name="javaMailSender" ref="mailSender" />
+	</bean>
+<!--  bean id="velocityEngine"
+		class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+		<property name="velocityProperties">
+			<value>
+				resource.loader=class
+				class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+			</value>
+		</property>
+	</bean-->
+        <bean id="velocityResourceLoader" class="com.huemedia.cms.velocity.SpringServiceResourceLoader"></bean>
+
+        <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+                <property name="velocityProperties">
+                        <map>
+                                <entry key="resource.loader" value="ds"></entry>
+                                <entry key="ds.resource.loader.instance" value-ref="velocityResourceLoader" />
+                        </map>
+                </property>
+        </bean>
+
+</beans>

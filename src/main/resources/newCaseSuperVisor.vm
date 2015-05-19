@@ -1,0 +1,49 @@
+<html>
+<body>
+	<div>Dear ${receiver},</div>
+<br/>
+	<div>There is a new case has been created in CMS. Please Log In to the system. <br>Thank You.</div>
+<br/>
+
+	<table width="100%" border="1" style="border-collapse: collapse">
+		<tbody>
+			<tr bgcolor="#CCCCCC">
+				<th>Case ID</th>
+				<th>Case Title</th>
+				<th>Description</th>
+				
+				
+			</tr>
+			<tr height="25px">
+				<td>${application.id}</td>
+				<td>${application.ticketTitle}</td>
+				<td>${application.description}</td>
+				
+			</tr>
+		</tbody>
+	</table>
+
+<br/>
+<strong>SLA Information :</strong>
+<p>
+SLA Plan : ${sla.sla.title}
+</p>
+<p>
+Reminder before the breach : ${sla.nextReminder}
+</p>
+<p>
+Notice of breach : ${sla.nextTrigger}
+</p>
+<div>
+<a href="${sysAddress}">Click Here</a> to go to the System
+</div>
+
+
+<br/>
+<div stye="font-family:Arial,Helvetica,sans-serif;font-size:10px;">
+<b>Note :</b> This e-mail is computer generated. Please DO NOT REPLY.
+</div>
+
+</body>
+
+</html>

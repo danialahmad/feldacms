@@ -1,0 +1,67 @@
+<form id="ratingView" method="POST" th:action="@{/case/rating/update}" th:object="${complaintForm}" enctype="multipart/form-data">
+		<input type="hidden" th:field="*{id}" />
+		
+		<div  class="row-fluid">
+                            
+                           
+                            <div class="span12">
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>Feedback</h2>                                        
+                                    </div>
+                                    <div class="content np">
+                                    <div class="controls-row">
+								<div class="span2">Rating :</div>
+								<div class="span10">
+									<select id="ratingId" th:field="*{rating.id}">
+										<option value="">- Select One -</option>
+										<option th:each="obj : ${ratingList}" th:text="${obj.name}" th:value="${obj.id}"></option>							
+									</select>
+									
+								</div>
+							</div>
+							<div class="controls-row" >
+								<div class="span2">Comment :</div>
+								<div class="span10">
+									<textarea rows="5" cols="5" th:field="*{comment}"></textarea>
+								</div>
+							</div>
+						
+                                    
+                                    
+                                    </div>
+                                    
+                          
+                                    
+                                </div>
+                            </div>
+         </div> 
+          
+			
+		
+			
+			
+		
+			
+			
+		  <div class="row-fluid">
+                            
+                            <div class="span12">
+                                <div class="block">
+			<div class="head">
+                                             
+                        <div class="side fr">
+                        
+                        <button class="btn btn-warning rateClose" id="closeBtn">Close</button>
+                            <button class="btn btn-primary btn-request block_loading" id="submitForm" type="submit">Submit</button>
+                            
+                        </div>                        
+                    </div>
+			</div>
+			</div>
+			</div>
+			
+	</form>
+
+
+

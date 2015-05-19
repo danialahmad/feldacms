@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">CMS</title>
+	<meta name="description" content=""/>
+	<meta name="keywords" content=""/>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />    
+    <!--[if gt IE 8]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />        
+    <![endif]-->                
+    
+    <link rel="icon" type="image/ico" th:href="@{/resources/favicon.ico}"/>
+    
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/stylesheets.css}" media="screen" />    
+     <link rel="stylesheet" type="text/css" th:href="@{/resources/js/plupload/jquery.plupload.queue/css/jquery.plupload.queue.css}" media="screen" /> 
+    
+    <!--[if lte IE 7]>        
+        <script type='text/javascript' th:src="@{/resources/js/other/lte-ie7.js}"></script>
+    <![endif]-->    
+    
+    <script type='text/javascript' th:src="@{/resources/js/jquery/jquery-2.0.0.min.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/jquery/jquery-ui-1.10.3.custom.min.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/jquery/jquery-migrate-1.1.1.min.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/form/jquery.form.min.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/jquery/globalize.js}"></script>
+    
+       <script type='text/javascript' th:src="@{/resources/js/validation/jquery.validate.js}"></script>
+    
+    <script type='text/javascript' th:src="@{/resources/js/bootstrap/bootstrap.min.js}"></script>
+     <script type='text/javascript'  th:src="@{/resources/js/cookies/jquery.cookies.2.2.0.min.js}"></script>
+     
+     <script type='text/javascript' th:src="@{/resources/js/noty/jquery.noty.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/noty/layouts/topCenter.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/noty/layouts/topLeft.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/noty/layouts/topRight.js}"></script>    
+    <script type='text/javascript' th:src="@{/resources/js/noty/themes/default.js}"></script>
+    
+    <script type='text/javascript' th:src="@{/resources/js/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js}"></script>
+
+    
+    <script type='text/javascript' th:src='@{/resources/js/fullcalendar/fullcalendar.min.js}'></script>
+     <script type='text/javascript' th:src='@{/resources/js/atmosphere/jquery.atmosphere.js}'></script>
+    
+    <script type='text/javascript' th:src="@{/resources/js/scrollup/jquery.scrollUp.min.js}"></script>
+    
+    <script type='text/javascript' th:src="@{/resources/js/plugins.js}"></script>    
+    <script type='text/javascript' th:src="@{/resources/js/actions.js}"></script>
+    
+    
+ <style layout:fragment="style">
+
+</style>
+</head>
+<body class="body background-01">
+
+	<div id="wrapper">
+        
+        <div id="header">
+            
+            <div class="wrap">
+                
+                <a href="index.html" class="logo"></a>
+                
+                <div class="buttons fl">
+                    <div class="item">
+                        <a href="#" class="btn btn-primary btn-small c_layout">
+                            <span class="i-layout-8"></span>                            
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="#" class="btn btn-primary btn-small c_screen">
+                            <span class="i-stretch"></span>                            
+                        </a>
+                    </div>                    
+                </div>
+                
+                <div class="buttons">
+                    <div class="item">
+                        <a href="#" class="btn btn-primary btn-small">
+                            <span class="i-cog"></span>
+                        </a>
+                        <div class="popup">
+                            <div class="head">
+                                <h2>Settings</h2>
+                            </div>
+                            <div class="content np">      
+                                <div class="row-fluid">
+                                    <div class="controls-row">
+                                        <div class="span3">Themes:</div>
+                                        <div class="span9 themes">
+                                            <a href="#" class="default tip" data-theme="" title="Default"></a>
+                                            <a href="#" class="dark tip" data-theme="themeDark" title="Dark"></a>
+                                            <a href="#" class="simple tip" data-theme="themeSimple" title="Simple"></a>
+                                            <div class="help-block">On click theme will changed and saved settings</div>
+                                        </div>
+                                    </div>               
+                                    <div class="controls-row">
+                                        <div class="span3">Backgrounds:</div>
+                                        <div class="span9 backgrounds">
+                                            <a href="#" class="default tip" data-theme="" title="Default"></a>                                            
+                                            <a href="#" class="b_bcrosshatch" data-back="b_bcrosshatch"></a>
+                                            <a href="#" class="b_crosshatch" data-back="b_crosshatch"></a>
+                                            <a href="#" class="b_cube" data-back="b_cube"></a>
+                                            <a href="#" class="b_dots" data-back="b_dots"></a>
+                                            <a href="#" class="b_grid" data-back="b_grid"></a>
+                                            <a href="#" class="b_hline" data-back="b_hline"></a>
+                                            <a href="#" class="b_simple" data-back="b_simple"></a>
+                                            <a href="#" class="b_vline" data-back="b_vline"></a>
+                                            <div class="help-block">On click background will changed and saved settings</div>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                            </div>
+                            <div class="footer">
+                                <div class="side fr">
+                                    <button class="btn btn-primary popup-close">Close</button>
+                                </div>                                
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="item">
+                        <a href="#" class="btn btn-primary btn-small">
+                            <span class="i-chat"></span>
+                        </a>
+                        <div class="popup">
+                            <div class="head">
+                                <h2>Messages</h2>
+                            </div>
+                            <div class="content npb messages minify" id="messages"></div>
+                            <div class="footer">
+                                <div class="side fl">
+                                    <button class="btn btn-link">Show all</button>
+                                </div>
+                                <div class="side fr">
+                                    <button class="btn btn-primary popup-close">Close</button>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="item">                        
+                        <div class="btn-group">                        
+                            <a href="#" class="btn btn-primary btn-small dropdown-toggle" data-toggle="dropdown">
+                                <span class="i-forward"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"><span class="i-profile"></span> Profile</a></li>
+                                <li><a href="#"><span class="i-tools"></span> Controls</a></li>                                
+                                <li><a href="#"><span class="i-locked"></span> Lock</a></li>
+                                <li><a th:href="@{/logout}"><span class="i-forward"></span> Logout</a></li>
+                            </ul> 
+                        </div>
+                    </div>                
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <div id="layout">
+        
+            <div id="sidebar">
+
+                <div class="user">
+                    <div class="pic">
+                        <img th:src="@{/resources/img/examples/users/dmitry_m.jpg}"/>
+                    </div>
+                    <div class="info">
+                        <div class="name">
+                   <!--         <a href="#"><span th:text="${sec.principal.displayName}"></span></a> -->
+              
+                        </div>
+                        <div class="buttons">
+                            <a href="#"><span class="i-cog"></span> Settings</a>
+                            <a href="#"><span class="i-chat"></span> Messages</a>
+                            <a th:href="@{/logout}" class="fr"><span class="i-forward"></span> Logout</a>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="navigation">
+                     <li >
+                        <a th:href="@{/}">Home</a>
+                    </li>
+                    <li class="openable" menuId="1" sec:authorize="hasAnyRole('ROLE_SUPPORTER','ROLE_SUPERVISOR','ROLE_ADMIN','ROLE_MANAGER')">
+                        <a th:href="@{/}">Dashboard</a>
+                         <ul>
+                         <li>
+                                <a th:href="@{/dashboard/manager}" sec:authorize="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')">Manager Dashboard</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/dashboard/supervisor}" sec:authorize="hasAnyRole('ROLE_SUPERVISOR','ROLE_ADMIN')">Supervisor Dashboard</a>
+                            </li>
+                             <li>
+                                <a th:href="@{/dashboard/supporter}" sec:authorize="hasAnyRole('ROLE_SUPPORTER','ROLE_ADMIN')">Supporter Dashboard</a>   
+                            </li>                  
+                        </ul>
+                    </li>
+                    <li sec:authorize="hasRole('ROLE_ADMIN')" class="openable">
+                        <a href="#">Administration</a>
+                        <ul>
+                        <li class="openable">
+                                <a href="#">User Management</a>
+                                <ul>
+                                    <li><a th:href="@{/administration/um/user}">User</a></li>
+                                    <li><a th:href="@{/administration/um/role}">Role</a></li>
+                                    <li><a th:href="@{/administration/um/group}">Group</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a th:href="@{/administration/sla}">SLA</a>
+                            </li>
+                             <li class="openable">
+                                <a href="#">Master Data</a>
+                                <ul>
+                                    <li><a th:href="@{/administration/md/ticketGroup}">Case Group</a></li>
+                                    <li><a th:href="@{/administration/md/ticketCategory}">Case Category</a></li>
+                                    <li><a th:href="@{/administration/md/priority}">Priority</a></li>
+                                    <li><a th:href="@{/administration/md/status}">Status</a></li>
+                                    <li><a th:href="@{/administration/md/originator}">Originator</a></li>
+                                    <li><a th:href="@{/administration/md/rating}">Rating</a></li>
+                                    <li><a th:href="@{/administration/md/activityType}">Activity Type</a></li>
+                                    <li><a href="#">Country</a></li>
+                                    <li><a href="#">State</a></li>
+                                </ul>
+                            </li>
+                                                  
+                        </ul>
+                    </li> 
+                     <li class="openable">
+                        <a href="#">Complaints</a>
+                        <ul>
+                            <li>
+                                <a th:href="@{/complaint/request}">Lodge Complaint</a>
+                            </li>
+                             <li>
+                                <a th:href="@{/complaint/request/mycomplaints}">My Complaints
+                                <span id="mycomplaints" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li>                  
+                        </ul>
+                    </li>
+                     <li sec:authorize="hasAnyRole('ROLE_SUPPORTER','ROLE_SUPERVISOR','ROLE_ADMIN')" class="openable">
+                        <a href="#">Supporter Options</a>
+                        <ul>
+                             <li>
+                                <a th:href="@{/case/mycases}">My Cases
+                                <span id="mycases" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li> 
+                             <li>
+                                <a th:href="@{/case/mygroup}">My Group's Cases
+                                <span id="mygroup" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li> 
+                                        
+                        </ul>
+                    </li>
+                    <li sec:authorize="hasAnyRole('ROLE_SUPERVISOR','ROLE_ADMIN')" class="openable">
+                        <a href="#">Supervisor Options</a>
+                        <ul>
+                             <li>
+                                <a th:href="@{/case/unassigned}">Unassigned Cases
+                                <span id="unassignedSv" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li> 
+                             <li>
+                                <a th:href="@{/case/supervisor/open}">Open Cases
+                                <span id="openSv" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li> 
+                             <li>
+                                <a th:href="@{/case/supervisor/solved}">Solved Cases
+                                <span id="solvedSv" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li>
+                             <li>
+                                <a th:href="@{/case/supervisor/closed}">Closed Cases
+                                <span id="closedSv" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li>                     
+                        </ul>
+                    </li>
+                      <li sec:authorize="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')" class="openable">
+                        <a href="#">Manager Options</a>
+                        <ul>
+                             <li>
+                                <a th:href="@{/case/unassigned}">Unassigned Cases
+                                <span id="unassigned" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li> 
+                             <li>
+                                <a th:href="@{/case/open}">Open Cases
+                                <span id="open" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li> 
+                             <li>
+                                <a th:href="@{/case/solved}">Solved Cases
+                                <span id="solved" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li>
+                             <li>
+                                <a th:href="@{/case/closed}">Closed Cases
+                                <span id="closed" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li>                     
+                        </ul>
+                    </li>  
+                    <li class="openable" sec:authorize="hasAnyRole('ROLE_SUPPORTER','ROLE_HELPDESK','ROLE_ADMIN')">
+                        <a href="#">Helpdesk</a>
+                        <ul>
+                             <li>
+                                <a th:href="@{/case/helpdesk/add}">Create New Case
+                                
+                                </a>
+                                
+                            </li> 
+                                            
+                        </ul>
+                    </li>
+                     <li class="openable" sec:authorize="hasAnyRole('ROLE_SUPPORTER','ROLE_SUPERVISOR','ROLE_ADMIN','ROLE_MANAGER')">
+                        <a href="#">Reports</a>
+                        <ul>
+                             <li>
+                                <a th:href="@{/report/caseStat}">Case Statistics
+                                
+                                </a>
+                                
+                            </li> 
+                                            
+                        </ul>
+                    </li>  
+                                    
+                </ul>
+
+            </div>
+
+            <div id="content">                        
+                <div class="wrap">
+                    
+                    <div layout:fragment="head" class="head">
+                       
+                        
+                                              
+                    </div>                                                                    
+                    
+					<div layout:fragment="content" class="content">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="footer">
+		<div id="modal-waiting" class="modal hide fade" role="dialog">
+	        <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+	            <h3>Booking request is processing....</h3>
+	        </div>
+	        <div class="modal-body">
+	            <p>Please wait</p>
+	        </div>
+	    </div>
+	</div>
+	
+	<div layout:fragment="modal">
+	
+	</div>
+	
+	
+	<span th:text="@{/}" id="web-context-root" style="display:none;"></span>	
+	<span th:text="${#ctx.locale.language}" id="app-locale" style="display:none"></span>
+	<div style="display:none;" id="ajax-loader"><img th:src="@{/resources/img/loader.gif}" /></div>
+	<div layout:fragment="javascript_endpage">
+	</div>
+	<script type="text/javascript">
+	  
+	</script>
+</body>
+</html>

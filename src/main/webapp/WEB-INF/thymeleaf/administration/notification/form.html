@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="decorators/theme">
+<head>
+<title>Email Template Form</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<form id="validate" method="POST"
+					th:action="@{/complaint/request/save}" th:object="${masterForm}"
+					enctype="multipart/form-data">
+		<div class="row-fluid">
+
+			<div class="span12">
+				
+					
+					<div class="block">
+						<div class="head">
+							<h2>Email Template</h2>
+							<div class="side fr">
+								<button class="btn" onClick="clear_form('#validate');"
+									type="button">Clear form</button>
+							</div>
+						</div>
+						<div class="content np">
+							<div class="controls-row">
+								<div class="span2">ID :</div>
+								<div class="span10">
+									<input type="text" class="validate[required,maxSize[100]]"
+										th:field="*{id}" />
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Name :</div>
+								<div class="span10">
+									<input type="text" class="validate[required,maxSize[100]]"
+										th:field="*{name}" />
+								</div>
+							</div>
+
+
+
+
+
+
+
+
+						</div>
+					
+					</div>
+
+
+
+			
+
+			</div>
+
+		</div>
+		<div class="row-fluid">
+			<div class="span12">
+				<div class="block">
+					<div class="head">
+						<h2>Template Code Editor</h2>
+					
+					</div>
+					<div class="content np">
+					
+					<textarea th:field="*{content}" placeholder="Write code here..." id="codeEditor">
+
+   
+</textarea>   
+				<script type="text/javascript">
+		var editor = CodeMirror.fromTextArea(document.getElementById("codeEditor"), {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: "application/x-httpd-php",
+            indentUnit: 4,
+            indentWithTabs: true,
+            enterMode: "keep",
+            tabMode: "shift"                                                
+        });
+        editor.setSize('100%','420px');
+        </script>
+					
+					</div>
+					
+						<div class="footer">
+							<div class="side fr">
+								<div class="btn-group">
+									<button class="btn" type="button"
+										onClick="window.history.back();">Close</button>
+									<button class="btn btn-primary btn-request" type="submit">Submit</button>
+								</div>
+							</div>
+						</div>
+					
+				</div>
+			</div>
+		</div>
+	</form>
+
+
+
+
+
+	</div>
+	<div layout:fragment="javascript_endpage">
+		<script type='text/javascript'
+			th:src="@{/resources/js/select2/select2.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/uniform/jquery.uniform.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/tagsinput/jquery.tagsinput.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/multiselect/jquery.multi-select.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/ibutton/jquery.ibutton.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/colorpicker/colorpicker.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/timepicker/jquery-ui-timepicker-addon.js}"></script>
+
+
+
+		<script type='text/javascript'
+			th:src="@{/resources/js/validationengine/languages/jquery.validationEngine-en.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/validationengine/jquery.validationEngine.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/maskedinput/jquery.maskedinput.min.js}"></script>
+
+		
+
+
+		<script type='text/javascript'
+			th:src="@{/javascript/administration/notification/form.js}"></script>
+
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				 
+			});
+		</script>
+
+	</div>
+</body>
+</html>

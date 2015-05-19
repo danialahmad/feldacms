@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="decorators/theme2">
+<head>
+<title>Building Form</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="row-fluid">
+
+			<div class="span12">
+			
+			 <div class="block">
+                                    <div class="head">
+                                        <h2>List of Rules/Regulations And Policies</h2>
+                                        <ul class="buttons">
+                                            <li><a th:href="@{/governance/add}" ><span class="i-plus-2"></span></a></li>
+                                        </ul>                                        
+                                    </div>
+                                    <div class="content np table-sorting">
+                                        
+                                        <table cellpadding="0" cellspacing="0" width="100%" class="sortx">
+                                            <thead>
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th >Title</th>
+                                                    <th >Approved By</th>
+                                                    <th >Effective Date</th>
+                                                    <th >Owned By</th>
+                                                    <th >Created By</th>
+                                                    <th >Last Revision</th>
+                                                    <th >Action</th>                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td><a th:href="@{/governance/edit}">Academic Regulations</a></td>
+                                                    <td>University Management Committee
+                                                    <div class="muted">01/03/2014 10.00 PM</div>
+                                                    </td>
+                                                    <td>01/04/2014</td>
+                                                    <td>HEP</td> 
+                                                     <td>
+                                                     Yahaya Abdullah
+                                                     <div class="muted">16/03/2014 10.00 PM</div></td>
+                                                    <td>
+                                                     16/03/2014 10.00 PM
+                                                     <div class="muted">Last Modified By : Ahmad Danial Abd Ghani</div>
+                                                    </td>
+                                                    <td>
+                                                    <button class="btn btn-mini btn-primary btn-block edit">View</button>
+                                                    </td>
+                                                                                     
+                                                </tr>
+                                                
+                                                                           
+                                            </tbody>
+                                        </table>                                        
+                                        
+                                    </div>
+                                </div>
+			
+			
+			
+
+			</div>
+
+		</div>
+
+
+
+
+
+
+
+	</div>
+	<div layout:fragment="javascript_endpage">
+		<script type='text/javascript' th:src="@{/resources/js/select2/select2.min.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/uniform/jquery.uniform.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/tagsinput/jquery.tagsinput.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/multiselect/jquery.multi-select.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/ibutton/jquery.ibutton.min.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/colorpicker/colorpicker.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/timepicker/jquery-ui-timepicker-addon.js}"></script>
+		<script th:src="@{/resources/js/datatables/jquery.dataTables.min.js}"></script>
+		<script th:src="@{/resources/js/datatables/jquery.dataTables.fnPagingInfo.js}"></script>
+	
+	
+    <script type='text/javascript' th:src="@{/resources/js/validationengine/languages/jquery.validationEngine-en.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/validationengine/jquery.validationEngine.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/maskedinput/jquery.maskedinput.min.js}"></script>
+    <script type='text/javascript' th:src="@{/javascript/utils/load-combo-box.js}"></script>
+    <script type='text/javascript' th:src="@{/javascript/complaint/request/form.js}"></script>
+  
+	
+		<script type="text/javascript">
+			$(document).ready(function() {
+				 if($("table.sortx").length > 0)
+				        $("table.sortx").dataTable({"iDisplayLength": 3, "aLengthMenu": [5,10,25,50,100], "sPaginationType": "full_numbers", "aoColumns": [ { "bSortable": false },null, null, null, 
+				                                                                                                                                            null,null, null, { "bSortable": false }]});
+				    /* EOF datatables */
+				    
+				    $(".edit").click(function(){
+				    	window.open('/cms/governance/print',{ height: 600, width: 600 });
+				    })
+			});
+			
+			
+			
+		</script>
+
+	</div>
+</body>
+</html>

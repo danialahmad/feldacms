@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="decorators/theme">
+<head>
+	<title>Users</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/fullcalendar/fullcalendar.css}" media="screen" /> 
+</head>
+<body>
+	<div layout:fragment="content">
+	
+		<div class="row-fluid all-area"  id="search-area">
+			<div class="span12">
+	            <div class="block">
+	                                                   
+	            </div>
+	        </div>
+	    </div>
+	        
+		<div class="row-fluid all-area" id="list-area">
+	        <div class="span12">
+	            
+	            <div class="block">
+	                <div class="head">
+	                    <h2>Users</h2>                                     
+	                </div>
+	                <form id="search-form" th:action="@{/administration/um/list}" th:object="${userForm}" method="post">
+		             
+		                <div class="content np">                                        
+		                    <div class="controls-row">
+		                        <div class="span3">Username :</div>
+		                        <div class="span9">
+		                            <input type="text" th:field="*{username}" />
+		                        </div>
+		                    </div>
+		                    <div class="controls-row">
+		                        <div class="span3">Name :</div>
+		                        <div class="span9">
+		                            <input type="text" th:field="*{name}" />
+		                        </div>
+		                    </div>
+		                    <div class="controls-row">
+		                        <div class="span3">Email :</div>
+		                        <div class="span9">
+		                            <input type="text" th:field="*{email}" />
+		                        </div>
+		                    </div>
+		                    <div class="controls-row">
+								<div class="span3">Role :</div>
+								<div class="span9">
+									<select id="role" th:field="*{role.id}">
+										<option value="">- Select One -</option>
+										<option th:each="obj : ${roleList}" th:text="${obj.name}" th:value="${obj.id}"></option>							
+									</select>
+									
+								</div>
+							</div>                                                                            
+		                </div>
+		                <div class="footer">
+		                    <div class="side fr">
+		                        <button type="button" class="btn" id="btn-search">Search</button>
+		                        <button class="btn btn-warning" id="btn-cancel">Cancel</button>
+		                    </div>
+		                </div>
+	                </form> 
+	                <div class="footer">
+	                    <div class="side fr" align="right">
+	                        <button type="button" class="btn" id="newUser">New User</button>
+	                    </div>
+		            </div>
+	                <div class="content np table-sorting">
+	                    
+	                    <table id="userTable" cellpadding="0" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Username</th>
+									<th>Name</th>
+									<th>Email</th>
+									<th>Role</th>
+									
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>                                      
+	                    
+	                </div>
+	            </div>
+	            
+	        </div>
+		</div> 
+		
+		
+		             
+	</div>
+	<div layout:fragment="javascript_endpage">
+		<script th:src="@{/resources/js/datatables/jquery.dataTables.min.js}"></script>
+		<script th:src="@{/resources/js/datatables/jquery.dataTables.fnPagingInfo.js}"></script>
+		<script type='text/javascript' th:src="@{/javascript/administration/um/user.js}"></script>
+		<script type="text/javascript">
+             $(document).ready(function(){
+            	 
+
+             });
+         </script>
+	     <div class="dialog" id="row_delete" style="display: none;" title="Delete?">
+        <p>Row will be deleted</p>
+    </div>           
+	</div>
+	 
+</body>
+</html>
+
+

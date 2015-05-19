@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>        
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />    
+    <!--[if gt IE 8]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />        
+    <![endif]-->                
+    <title>CMS - Complaint Management System</title>
+    <link rel="icon" type="image/ico" th:href="@{/resources/favicon.ico}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/stylesheets.css}"/>
+    
+    <!--[if lte IE 7]>
+        <script type='text/javascript' src='js/other/lte-ie7.js'></script>
+    <![endif]-->    
+    
+    <script type='text/javascript' th:src='@{/resources/js/jquery/jquery-2.0.0.min.js}'></script>
+    <script type='text/javascript' th:src="@{/resources/js/jquery/jquery-ui-1.10.3.custom.min.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/jquery/jquery-migrate-1.1.1.min.js}"></script>
+        <script type='text/javascript' th:src="@{/resources/js/form/jquery.form.min.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/jquery/globalize.js}"></script>
+    
+    <script type='text/javascript' th:src="@{/resources/js/bootstrap/bootstrap.min.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/cookies/jquery.cookies.2.2.0.min.js}"></script>
+    
+    <script type='text/javascript' th:src="@{/resources/js/scrollup/jquery.scrollUp.min.js}"></script>
+    
+    <script type='text/javascript' th:src="@{/resources/js/uniform/jquery.uniform.min.js}"></script>
+    
+    <script type='text/javascript' th:src="@{/resources/js/plugins.js}"></script>    
+    <script type='text/javascript' th:src="@{/resources/js/actions.js}"></script>
+   
+</head>
+<body>        
+    <div id="wrapper" class="screen_wide sidebar_off">       
+        <div id="layout">
+            <div id="content">                        
+                <div class="wrap nm">            
+                    
+                    <div class="signin_block">
+                        <div class="row-fluid">
+                            <div class="alert alert-info">
+                                <strong>Howdy!</strong> Please, don't tell anyone your password
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            </div>
+                            <div class="block">
+                                <div class="head">
+                                    <h2><a id="sign" href="#">Daftar Pengguna Baru</a></h2>                                    
+                                    <ul class="buttons">
+                                        <li><a href="#" class="tip" title="Forget your password?"><i class="i-locked"></i></a></li>
+                                    </ul>                                     
+                                </div>
+                                <form th:action="@{/j_spring_security_check}" method="post">
+	                                <div class="content np">
+	                                    <div class="controls-row">
+	                                        <div class="span3">Nama :</div>
+	                                        <div class="span9"><input type="text" name="j_username" id="j_username" class="input-block-level"/></div>
+	                                    </div>
+	                                    <div class="controls-row">
+	                                        <div class="span3">Katalaluan :</div>
+	                                        <div class="span9"><input type="password" name="j_password" id="" class="input-block-level"/></div>
+	                                    </div>                                
+	                                </div>
+	                                <div class="footer">
+	                                    <div class="side fl">
+	                                        <label class="checkbox">
+	                                            <input type="checkbox" name="kmsi"/> Keep me signed in
+	                                        </label>
+	                                    </div>
+	                                    <div class="side fr">
+	                                        <input type="submit" value="Sign me in" class='btn btn-primary'/>
+	                                    </div>
+	                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>               
+        
+    </div>
+    <div id="registerModal" class="modal hide fade" role="dialog" >
+	        <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+	            <h3>Registration</h3>
+	        </div>
+	       <div class="modal-body" >
+       <!-- remote content will be inserted here via jQuery load() -->
+          </div>        
+	</div>
+	<span th:text="@{/}" id="web-context-root" style="display:none;"></span>	
+	<span th:text="${#ctx.locale.language}" id="app-locale" style="display:none"></span>
+	<div style="display:none;" id="ajax-loader"><img th:src="@{/resources/img/loader.gif}" /></div>
+	 <script type='text/javascript' th:src="@{/javascript/login.js}"></script>
+</body>
+</html>

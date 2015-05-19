@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	layout:decorator="decorators/theme">
+<head>
+<title>Dashboard</title>
+</head>
+<body>
+
+ <div layout:fragment="head" class="head">
+                        <div class="info">
+                            <h1>Home</h1>
+                             <p></p>
+                        </div>
+                        
+                                              
+                    </div>
+
+	<div layout:fragment="content">
+	                
+	               
+	            
+	<div class="row-fluid all-area" id="list-area" sec:authorize="hasAnyRole('ROLE_REQUESTER')">
+	        <div class="span12">
+	            
+	            <div class="block">
+	                <div class="head">
+	                    <h2>My Complaints</h2>                                     
+	                </div>
+	                <div class="footer">
+	                    <div class="side fr" align="right">
+	                     
+	                    </div>
+		            </div>
+	                <div class="content np table-sorting">
+	                    
+	                    <table id="list-meeting-room" cellpadding="0" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Case ID</th>
+									<th>Title</th>
+									<th>Created On</th>
+									<th>Priority</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>                                      
+	                    
+	                </div>
+	            </div>
+	            
+	        </div>
+		</div> 
+		
+		
+		
+	    	<div class="row-fluid all-area" id="list-area" sec:authorize="hasAnyRole('ROLE_SUPERVISOR')">
+	        <div class="span12">
+	            
+	            <div class="block">
+	                <div class="head">
+	                    <h2>Unassigned Cases</h2>                                     
+	                </div>
+	                <div class="footer">
+	                    <div class="side fr" align="right">
+	                        <button type="button" class="btn" id="btn-open-search">Search</button>
+	                    </div>
+		            </div>
+	                <div class="content np table-sorting">
+	                    
+	                    <table id="list-meeting-room2" cellpadding="0" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Case ID</th>
+									<th>Title</th>
+									<th>Created On</th>
+									<th>Priority</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>                                      
+	                    
+	                </div>
+	            </div>
+	            
+	        </div>
+		</div> 
+	    
+	    <div class="row-fluid all-area" id="list-area" sec:authorize="hasAnyRole('ROLE_SUPPORTER')">
+	        <div class="span12">
+	            
+	            <div class="block">
+	                <div class="head">
+	                    <h2>My Cases</h2>                                     
+	                </div>
+	                <div class="footer">
+	                    <div class="side fr" align="right">
+	                        <button type="button" class="btn" id="btn-open-search">Search</button>
+	                    </div>
+		            </div>
+	                <div class="content np table-sorting">
+	                    
+	                    <table id="list-meeting-room3" cellpadding="0" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Case ID</th>
+									<th>Title</th>
+									<th>Created On</th>
+									<th>Priority</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>                                      
+	                    
+	                </div>
+	            </div>
+	            
+	        </div>
+		</div> 	
+	    
+	          
+		
+		
+		
+		
+	</div>
+	<div layout:fragment="modal">
+<div id="caseModal" class="modal hide fade" role="dialog" >
+	        <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+	            <h3>Activity</h3>
+	        </div>
+	       <div class="modal-body" >
+       <!-- remote content will be inserted here via jQuery load() -->
+          </div>        
+</div>
+
+
+</div>
+	<div layout:fragment="javascript_endpage">
+	   <script th:src="@{/resources/js/datatables/jquery.dataTables.min.js}"></script>
+		<script th:src="@{/resources/js/datatables/jquery.dataTables.fnPagingInfo.js}"></script>
+	<script type='text/javascript' th:src="@{/resources/js/charts/excanvas.min.js}"></script>    
+    <script type='text/javascript' th:src="@{/resources/js/charts/jquery.flot.js}"></script>    
+    <script type='text/javascript' th:src="@{/resources/js/charts/jquery.flot.stack.js}"></script>    
+    <script type='text/javascript' th:src="@{/resources/js/charts/jquery.flot.pie.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/charts/jquery.flot.resize.js}"></script>  
+	
+	
+		
+		<script type='text/javascript' th:src="@{/javascript/sockjs-0.3.4.js}"  ></script>
+		<script type='text/javascript' th:src="@{/javascript/stomp.js}"  ></script>
+		<script type='text/javascript' th:src="@{/javascript/index.js}"  ></script>
+		
+		
+		<script type="text/javascript">
+            
+         </script>
+	
+	</div>
+</body>
+</html>

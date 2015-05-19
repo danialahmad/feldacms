@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="decorators/theme2">
+<head>    
+          
+    <title>Search Result</title>
+   
+</head>
+<body>    
+    <div layout:fragment="content">
+  <div class="head">
+                        <div class="info">
+                            <h1>Document Search Result</h1>
+                            <ul class="breadcrumb">
+                                <li><a href="#">Dashboard</a> <span class="divider">-</span></li>
+                                <li><a href="#">Sample Pages</a> <span class="divider">-</span></li>
+                                <li class="active">Search Result</li>
+                            </ul>
+                        </div>                                                
+                    </div>                                                                    
+                    
+                    <div class="content">
+
+                        <div class="row-fluid">
+                            
+                            <div class="span12">
+                                
+                                <div class="block">
+                                    <div class="block_wrapper">
+                                        <div class="input-append wide_elements">
+                                            <input type="text" value="the Agreement for your signature"/>
+                                            <button class="btn" id="btnx" type="button"><span class="i-cog"></span></button>
+                            <button class="btn" id="btns" type="button">Search</button>
+                           
+                           
+                           
+                                           
+                                        </div>                                         
+                                    </div>
+                                </div>
+                                
+                            </div>
+                                
+                        </div>                        
+         				
+         				<div class="row-fluid" id="adsr" style="display:none">
+                            
+                            <div class="span12">
+                                
+                                <div class="block">
+                                <div class="content np">
+							
+							<div class="controls-row">
+								<div class="span2">Reference No. :</div>
+								<div class="span10">
+									<input type="text"  />
+								</div>
+							</div>
+							
+							<div class="controls-row">
+								<div class="span2">Title :</div>
+								<div class="span10">
+									<input type="text"  />
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Category :</div>
+								<div class="span10">
+									<select>
+									  <option>-Please Select-</option>
+									  <option>Undertaking Letter</option>
+									  <option>Letter of Intent</option>
+									  <option>Letter of Award</option>
+									</select>
+								</div>
+							</div>
+						    <div class="controls-row">
+								<div class="span2">Organization :</div>
+								<div class="span10">
+									<select>
+									  <option>-Please Select-</option>
+									  <option>Huemedia Sdn Bhd</option>
+									  <option>MCMC Sdn Bhd</option>
+									  <option>ILaunch Sdn Bhd</option>
+									  <option>Fujitsu (M) Sdn Bhd</option>
+									</select>
+								</div>
+							</div>
+							
+							
+							
+							</div>
+                                
+                                
+                                </div>
+                             </div>
+                         </div>
+         				
+         				
+                        <div class="row-fluid" id="result" style="display:none">
+                            
+                            <div class="span12">
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>Search: the Agreement for your signature</h2>
+                                    </div>
+                                    <div class="toolbar">
+                                        <div class="side fl">Result: 236 items</div>
+                                        <div class="side fr">On page: 10 of 236</div>
+                                    </div>
+                                    <div class="content list_custom">
+                                        
+                                        <div class="item"  >
+                                            <div class="info">
+                                                <a th:href="@{/document/edit}" class="name">LOA For Huemedia (Reference No : LOA0001)</a>
+                                                <p><a href="#" class="text-error">Huemedia Enterprise</a></p>
+                                                <p class="muted">Category : Letter of Award</p>
+                                                <p>Enclosed please find three (3) copies of <strong>the Agreement for your signature</strong>.  Please return all copies of the executed Agreement as well as the following documentation to the address set out above within fifteen (15) calendar days of receipt of this notice.</p>                                                
+                                                <a href="#">LOA0001.docx (V 1.0.1)</a>
+                                            </div>
+                                        </div>
+                                       
+                                      
+                                       
+                                       
+                                                                              
+                                    </div>
+                                    <div class="footer">
+                                        <div class="side fr">
+                                            <div class="pagination">
+                                                <ul>
+                                                    <li class="disabled"><a href="#">«</a></li>
+                                                    <li class="active"><a href="#">1</a></li>
+                                                    <li><a href="#">2</a></li>
+                                                    <li><a href="#">3</a></li>                                                                                                        
+                                                    <li class="disabled"><a href="#">...</a></li>
+                                                    <li><a href="#">21</a></li>
+                                                    <li><a href="#">22</a></li>
+                                                    <li><a href="#">23</a></li>
+                                                    <li><a href="#">»</a></li>
+                                                </ul>
+                                            </div>                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+    </div>
+    <div layout:fragment="javascript_endpage">
+    <script type="text/javascript">
+			$(document).ready(function() {
+			  $('#btnx').click(function(){
+				  $('#adsr').toggle();
+			  });
+			  $('#btns').click(function(){
+				  $('#result').toggle();
+			  });
+			});
+			
+			
+			
+		</script>
+    
+    </div>
+</body>
+</html>

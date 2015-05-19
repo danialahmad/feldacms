@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:repository="http://www.springframework.org/schema/data/repository"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+                http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                http://www.springframework.org/schema/data/repository http://www.springframework.org/schema/data/repository/spring-repository.xsd
+                http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+	<!-- This configuration file should only contain the entity manager factory 
+		bean and the jpaVendorAdapter bean. -->
+	<!-- All other related beans are outside of this configuration file's scope. -->
+	<context:component-scan base-package="com.huemedia.cms.model"
+		use-default-filters="false">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Repository" />
+	</context:component-scan>
+
+	<jpa:repositories base-package="com.huemedia.cms.model.repository" />
+
+	<util:map id="jpaPropertyMap">
+		<entry key="hibernate.cache.region.factory_class" value="org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory" />
+		<entry key="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
+		<entry key="hibernate.ejb.interceptor" value="com.huemedia.cms.model.audit.AuditTrailInterceptor" />
+		<entry key="hibernate.search.default.directory_provider" value="filesystem" />
+		<entry key="hibernate.search.default.indexBase" value="${user.home}/lucene/cms/index" />
+	    <entry key="hibernate.default_schema" value="${schemaName}" />
+	</util:map>
+
+
+	
+
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="packagesToScan" value="com.huemedia.cms.model.entity" />
+		<property name="persistenceUnitName" value="cmsPersistence" />
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="databasePlatform" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+				<property name="showSql" value="true" />
+			</bean>
+		</property>
+		<property name="jpaPropertyMap">
+			<ref bean="jpaPropertyMap" />
+		</property>
+	</bean>
+</beans>

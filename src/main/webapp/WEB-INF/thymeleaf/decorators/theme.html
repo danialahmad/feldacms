@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">CMS</title>
+	<meta name="description" content=""/>
+	<meta name="keywords" content=""/>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />    
+    <!--[if gt IE 8]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />        
+    <![endif]-->                
+    
+    <link rel="icon" type="image/ico" th:href="@{/resources/favicon.ico}"/>
+    
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/stylesheets.css}" media="screen" />    
+     <link rel="stylesheet" type="text/css" th:href="@{/resources/js/plupload/jquery.plupload.queue/css/jquery.plupload.queue.css}" media="screen" /> 
+    
+    <!--[if lte IE 7]>        
+        <script type='text/javascript' th:src="@{/resources/js/other/lte-ie7.js}"></script>
+    <![endif]-->    
+    
+    <script type='text/javascript' th:src="@{/resources/js/jquery/jquery-2.0.0.min.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/jquery/jquery-ui-1.10.3.custom.min.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/jquery/jquery-migrate-1.1.1.min.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/form/jquery.form.min.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/jquery/globalize.js}"></script>
+    
+ 
+    
+    <script type='text/javascript' th:src="@{/resources/js/bootstrap/bootstrap.min.js}"></script>
+     <script type='text/javascript'  th:src="@{/resources/js/cookies/jquery.cookies.2.2.0.min.js}"></script>
+     
+     <script type='text/javascript' th:src="@{/resources/js/noty/jquery.noty.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/noty/layouts/topCenter.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/noty/layouts/topLeft.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/noty/layouts/topRight.js}"></script>    
+    <script type='text/javascript' th:src="@{/resources/js/noty/themes/default.js}"></script>
+    
+    <script type='text/javascript' th:src="@{/resources/js/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js}"></script>
+
+    
+    <script type='text/javascript' th:src='@{/resources/js/fullcalendar/fullcalendar.min.js}'></script>
+     <script type='text/javascript' th:src='@{/resources/js/atmosphere/jquery.atmosphere.js}'></script>
+    
+    <script type='text/javascript' th:src="@{/resources/js/scrollup/jquery.scrollUp.min.js}"></script>
+    
+    <script type='text/javascript'
+			th:src="@{/resources/js/codemirror/codemirror.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/codemirror/addon/edit/matchbrackets.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/codemirror/mode/htmlmixed/htmlmixed.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/codemirror/mode/xml/xml.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/codemirror/mode/javascript/javascript.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/codemirror/mode/css/css.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/codemirror/mode/clike/clike.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/codemirror/mode/php/php.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/validation/jquery.validate.min.js}"></script>
+    
+    <script type='text/javascript' th:src="@{/resources/js/plugins.js}"></script>    
+    <script type='text/javascript' th:src="@{/resources/js/actions.js}"></script>
+    
+    
+ <style layout:fragment="style">
+
+</style>
+</head>
+<body class="body background-01">
+
+	<div id="wrapper" >
+        
+        <div id="header">
+            
+            <div class="wrap">
+                
+                <a th:href="@{/}" class="logo"></a>
+                
+                <div class="buttons fl">
+                    <div class="item">
+                        <a href="#" class="btn btn-primary btn-small c_layout">
+                            <span class="i-layout-8"></span>                            
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="#" class="btn btn-primary btn-small c_screen">
+                            <span class="i-stretch"></span>                            
+                        </a>
+                    </div>                    
+                </div>
+                
+                <div class="buttons">
+                    <!--  div class="item">
+                        <a href="#" class="btn btn-primary btn-small">
+                            <span class="i-cog"></span>
+                        </a>
+                        <div class="popup">
+                            <div class="head">
+                                <h2>Settings</h2>
+                            </div>
+                            <div class="content np">      
+                                <div class="row-fluid">
+                                    <div class="controls-row">
+                                        <div class="span3">Themes:</div>
+                                        <div class="span9 themes">
+                                            <a href="#" class="default tip" data-theme="" title="Default"></a>
+                                            <a href="#" class="dark tip" data-theme="themeDark" title="Dark"></a>
+                                            <a href="#" class="simple tip" data-theme="themeSimple" title="Simple"></a>
+                                            <div class="help-block">On click theme will changed and saved settings</div>
+                                        </div>
+                                    </div>               
+                                    <div class="controls-row">
+                                        <div class="span3">Backgrounds:</div>
+                                        <div class="span9 backgrounds">
+                                            <a href="#" class="default tip" data-theme="" title="Default"></a>                                            
+                                            <a href="#" class="b_bcrosshatch" data-back="b_bcrosshatch"></a>
+                                            <a href="#" class="b_crosshatch" data-back="b_crosshatch"></a>
+                                            <a href="#" class="b_cube" data-back="b_cube"></a>
+                                            <a href="#" class="b_dots" data-back="b_dots"></a>
+                                            <a href="#" class="b_grid" data-back="b_grid"></a>
+                                            <a href="#" class="b_hline" data-back="b_hline"></a>
+                                            <a href="#" class="b_simple" data-back="b_simple"></a>
+                                            <a href="#" class="b_vline" data-back="b_vline"></a>
+                                            <div class="help-block">On click background will changed and saved settings</div>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                            </div>
+                            <div class="footer">
+                                <div class="side fr">
+                                    <button class="btn btn-primary popup-close">Close</button>
+                                </div>                                
+                            </div>
+                        </div>                        
+                    </div-->
+                   
+                    
+                    <div class="item">                        
+                        <div class="btn-group">                        
+                            <a href="#" class="btn btn-primary btn-small dropdown-toggle" data-toggle="dropdown">
+                                <span class="i-forward"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a th:href="@{/settings/profile}"><span class="i-profile"></span>Profile</a></li>                            
+                                <li><a th:href="@{/settings/account}"><span class="i-locked"></span>Account Control</a></li>
+                                <li><a th:href="@{/logout}"><span class="i-forward"></span>Logout</a></li>
+                            </ul> 
+                        </div>
+                    </div>                
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <div id="layout">
+        
+            <div id="sidebar">
+
+                <div class="user">
+                    <div class="pic">
+                 <!--        <img th:src="@{/resources/img/examples/users/dmitry_m.jpg}"/> -->
+                 <img th:src="${sec.principal.displayPicture}"/>
+                    </div>
+                    <div class="info">
+                        <div class="name">
+                         <a href="#"><span th:text="${sec.principal.displayName}"></span></a> 
+                        <br/><span th:text="${sec.principal.displayAuth}"></span>
+                        </div>
+                        <!--  div class="buttons">
+                            <a th:href="@{/logout}" class="fl"><span class="i-forward"></span> Logout</a>
+                        </div-->
+                    </div>
+                </div>
+
+                <ul class="navigation level1">
+                     <li >
+                        <a th:href="@{/}">
+                        Home
+                        </a>
+                    </li>
+                    <li class="openable" menuId="1" sec:authorize="hasAnyRole('ROLE_SUPPORTER','ROLE_SUPERVISOR','ROLE_ADMIN','ROLE_MANAGER','ROLE_HELPDESK')">
+                         
+                        <a th:href="@{/}">
+                        Carian
+                        </a>
+                         <ul>
+                         <li>
+                                <a class="level2" th:href="@{/search/case}">Carian Kes</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/search/user}">Carian Pengguna</a>
+                            </li>
+                             
+                        </ul>
+                    </li>
+                  
+                    <li sec:authorize="hasRole('ROLE_ADMIN')" class="openable">
+                        <a  href="#">
+                        Administration</a>
+                        <ul>
+                        <li class="openable">
+                                <a href="#">User Management</a>
+                                <ul>
+                                    <li><a th:href="@{/administration/um/user}">User</a></li>
+                                    <li><a th:href="@{/administration/md/personCategory}">User Category</a></li>
+                                    <li><a th:href="@{/administration/um/group}">Department</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a th:href="@{/administration/sla}">SLA</a>
+                            </li>
+                            <li class="openable">
+                                <a href="#">Notifications</a>
+                                <ul>
+                                    <li><a th:href="@{/administration/notification/template}">Email Templates</a></li>
+                                    <li><a th:href="@{/administration/notification/complaint}">Complaint Notification Settings</a></li>
+                                   
+                                </ul>
+                            </li>
+                             <li class="openable">
+                                <a href="#">Master Data</a>
+                                <ul>
+                                    <li><a th:href="@{/administration/md/ticketGroup}">Case Category</a></li>
+                                     <li><a th:href="@{/administration/md/region}">Region</a></li>
+                                    <li><a th:href="@{/administration/md/plan}">Plan</a></li>
+                                    <li><a th:href="@{/administration/md/priority}">Priority</a></li>
+                                    <li><a th:href="@{/administration/md/status}">Status</a></li>
+                                    <li><a th:href="@{/administration/md/originator}">Originator</a></li>
+                                    <li><a th:href="@{/administration/md/rating}">Rating</a></li>
+                                    <li><a th:href="@{/administration/md/activityType}">Activity Type</a></li>
+                                 
+                                </ul>
+                            </li>
+                                                  
+                        </ul>
+                    </li> 
+                     <li class="openable" sec:authorize="hasAnyRole('ROLE_REQUESTER')">
+                        <a href="#">Aduan</a>
+                        <ul>
+                            <li>
+                                <a th:href="@{/complaint/request}">Laporkan Aduan</a>
+                            </li>
+                             <li>
+                                <a th:href="@{/complaint/request/mycomplaints}">Senarai Aduan yang telah dibuat
+                                <span id="mycomplaints" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li>                  
+                        </ul>
+                    </li>
+                     <li sec:authorize="hasAnyRole('ROLE_SUPPORTER')" class="openable">
+                        <a href="#">Supporter</a>
+                        <ul>
+                         <li>
+                                <a th:href="@{/case/helpdesk/add}">Kemasukan Kes</a>
+                           </li>
+                             <li>
+                                <a th:href="@{/case/mycases}">Kes yang Dikendalikan
+                                <span id="mycases" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li>
+                            <li>
+                                <a th:href="@{/case/supporter/open}">Senarai Kes Dibuka
+                                <span id="openSp" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li> 
+                             <li>
+                                <a th:href="@{/case/supporter/solved}">Senarai Kes Diselesaikan
+                                <span id="solvedSp" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li> 
+                             <li>
+                                <a th:href="@{/case/mygroup}">Kes Di Dalam Jabatan
+                                <span id="mygroup" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li> 
+                                        
+                        </ul>
+                    </li>
+                    <li sec:authorize="hasAnyRole('ROLE_SUPERVISOR')" class="openable">
+                        <a href="#">Liaison Officer</a>
+                        <ul>
+                           <li>
+                                <a th:href="@{/case/helpdesk/add}">Kemasukan Kes</a>
+                           </li>
+                             <li>
+                                <a th:href="@{/case/unassigned}">Kes Belum Ditugaskan
+                                <span id="unassignedSv" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li> 
+                             <li>
+                                <a th:href="@{/case/supervisor/open}">Senarai Kes Dibuka
+                                <span id="openSv" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li> 
+                             <li>
+                                <a th:href="@{/case/supervisor/solved}">Senarai Kes Diselesaikan
+                                <span id="solvedSv" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li>
+                             <!-- li>
+                                <a th:href="@{/case/supervisor/closed}">Closed Cases
+                                <span id="closedSv" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li-->  
+                             <li sec:authorize="hasAnyRole('ROLE_SUPERVISOR')">
+                                <a th:href="@{/case/mygroup}">Senarai Kes Di Dalam Jabatan
+                                <span id="mygroup" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li>  
+                             <li>
+                                <a th:href="@{/report/bulanan}">Laporan Bulanan
+                                </a>
+                                
+                            </li>                  
+                        </ul>
+                    </li>
+                      <li sec:authorize="hasAnyRole('ROLE_MANAGER')" class="openable">
+                        <a href="#">Manager Options</a>
+                        <ul>
+                             <li>
+                                <a th:href="@{/case/unassigned}">Unassigned Cases
+                                <span id="unassigned" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li> 
+                             <li>
+                                <a th:href="@{/case/open}">Open Cases
+                                <span id="open" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li> 
+                             <li>
+                                <a th:href="@{/case/solved}">Solved Cases
+                                <span id="solved" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li>
+                             <li>
+                                <a th:href="@{/case/closed}">Closed Cases
+                                <span id="closed" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li>                     
+                        </ul>
+                    </li>  
+                    <li class="openable" sec:authorize="hasAnyRole('ROLE_HELPDESK')">
+                        <a href="#">Helpdesk</a>
+                        <ul>
+                             <li>
+                                <a th:href="@{/case/helpdesk/add}">Kemasukan Kes
+                                
+                                </a>
+                                
+                            </li>
+                              <li>
+                                <a th:href="@{/case/new}">Senarai Kes Terbaru
+                                <span id="new" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li>
+                         
+                             <li>
+                                <a th:href="@{/case/open}">Senarai Kes Dibuka
+                                <span id="open" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li> 
+                             <li>
+                                <a th:href="@{/case/solved}">Senarai Kes Diselesaikan
+                                <span id="solved" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li>
+                             <!-- li>
+                                <a th:href="@{/case/closed}">Senarai Kes Ditutup
+                                <span id="closed" class="label label-important fr">0</span>
+                                </a>
+                                
+                            </li-->                     
+                            
+                                            
+                        </ul>
+                    </li>
+                    
+                     <li class="openable">
+                        <a href="#">Knowledge Base</a>
+                        <ul>
+                            <li sec:authorize="hasAnyRole('ROLE_SUPERVISOR','ROLE_ADMIN','ROLE_MANAGER','ROLE_SUPPORTER','ROLE_HELPDESK')">
+                                <a th:href="@{/knowledge/administrations}">Knowledge Base Management</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/knowledge/search}">Search</a>
+                            </li>
+                                          
+                        </ul>
+                    </li>
+                    
+                     <!-- li class="openable" sec:authorize="hasAnyRole('ROLE_SUPPORTER','ROLE_SUPERVISOR','ROLE_ADMIN','ROLE_MANAGER')">
+                        <a href="#">Reports</a>
+                        <ul>
+                             <li>
+                                <a th:href="@{/report/caseStat}">Case Statistics
+                                
+                                </a>
+                                
+                            </li> 
+                                            
+                        </ul>
+                    </li-->  
+                                    
+                </ul>
+
+            </div>
+
+            <div id="content">                        
+                <div class="wrap">
+                    
+                    <div layout:fragment="head" class="head">
+                       
+                        
+                                              
+                    </div>                                                                    
+                    
+					<div layout:fragment="content" class="content">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="footer">
+		<div id="modal-waiting" class="modal hide fade" role="dialog">
+	        <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+	            <h3>The complaint is being processed....</h3>
+	        </div>
+	        <div class="modal-body">
+	            <p>Please wait</p>
+	        </div>
+	    </div>
+	    <div id="modal-confirm" class="modal hide fade" role="dialog">
+	        <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+	            <h3>Submit Confirmation</h3>
+	        </div>
+	        <div class="modal-body">
+	            <p>Do you want to submit?</p>
+	        </div>
+	    </div>
+	    
+	      <div class="dialog" id="row_delete" style="display: none;" title="Delete?">
+        <p>Row will be deleted</p>
+    </div> 
+	    
+	</div>
+	
+	<div layout:fragment="modal">
+	
+	</div>
+	
+	
+	<span th:text="@{/}" id="web-context-root" style="display:none;"></span>	
+	<span th:text="${#ctx.locale.language}" id="app-locale" style="display:none"></span>
+	<div style="display:none;" id="ajax-loader"><img th:src="@{/resources/img/loader.gif}" /></div>
+	<div layout:fragment="javascript_endpage">
+	</div>
+	<script type="text/javascript">
+	
+	
+	
+	
+	   $(window).bind("load", function() {
+		   
+		   $(".navigation li a").click(function(e){
+			
+			   var level1;
+			   level1=$(this).parent();
+				
+				
+				$.cookies.set('level1',null); 
+				$.cookies.set('level2',null);
+				$.cookies.set('level3',null); 
+				//level1.addClass('active');
+				
+				
+			});
+		   
+		   
+		   $(".navigation li ul li a").click(function(e){
+			   var level2;
+			   var level1;
+			    //level3 = $(this);
+				level2=$(this).parent();
+				level1=$(this).parent().parent().parent();
+				
+				//level3.addClass('active');
+				
+				$.cookies.set('level1',level1.index()); 
+				$.cookies.set('level2',level2.index());
+				$.cookies.set('level3',null); 
+				
+				
+				
+			});
+		   $(".navigation li ul li ul li a").click(function(e){
+			   
+			   level1=$(this).parent().parent().parent().parent().parent();
+			   level2=$(this).parent().parent().parent();
+			   level3=$(this).parent();
+			   
+			   $.cookies.set('level1',level1.index()); 
+			   $.cookies.set('level2',level2.index()); 
+			   $.cookies.set('level3',level3.index());
+				
+			});
+		   
+		   $('.navigation').children().each(function(){
+			     var lvl1=$.cookies.get('level1');
+			     var lvl2=$.cookies.get('level2');
+			     var lvl3=$.cookies.get('level3');
+			     if($(this).index()==lvl1){
+					$(this).addClass('open');
+					var li1=$(this).children().children(':eq('+lvl2+')');
+					if(li1.attr('class')=='openable'){
+						li1.addClass('open');
+						li1.children().children(':eq('+lvl3+')').addClass('active');
+					}else{
+						li1.addClass('active');
+					}
+					
+			     }
+				  
+			});
+		   
+		   
+		   var contextroot=$("#web-context-root").html();
+		   
+		   var mcp=$("#mycomplaints").attr("class");
+		   if (typeof mcp !== "undefined") {
+			   $.get( contextroot+"complaint/count/mycomplaints", function( data ) {
+				   $("#mycomplaints").html(data);
+				 });
+			}
+		   
+		   var mc=$("#mycases").attr("class");
+		   if (typeof mc !== "undefined") {
+			   $.get( contextroot+"complaint/count/mycases", function( data ) {
+				   $("#mycases").html(data);
+				   $("#infoMyCase").html(data);
+				 });
+			}
+		   
+		   var m=$("#mygroup").attr("class");
+		   if (typeof m !== "undefined") {
+			   $.get( contextroot+"complaint/count/mygroup", function( data ) {
+				   $("#mygroup").html(data);
+				   $("#infoMyGroupCase").html(data);
+				 });
+			}
+		   
+		   var u=$("#unassigned").attr("class");
+		   if (typeof u !== "undefined") {
+			   $.get( contextroot+"complaint/count/unassigned", function( data ) {
+				   $("#unassigned").html(data);
+				 });
+			}
+		   var o=$("#open").attr("class");
+		   if (typeof o !== "undefined") {
+			   $.get( contextroot+"complaint/count/open", function( data ) {
+				   $("#open").html(data);
+				 });
+			}
+		   var s=$("#solved").attr("class");
+		   if (typeof s !== "undefined") {
+			   $.get( contextroot+"complaint/count/solves", function( data ) {
+				   $("#solved").html(data);
+				 });
+			}
+		   var c=$("#closed").attr("class");
+		   if (typeof c !== "undefined") {
+			   $.get( contextroot+"complaint/count/closed", function( data ) {
+				   $("#closed").html(data);
+				 });
+			}
+		   
+		   
+		   var us=$("#unassignedSv").attr("class");
+		   if (typeof us !== "undefined") {
+			   $.get( contextroot+"complaint/supervisor/count/unassigned", function( data ) {
+				   $("#unassignedSv").html(data);
+				 });
+			}
+		   var us=$("#new").attr("class");
+		   if (typeof us !== "undefined") {
+			   $.get( contextroot+"complaint/count/new", function( data ) {
+				   $("#new").html(data);
+				 });
+			}
+		   var os=$("#openSv").attr("class");
+		   if (typeof os !== "undefined") {
+			   $.get( contextroot+"complaint/supervisor/count/open", function( data ) {
+				   $("#openSv").html(data);
+				 });
+			}
+		   var ss=$("#solvedSv").attr("class");
+		   if (typeof ss !== "undefined") {
+			   $.get( contextroot+"complaint/supervisor/count/solved", function( data ) {
+				   $("#solvedSv").html(data);
+				 });
+			}
+		   var cs=$("#closedSv").attr("class");
+		   if (typeof cs !== "undefined") {
+			   $.get( contextroot+"complaint/supervisor/count/closed", function( data ) {
+				   $("#closedSv").html(data);
+				 });
+			}
+		   
+		   var op=$("#openSp").attr("class");
+		   if (typeof op !== "undefined") {
+			   $.get( contextroot+"complaint/supporter/count/open", function( data ) {
+				   $("#openSp").html(data);
+				 });
+			}
+		   var sp=$("#solvedSp").attr("class");
+		   if (typeof sp !== "undefined") {
+			   $.get( contextroot+"complaint/supporter/count/solved", function( data ) {
+				   $("#solvedSp").html(data);
+				 });
+			}
+		   
+		});
+	</script>
+</body>
+</html>

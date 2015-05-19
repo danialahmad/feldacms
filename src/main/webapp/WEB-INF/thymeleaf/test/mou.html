@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="decorators/theme2">
+<head>
+<title>Building Form</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="row-fluid">
+
+			<div class="span12">
+				<form id="validate" method="POST"  enctype="multipart/form-data">
+					<div class="block">
+						<div class="head">
+							<h2>Document Details</h2>
+							<div class="side fr">
+								<button class="btn" onClick="clear_form('#validate');"
+									type="button">Clear form</button>
+							</div>
+						</div>
+						<div class="content np">
+
+							<div class="controls-row">
+								<div class="span2">Title :</div>
+								<div class="span10">
+									<input type="text"  />
+								</div>
+							</div>
+							
+							
+							<div class="controls-row">
+								<div class="span2">Category :</div>
+								<div class="span10">
+									<select id="category">
+									  <option>-Please Select-</option>
+									  <option value="1">Undertaking Letter</option>
+									  <option value="2">Letter of Intent</option>
+									  <option value="3">Letter of Award</option>
+									</select>
+								</div>
+							</div>
+						    <div class="controls-row">
+								<div class="span2">Organization :</div>
+								<div class="span10">
+									<select>
+									  <option>-Please Select-</option>
+									  <option>Huemedia Sdn Bhd</option>
+									  <option>MCMC Sdn Bhd</option>
+									  <option>ILaunch Sdn Bhd</option>
+									  <option>Fujitsu (M) Sdn Bhd</option>
+									</select>
+								</div>
+							</div>
+							<div class="controls-row undertaking">
+								<div class="span2">Start Date :</div>
+								<div class="span10">
+									<input type="text"  />
+								</div>
+							</div>
+							<div class="controls-row undertaking" >
+								<div class="span2">Expiry Date :</div>
+								<div class="span10">
+									<input type="text"  />
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Description :</div>
+								<div class="span10">
+									<textarea rows="5" cols="5" ></textarea>
+								</div>
+							</div>
+
+							<div class="controls-row">
+								<div class="span2">Attachments :</div>
+								<div class="span10">
+									<span id="attachmentList">
+									<input type="file" name="files[0]"  class="uni" />
+									</span>
+									
+									<span id="addFile" title="Add file" style="cursor: pointer; color:#50769E;" class="i-plus-2"></span>
+									
+								</div>
+								
+							</div>
+                          
+
+
+						</div>
+						<div class="footer">
+							<div class="side fr">
+								<div class="btn-group">
+									<button class="btn" type="button"
+										onClick="window.history.back();">Close</button>
+									<button class="btn btn-primary btn-request" type="submit">Submit</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
+					
+				</form>
+
+			</div>
+
+		</div>
+
+
+
+
+
+
+
+	</div>
+	<div layout:fragment="javascript_endpage">
+		<script type='text/javascript' th:src="@{/resources/js/select2/select2.min.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/uniform/jquery.uniform.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/tagsinput/jquery.tagsinput.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/multiselect/jquery.multi-select.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/ibutton/jquery.ibutton.min.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/colorpicker/colorpicker.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/timepicker/jquery-ui-timepicker-addon.js}"></script>
+	
+	
+	
+    <script type='text/javascript' th:src="@{/resources/js/validationengine/languages/jquery.validationEngine-en.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/validationengine/jquery.validationEngine.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/maskedinput/jquery.maskedinput.min.js}"></script>
+    <script type='text/javascript' th:src="@{/javascript/utils/load-combo-box.js}"></script>
+    <script type='text/javascript' th:src="@{/javascript/complaint/request/form.js}"></script>
+  
+	
+		<script type="text/javascript">
+			$(document).ready(function() {
+				 $(".undertaking").hide();
+			  $("#category").change(function(e){
+				  e.preventDefault();
+				  var val=$(this).val();
+				  if(val==1){
+					  $(".undertaking").show();
+				  }else{
+					  $(".undertaking").hide();
+				  }
+			  });
+			});
+			
+			
+			
+		</script>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="decorators/theme2">
+<head>    
+          
+    <title>Search Result</title>
+   
+</head>
+<body>    
+    <div layout:fragment="content">
+  <div class="head">
+                        <div class="info">
+                            <h1>Rules/Regulations And Policies Search Results</h1>
+                            <ul class="breadcrumb">
+                                <li><a href="#">Dashboard</a> <span class="divider">-</span></li>
+                                <li><a href="#">Sample Pages</a> <span class="divider">-</span></li>
+                                <li class="active">Search Result</li>
+                            </ul>
+                        </div>                                                
+                    </div>                                                                    
+                    
+                    <div class="content">
+
+                        <div class="row-fluid">
+                            
+                            <div class="span12">
+                                
+                                <div class="block">
+                                    <div class="block_wrapper">
+                                        <div class="input-append wide_elements">
+                                            <input type="text" value="The Bachelor of Arts degree"/>
+                                            <button class="btn" id="btnx" type="button"><span class="i-cog"></span></button>
+                            <button class="btn" id="btns" type="button">Search</button>
+                           
+                           
+                           
+                                           
+                                        </div>                                         
+                                    </div>
+                                </div>
+                                
+                            </div>
+                                
+                        </div>                        
+         				
+         				<div class="row-fluid" id="adsr" style="display:none">
+                            
+                            <div class="span12">
+                                
+                                <div class="block">
+                                <div class="content np">
+							<div class="controls-row">
+								<div class="span2">Title :</div>
+								<div class="span10">
+									<input type="text"  />
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Approved By :</div>
+								<div class="span10">
+									<input type="text"  />
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Owner :</div>
+								<div class="span10">
+									<input type="text"  />
+								</div>
+							</div>
+							 <div class="controls-row">
+                                            <div class="span2">Approved Date/Time :</div>
+                                            <div class="span10">
+                                                <div class="input-prepend">
+                                                    <span class="add-on"><i class="i-star"></i></span>
+                                                    <input type="text"   class="datetimepicker input-small"/>
+                                                </div> To
+                                                 <div class="input-prepend">
+                                                    <span class="add-on"><i class="i-star"></i></span>
+                                                    <input type="text"   class="datetimepicker input-small"/>
+                                                </div>                                                 
+                                            </div>
+                             </div>
+							
+							<div class="controls-row">
+								<div class="span2">Effective Date :</div>
+								<div class="span10">
+								<div class="input-prepend">
+                                                    <span class="add-on"><i class="i-calendar"></i></span>
+									<input type="text"  class="datepicker input-small" />
+									</div>To
+									<div class="input-prepend">
+                                                    <span class="add-on"><i class="i-calendar"></i></span>
+									<input type="text"  class="datepicker input-small" />
+									</div>
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Last Revision :</div>
+								<div class="span10">
+								<div class="input-prepend">
+                                                    <span class="add-on"><i class="i-calendar"></i></span>
+									<input type="text"  class="datepicker input-small" />
+									</div>To
+									<div class="input-prepend">
+                                                    <span class="add-on"><i class="i-calendar"></i></span>
+									<input type="text"  class="datepicker input-small" />
+									</div>
+								</div>
+							</div>
+							
+							
+							
+							</div>
+                                
+                                
+                                </div>
+                             </div>
+                         </div>
+         				
+         				
+                        <div class="row-fluid" id="result" style="display:none">
+                            
+                            <div class="span12">
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>Search: The Bachelor of Arts degree</h2>
+                                    </div>
+                                    <div class="toolbar">
+                                        <div class="side fl">Result: 236 items</div>
+                                        <div class="side fr">On page: 10 of 236</div>
+                                    </div>
+                                    <div class="content list_custom">
+                                        
+                                        <div class="item"  >
+                                            <div class="info">
+                                                <a th:href="@{/governance/edit}" class="name">Academic Regulations</a>
+                                                <p><a href="#" class="text-error">HEP</a></p>
+                                                <p class="muted">Approved By : University Management Committee (01/03/2014 10.00 PM)</p>
+                                                <p>a. <strong>The Bachelor of Arts degree</strong> is awarded with majors in criminal justice, Chinese, English, history, international studies, political science, psychology, Spanish, and studies in war and peace.</p>                                                
+                                                <p class="muted">Effective Date : 01/04/2014</p>
+                                            </div>
+                                        </div>
+                                       
+                                      
+                                       
+                                       
+                                                                              
+                                    </div>
+                                    <div class="footer">
+                                        <div class="side fr">
+                                            <div class="pagination">
+                                                <ul>
+                                                    <li class="disabled"><a href="#">«</a></li>
+                                                    <li class="active"><a href="#">1</a></li>
+                                                    <li><a href="#">2</a></li>
+                                                    <li><a href="#">3</a></li>                                                                                                        
+                                                    <li class="disabled"><a href="#">...</a></li>
+                                                    <li><a href="#">21</a></li>
+                                                    <li><a href="#">22</a></li>
+                                                    <li><a href="#">23</a></li>
+                                                    <li><a href="#">»</a></li>
+                                                </ul>
+                                            </div>                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+    </div>
+    <div layout:fragment="javascript_endpage">
+    <script type='text/javascript'
+			th:src="@{/resources/js/timepicker/jquery-ui-timepicker-addon.js}"></script>
+    <script type="text/javascript">
+			$(document).ready(function() {
+			  $('#btnx').click(function(){
+				  $('#adsr').toggle();
+			  });
+			  $('#btns').click(function(){
+				  $('#result').toggle();
+			  });
+			});
+			
+			
+			
+		</script>
+    
+    </div>
+</body>
+</html>

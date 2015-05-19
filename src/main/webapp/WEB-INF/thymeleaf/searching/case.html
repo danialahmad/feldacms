@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="decorators/theme">
+<head>
+	<title>Search Case</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/fullcalendar/fullcalendar.css}" media="screen" /> 
+</head>
+<body>
+	<div layout:fragment="content">
+	
+		<div class="row-fluid all-area"  id="search-area">
+			<div class="span12">
+	            <div class="block">
+	                <form id="search-form" th:action="@{/search/case/list}" th:object="${searchTicketForm}" method="post">
+		                <div class="head">
+		                    <h2>Search</h2>
+		                </div>
+		                <div class="content np">                                       
+		                    <div class="controls-row">
+		                        <div class="span3">ID Kes :</div>
+		                        <div class="span9">
+		                            <input type="text" th:field="*{id}" id="id"/>
+		                        </div>
+		                    </div>
+		                     <div class="controls-row">
+		                        <div class="span3">Tajuk Aduan :</div>
+		                        <div class="span9">
+		                            <input type="text" th:field="*{ticketTitle}" />
+		                        </div>
+		                    </div>
+		                      <div class="controls-row">
+		                        <div class="span3">No Telefon :</div>
+		                        <div class="span9">
+		                            <input type="text" th:field="*{phoneNo}" />
+		                        </div>
+		                    </div>
+		                    <div class="controls-row">
+		                        <div class="span3">Kad Pengenalan :</div>
+		                        <div class="span9">
+		                            <input type="text" th:field="*{icNo}" />
+		                        </div>
+		                    </div>
+		                      <div class="controls-row">
+		                        <div class="span3">Date :</div>
+		                        <div class="span9">
+		                            <input type="text" class="datepicker2" th:field="*{dateFrom}" id="dateFrom"/> - <input type="text" class="datepicker2" th:field="*{dateTo}" id="dateTo"/> 
+		                        </div>
+		                    </div> 
+		                    
+		                           <div class="controls-row">
+								<div class="span3">Status :</div>
+								<div class="span9">
+									<select id="status" th:field="*{status}">
+										<option value="">-Please Select-</option>
+										<option th:each="obj : ${statusList}" th:text="${obj.name}"
+											th:value="${obj.id}"></option>
+									</select>
+
+								</div>
+							</div>                                                               
+		                </div>
+		                <div class="footer">
+		                    <div class="side fr">
+		                        <button  class="btn" id="btn-search">Search</button>
+		                        <button class="btn btn-warning" id="buttonx">Cancel</button>
+		                    </div>
+		                </div>
+	                </form>                                    
+	            </div>
+	        </div>
+	    </div>
+	        
+		<div class="row-fluid all-area" id="list-area">
+	        <div class="span12">
+	            
+	            <div class="block">
+	                <div class="head">
+	                    <h2>Open Cases</h2>                                     
+	                </div>
+	              
+	                <div class="content np table-sorting">
+	                    
+	                    <table id="list-meeting-room" cellpadding="0" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Case ID</th>
+									<th>Title</th>
+									<th>Created On</th>
+									
+									<th>Priority</th>
+									<th>Status</th>
+									<th>Event Log</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>                                      
+	                    
+	                </div>
+	            </div>
+	            
+	        </div>
+		</div> 
+		
+		
+		             
+	</div>
+	
+	<div layout:fragment="modal">
+		<div id="logModal" class="modal hide fade" role="dialog" >
+	        <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+	            <h3>Event Log</h3>
+	        </div>
+	       <div class="modal-body" >
+       <!-- remote content will be inserted here via jQuery load() -->
+        <div id="wrapper" class="screen_wide sidebar_off">
+             <div id="content">                        
+                <div class="wrap">
+                 <div class="block">
+	         
+	                <div class="content np">
+                 <table cellpadding="0" cellspacing="0" width="100%" id="eventTable" class="list">
+                                                <thead>
+                                                    <tr>
+                                                        <th width="60">Date</th><th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                  
+                                                                                     
+                                                </tbody>
+                                                                            
+                                            </table>
+                </div>
+                </div>
+                
+                </div> 
+             </div>
+        
+        </div>
+       			
+                
+       
+          </div>        
+	</div>
+		
+		</div>
+	
+	<div layout:fragment="javascript_endpage">
+		<script th:src="@{/resources/js/datatables/jquery.dataTables.min.js}"></script>
+		<script th:src="@{/resources/js/datatables/jquery.dataTables.fnPagingInfo.js}"></script>
+		<script type='text/javascript' th:src="@{/javascript/searching/case.js}"></script>
+		<script type='text/javascript' th:src="@{/javascript/eventLog.js}"></script>
+			<script type='text/javascript'
+			th:src="@{/javascript/utils/load-combo-box.js}"></script>
+		<script type="text/javascript">
+             $(document).ready(function(){
+            	 
+
+             });
+         </script>
+	              
+	</div>
+</body>
+</html>
+
+

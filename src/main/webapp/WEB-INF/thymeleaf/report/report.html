@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	layout:decorator="decorators/theme">
+<head>
+<title>Laporan Bulanan</title>
+</head>
+<body>
+
+	<div layout:fragment="head" class="head">
+		<div class="info">
+			<h1>Laporan Bulanan</h1>
+
+		</div>
+
+
+	</div>
+
+	<div layout:fragment="content">
+
+		<form id="reportForm" method="POST" action="">
+
+			<div class="row-fluid">
+
+
+				<div class="span12">
+					<div class="block">
+						<div class="head">
+							<h2>Jana Maklumat Secara Kumulatif</h2>
+						</div>
+						<div class="content np">
+
+							<div class="controls-row">
+								<div class="span2">Dari :</div>
+								<div class="span10">
+									<select name="bulan_dari" id="bulan_dari">
+										<option value="">-Sila Pilih-</option>
+										<option value="01">JANUARI</option>
+										<option value="02">FEBRUARI</option>
+										<option value="03">MACH</option>
+										<option value="04">APRIL</option>
+										<option value="05">MEI</option>
+										<option value="06">JUN</option>
+										<option value="07">JULAI</option>
+										<option value="08">OGOS</option>
+										<option value="09">SEPTEMBER</option>
+										<option value="10">OKTOBER</option>
+										<option value="11">NOVEMBER</option>
+										<option value="12">DISEMBER</option>
+									</select>
+
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Hingga :</div>
+								<div class="span10">
+									<select name="bulan_hingga" id="bulan_hingga">
+										<option value="">-Sila Pilih-</option>
+										<option value="01">JANUARI</option>
+										<option value="02">FEBRUARI</option>
+										<option value="03">MACH</option>
+										<option value="04">APRIL</option>
+										<option value="05">MEI</option>
+										<option value="06">JUN</option>
+										<option value="07">JULAI</option>
+										<option value="08">OGOS</option>
+										<option value="09">SEPTEMBER</option>
+										<option value="10">OKTOBER</option>
+										<option value="11">NOVEMBER</option>
+										<option value="12">DISEMBER</option>
+									</select>
+
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Tahun :</div>
+								<div class="span10">
+									<select id="tahun" name="tahun">
+										<option value="">-Sila Pilih-</option>
+										<option value="2014">2014</option>
+										<option value="2015">2015</option>
+									</select>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+ <div class="row-fluid">
+                            
+                            <div class="span12">
+                                <div class="block">
+			<div class="head">
+                                             
+                        <div class="side fr">
+                         <button type="button" class="btn" id="jana">Jana Laporan</button>
+                          
+                        </div>                        
+                    </div>
+			</div>
+			</div>
+			</div>	
+
+
+		</form>
+		
+		<form id="reportForm2" method="POST" action="">
+
+			<div class="row-fluid">
+
+
+				<div class="span12">
+					<div class="block">
+						<div class="head">
+							<h2>Jana Maklumat Secara Bulanan</h2>
+						</div>
+						<div class="content np">
+
+							<div class="controls-row">
+								<div class="span2">Bulan :</div>
+								<div class="span10">
+									<select name="month" id="month">
+										<option value="">-Sila Pilih-</option>
+										<option value="01">JANUARI</option>
+										<option value="02">FEBRUARI</option>
+										<option value="03">MACH</option>
+										<option value="04">APRIL</option>
+										<option value="05">MEI</option>
+										<option value="06">JUN</option>
+										<option value="07">JULAI</option>
+										<option value="08">OGOS</option>
+										<option value="09">SEPTEMBER</option>
+										<option value="10">OKTOBER</option>
+										<option value="11">NOVEMBER</option>
+										<option value="12">DISEMBER</option>
+									</select>
+
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Tahun :</div>
+								<div class="span10">
+									<select id="year" name="year">
+										<option value="">-Sila Pilih-</option>
+										<option value="2014">2014</option>
+										<option value="2015">2015</option>
+									</select>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+ <div class="row-fluid">
+                            
+                            <div class="span12">
+                                <div class="block">
+			<div class="head">
+                                             
+                        <div class="side fr">
+                         <button type="button" class="btn" id="jana2">Jana Laporan</button>
+                          
+                        </div>                        
+                    </div>
+			</div>
+			</div>
+			</div>	
+
+
+		</form>
+
+
+
+
+	<form id="reportForm4" method="POST" action="">
+
+			<div class="row-fluid">
+
+
+				<div class="span12">
+					<div class="block">
+						<div class="head">
+							<h2>Jana Rumusan Aduan</h2>
+						</div>
+						<div class="content np">
+
+							<div class="controls-row">
+								<div class="span2">Bulan :</div>
+								<div class="span10">
+									<select name="month4" id="month4">
+										<option value="">-Sila Pilih-</option>
+										<option value="01">JANUARI</option>
+										<option value="02">FEBRUARI</option>
+										<option value="03">MACH</option>
+										<option value="04">APRIL</option>
+										<option value="05">MEI</option>
+										<option value="06">JUN</option>
+										<option value="07">JULAI</option>
+										<option value="08">OGOS</option>
+										<option value="09">SEPTEMBER</option>
+										<option value="10">OKTOBER</option>
+										<option value="11">NOVEMBER</option>
+										<option value="12">DISEMBER</option>
+									</select>
+
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Tahun :</div>
+								<div class="span10">
+									<select id="year4" name="year4">
+										<option value="">-Sila Pilih-</option>
+										<option value="2014">2014</option>
+										<option value="2015">2015</option>
+									</select>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+ <div class="row-fluid">
+                            
+                            <div class="span12">
+                                <div class="block">
+			<div class="head">
+                                             
+                        <div class="side fr">
+                         <button type="button" class="btn" id="jana4">Jana Laporan</button>
+                          
+                        </div>                        
+                    </div>
+			</div>
+			</div>
+			</div>	
+
+
+		</form>
+
+	<form id="reportForm5" method="POST" action="">
+
+			<div class="row-fluid">
+
+
+				<div class="span12">
+					<div class="block">
+						<div class="head">
+							<h2>Jana Maklumat Pertanyaan</h2>
+						</div>
+						<div class="content np">
+
+							<div class="controls-row">
+								<div class="span2">Bulan :</div>
+								<div class="span10">
+									<select name="month5" id="month5">
+										<option value="">-Sila Pilih-</option>
+										<option value="01">JANUARI</option>
+										<option value="02">FEBRUARI</option>
+										<option value="03">MACH</option>
+										<option value="04">APRIL</option>
+										<option value="05">MEI</option>
+										<option value="06">JUN</option>
+										<option value="07">JULAI</option>
+										<option value="08">OGOS</option>
+										<option value="09">SEPTEMBER</option>
+										<option value="10">OKTOBER</option>
+										<option value="11">NOVEMBER</option>
+										<option value="12">DISEMBER</option>
+									</select>
+
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Tahun :</div>
+								<div class="span10">
+									<select id="year5" name="year5">
+										<option value="">-Sila Pilih-</option>
+										<option value="2014">2014</option>
+										<option value="2015">2015</option>
+									</select>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+ <div class="row-fluid">
+                            
+                            <div class="span12">
+                                <div class="block">
+			<div class="head">
+                                             
+                        <div class="side fr">
+                         <button type="button" class="btn" id="jana5">Jana Laporan</button>
+                          
+                        </div>                        
+                    </div>
+			</div>
+			</div>
+			</div>	
+
+
+		</form>
+
+
+	</div>
+
+	<div layout:fragment="javascript_endpage">
+		<script th:src="@{/resources/js/datatables/jquery.dataTables.min.js}"></script>
+		<script
+			th:src="@{/resources/js/datatables/jquery.dataTables.fnPagingInfo.js}"></script>
+
+
+
+		<script type='text/javascript'
+			th:src="@{/javascript/report/report.js}"></script>
+		<script type="text/javascript">
+			
+		</script>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<html>
+<body>
+	<div>Dear ${receiver},</div>
+<br/>
+	<div>Your case has been solved. Please Log In to the system to give your confirmation & feedback. <br>Thank You.</div>
+<br/>
+
+	<table width="100%" border="1" style="border-collapse: collapse">
+		<tbody>
+			<tr bgcolor="#CCCCCC">
+				<th>Case ID</th>
+				<th>Case Title</th>
+				<th>Description</th>
+				
+				
+			</tr>
+			<tr height="25px">
+				<td>${application.id}</td>
+				<td>${application.ticketTitle}</td>
+				<td>${application.description}</td>
+				
+			</tr>
+		</tbody>
+	</table>
+
+<br/>
+<div>
+<a href="${sysAddress}">Click Here</a> to go to the System
+</div>
+
+
+<br/>
+<div stye="font-family:Arial,Helvetica,sans-serif;font-size:10px;">
+<b>Note :</b> This e-mail is computer generated. Please DO NOT REPLY.
+</div>
+
+</body>
+
+</html>

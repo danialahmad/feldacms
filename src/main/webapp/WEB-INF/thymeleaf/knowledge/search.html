@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="decorators/theme">
+<head>
+<title>Knowledge Base</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/resources/css/fullcalendar/fullcalendar.css}"
+	media="screen" />
+</head>
+<body>
+<div layout:fragment="head" class="head">
+                        <div class="info">
+                            <h1>Carian Knowledge Base</h1>
+                            <ul class="breadcrumb">
+                                <li class="active">Carian</li>
+                            </ul>
+                        </div>
+                        
+                                              
+                    </div>
+
+	<div layout:fragment="content">
+
+<input type="hidden" id="total" value="0" />
+		<div class="row-fluid">
+
+			<div class="span12">
+				<div class="block">
+					<div class="block_wrapper">
+						<div class="input-append wide_elements">
+							<input type="text" placeholder="Keyword.."
+								id="widgetInputMessage" class="faqSearchKeyword" />
+							<button class="btn" type="button" id="faqSearch">Cari</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="row-fluid" id="result">
+
+			<div class="span12">
+				<div class="block">
+					<div class="head">
+						<h2>
+							Cari : <span id="searchVal"></span>
+						</h2>
+					</div>
+					<div class="toolbar">
+						<div class="side fl">Keputusan: <span class="resultItem">0</span> item</div>
+						<div class="side fr">On page: <span class="page">0</span> of <span class="totPage">0</span></div>
+					</div>
+					<div class="content list_custom">
+
+						<div class="item">
+							<div class="info"></div>
+						</div>
+
+
+
+
+
+					</div>
+					<div class="footer">
+						<div class="side fr">
+							<div class="pagination" id="page-selection"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<div class="row-fluid">
+			<div class="span12">
+				<div class="block">
+					<div class="head">
+					<h2>Senarai Mengikut Kategori</h2>
+					</div>
+						<div class="content np list_custom2">
+						
+						
+						
+						<!--  ul id="faqListController" class="list_simple">
+								<li><strong></strong>
+										<ul  class="list_simple">
+										 <li><a href="#faq-3"></a></li>
+										
+										</ul>
+										
+							    </li>
+								
+							</ul-->
+						
+						</div>
+						
+						<div class="footer">
+						<div class="side fr">
+							
+							<input type="hidden" id="total2"/>
+							<div class='pagination' id="page-selection2">
+
+  </div>
+							
+							
+						</div>
+					</div>
+						
+					</div>
+				</div>
+		
+			
+
+		</div>
+
+	</div>
+
+	<div layout:fragment="modal">
+		<div id="formModal" class="modal hide fade" role="dialog">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">X</button>
+				<h3>Plan</h3>
+			</div>
+			<div class="modal-body">
+				<!-- remote content will be inserted here via jQuery load() -->
+			</div>
+		</div>
+
+
+	</div>
+
+
+	<div layout:fragment="javascript_endpage">
+		<script th:src="@{/resources/js/datatables/jquery.dataTables.min.js}"></script>
+		<script th:src="@{/resources/js/bootpag/jquery.bootpag.min.js}"></script>
+		<script
+			th:src="@{/resources/js/datatables/jquery.dataTables.fnPagingInfo.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/javascript/utils/load-combo-box.js}"></script>
+			
+	    <script type='text/javascript' th:src="@{/resources/js/highlight/jquery.highlight-4.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/javascript/knowledge/search.js}"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+				
+			
+				
+				
+				
+			});
+		</script>
+		<div class="dialog" id="row_delete" style="display: none;"
+			title="Delete?">
+			<p>Row will be deleted</p>
+		</div>
+	</div>
+</body>
+</html>
+
+

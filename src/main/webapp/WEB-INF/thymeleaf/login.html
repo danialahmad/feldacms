@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>        
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />    
+    <!--[if gt IE 8]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />        
+    <![endif]-->                
+    <title>CMS - Complaint Management System</title>
+   <link rel="stylesheet" media="screen" th:href="@{/resources2/css/style.css}" />
+<!--[if IE 9]>
+    <link rel="stylesheet" media="screen" th:href="@{/resources2/css/ie9.css}"/>
+<![endif]-->
+
+<!--[if IE 8]>
+    <link rel="stylesheet" media="screen" th:href="@{/resources2/css/ie8.css}"/>
+<![endif]-->
+
+<!--[if IE 7]>
+    <link rel="stylesheet" media="screen" th:href="@{/resources2/css/ie7.css}"/>
+<![endif]-->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" th:src="@{/resources2/js/custom/general.js}"></script>
+</head>
+
+<body>
+
+<div class="loginlogo">
+	<!--  img src="images/logo.png" alt="Logo" /-->
+</div><!--loginlogo-->
+
+
+<div class="notification notifyError loginNotify"><strong><span th:utext="${errorMessage}" ></span></strong></div>  
+<form id="loginform" th:action="@{/j_spring_security_check}" method="post">
+<div class="loginbox">
+	<div class="loginbox_inner">
+    	<div class="loginbox_content">
+           <input type="text" name="j_username" id="j_username" class="username"/>
+           <input type="password" name="j_password" id="" class="password"/>
+            <button name="submit" class="submit">Login</button>
+        </div><!--loginbox_content-->
+    </div><!--loginbox_inner-->
+</div><!--loginbox-->
+
+<div class="loginoption">
+	<a th:href="@{/page/registration}" class="cant">Daftar Pengadu?</a>
+    <input type="checkbox" name="remember" /> Remember me on this computer.
+</div><!--loginoption-->
+<div class="loginoption">
+	<center><strong>Untuk menggunakan sistem ini, sila gunakan pelayar Chrome dan Mozilla.</strong></center>
+</div><!--loginoption-->
+</form>
+<span th:text="${#ctx.locale.language}" id="app-locale" style="display:none"></span>
+</body>
+</html>

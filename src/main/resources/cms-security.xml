@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+	
+	<bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" /> 
+	
+	<security:http pattern="/resources/**" security="none" />
+	<security:http pattern="/resources2/**" security="none" />
+	<security:http pattern="/javascript/**" security="none" />
+	<security:http pattern="/error**" security="none" />
+	
+
+	<security:http auto-config="true" use-expressions="true" create-session="ifRequired">
+		<security:intercept-url pattern="/login**" access="permitAll" />
+		<security:intercept-url pattern="/list/**" access="permitAll"/>
+		<security:intercept-url pattern="/user/password/**" access="permitAll" />
+		<security:intercept-url pattern="/registration/**" access="permitAll" />
+		<security:intercept-url pattern="/page/**" access="permitAll" />
+		<security:intercept-url pattern="/success/**" access="permitAll" />
+		
+		<security:intercept-url pattern="/password/forgot/**" access="isAnonymous()" />
+		
+		<security:intercept-url pattern="/**" access="isFullyAuthenticated() or isRememberMe()" />
+		<security:form-login login-page="/login" authentication-failure-handler-ref="customAuthenticationFailureHandler" authentication-success-handler-ref="authenticationSuccessHandler"/>
+		<security:logout logout-url="/logout" invalidate-session="true" success-handler-ref="logoutSuccessHandler" />
+		<security:access-denied-handler error-page="/error/403" />
+	</security:http>
+	
+	<bean id="customAuthenticationFailureHandler" class="com.huemedia.cms.security.service.CustomAuthenticationFailureHandler">
+		<property name="defaultFailureUrl" value="/login"></property>
+		<property name="exceptionMappings">
+			<map>
+				<entry key="org.springframework.security.authentication.BadCredentialsException" value="/login?errorMessage=bad.credentials" />
+				<entry key="org.springframework.security.authentication.DisabledException" value="/login?errorMessage=disabled.user" />
+				<entry key="org.springframework.security.authentication.AuthenticationCredentialsNotFoundException" value="/login?errorMessage=not.authorize" />
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="authenticateUserService" class="com.huemedia.cms.security.service.UserDetailsServiceImpl">
+	</bean>
+	
+	<bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
+		<constructor-arg value="256" />
+	</bean>
+
+	<security:authentication-manager alias="authenticationManager">
+		<security:authentication-provider user-service-ref="authenticateUserService">
+			<security:password-encoder ref="passwordEncoder"/>
+		</security:authentication-provider>
+	</security:authentication-manager>
+	
+	<security:global-method-security secured-annotations="enabled"></security:global-method-security>
+	
+	<bean id="authenticationSuccessHandler" class="com.huemedia.cms.security.service.CustomAuthenticationSuccessHandler">
+	 	<property name="defaultTargetUrl" value="/" />
+	 </bean>
+	 
+	 <bean id="logoutSuccessHandler" class="com.huemedia.cms.security.service.CustomLogoutHandler">
+	 	<property name="defaultTargetUrl" value="/" />
+	 </bean>
+	 
+	 <context:component-scan base-package="com.huemedia.cms.security.service" />
+	
+</beans>

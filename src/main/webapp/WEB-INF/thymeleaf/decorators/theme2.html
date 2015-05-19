@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">CMS</title>
+	<meta name="description" content=""/>
+	<meta name="keywords" content=""/>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />    
+    <!--[if gt IE 8]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />        
+    <![endif]-->                
+    
+    <link rel="icon" type="image/ico" th:href="@{/resources/favicon.ico}"/>
+    
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/stylesheets.css}" media="screen" />    
+     <link rel="stylesheet" type="text/css" th:href="@{/resources/js/plupload/jquery.plupload.queue/css/jquery.plupload.queue.css}" media="screen" /> 
+    
+    <!--[if lte IE 7]>        
+        <script type='text/javascript' th:src="@{/resources/js/other/lte-ie7.js}"></script>
+    <![endif]-->    
+    
+    <script type='text/javascript' th:src="@{/resources/js/jquery/jquery-2.0.0.min.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/jquery/jquery-ui-1.10.3.custom.min.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/jquery/jquery-migrate-1.1.1.min.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/form/jquery.form.min.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/jquery/globalize.js}"></script>
+    
+    <script type='text/javascript' th:src="@{/resources/js/bootstrap/bootstrap.min.js}"></script>
+     <script type='text/javascript'  th:src="@{/resources/js/cookies/jquery.cookies.2.2.0.min.js}"></script>
+     
+     <script type='text/javascript' th:src="@{/resources/js/noty/jquery.noty.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/noty/layouts/topCenter.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/noty/layouts/topLeft.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/noty/layouts/topRight.js}"></script>    
+    <script type='text/javascript' th:src="@{/resources/js/noty/themes/default.js}"></script>
+    
+    <script type='text/javascript' th:src="@{/resources/js/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js}"></script>
+
+    
+    <script type='text/javascript' th:src='@{/resources/js/fullcalendar/fullcalendar.min.js}'></script>
+     <script type='text/javascript' th:src='@{/resources/js/atmosphere/jquery.atmosphere.js}'></script>
+    
+    <script type='text/javascript' th:src="@{/resources/js/scrollup/jquery.scrollUp.min.js}"></script>
+    
+    <script type='text/javascript' th:src="@{/resources/js/plugins.js}"></script>    
+    <script type='text/javascript' th:src="@{/resources/js/actions.js}"></script>
+    
+    
+ <style layout:fragment="style">
+
+</style>
+</head>
+<body class="body background-01">
+
+	<div id="wrapper" class="sidebar_off" >
+        
+        <div id="header">
+            
+            <div class="wrap">
+                
+                <a href="index.html" class="logo"></a>
+                
+                <div class="buttons fl">
+                    <div class="item">
+                        <a href="#" class="btn btn-primary btn-small c_layout">
+                            <span class="i-layout-8"></span>                            
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="#" class="btn btn-primary btn-small c_screen">
+                            <span class="i-stretch"></span>                            
+                        </a>
+                    </div>                    
+                </div>
+                
+                <div class="buttons">
+                    <div class="item">
+                        <a href="#" class="btn btn-primary btn-small">
+                            <span class="i-cog"></span>
+                        </a>
+                        <div class="popup">
+                            <div class="head">
+                                <h2>Settings</h2>
+                            </div>
+                            <div class="content np">      
+                                <div class="row-fluid">
+                                    <div class="controls-row">
+                                        <div class="span3">Themes:</div>
+                                        <div class="span9 themes">
+                                            <a href="#" class="default tip" data-theme="" title="Default"></a>
+                                            <a href="#" class="dark tip" data-theme="themeDark" title="Dark"></a>
+                                            <a href="#" class="simple tip" data-theme="themeSimple" title="Simple"></a>
+                                            <div class="help-block">On click theme will changed and saved settings</div>
+                                        </div>
+                                    </div>               
+                                    <div class="controls-row">
+                                        <div class="span3">Backgrounds:</div>
+                                        <div class="span9 backgrounds">
+                                            <a href="#" class="default tip" data-theme="" title="Default"></a>                                            
+                                            <a href="#" class="b_bcrosshatch" data-back="b_bcrosshatch"></a>
+                                            <a href="#" class="b_crosshatch" data-back="b_crosshatch"></a>
+                                            <a href="#" class="b_cube" data-back="b_cube"></a>
+                                            <a href="#" class="b_dots" data-back="b_dots"></a>
+                                            <a href="#" class="b_grid" data-back="b_grid"></a>
+                                            <a href="#" class="b_hline" data-back="b_hline"></a>
+                                            <a href="#" class="b_simple" data-back="b_simple"></a>
+                                            <a href="#" class="b_vline" data-back="b_vline"></a>
+                                            <div class="help-block">On click background will changed and saved settings</div>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                            </div>
+                            <div class="footer">
+                                <div class="side fr">
+                                    <button class="btn btn-primary popup-close">Close</button>
+                                </div>                                
+                            </div>
+                        </div>                        
+                    </div>
+                   
+                    
+                    <div class="item">                        
+                        <div class="btn-group">                        
+                            <a href="#" class="btn btn-primary btn-small dropdown-toggle" data-toggle="dropdown">
+                                <span class="i-forward"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a th:href="@{/settings/profile}"><span class="i-profile"></span>Profile</a></li>                            
+                                <li><a th:href="@{/settings/account}"><span class="i-locked"></span>Account Control</a></li>
+                                <li><a th:href="@{/logout}"><span class="i-forward"></span>Logout</a></li>
+                            </ul> 
+                        </div>
+                    </div>                
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <div id="layout">
+        
+        
+
+            <div id="content">                        
+                <div class="wrap">
+                    
+                    <div layout:fragment="head" class="head">
+                       
+                        
+                                              
+                    </div>                                                                    
+                    
+					<div  class="content">
+					
+					 <div class="row-fluid">
+                            <div class="span3">                                
+                                <div class="block">
+                                    <a class="btn btn-primary btn-block" href="#sendmail" role="button" data-toggle="modal">New e-mail</a>
+                                </div>
+                                <div class="block">                                                                        
+                                    <ul class="nav nav-tabs nav-stacked">
+                                        <li class="active"><a href="#">Inbox<span class="fr"><strong>3</strong> / 2056</span></a></li>
+                                        <li><a href="#">Outbox <span class="fr muted">365</span></a></li>                                    
+                                        <li><a href="#">Drafts <span class="fr muted">4</span></a></li>
+                                        <li><a href="#">Spam <span class="fr muted">14,985</span></a></li>                                    
+                                        <li><a href="#">Removed</a></li>
+                                    </ul>                                    
+                                </div>
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>Contacts</h2>
+                                        <ul class="buttons">
+                                            <li><a href="#"><i class="i-plus-2"></i></a></li>
+                                        </ul>
+                                    </div>                  
+                                    <div class="content np">
+                                        <ul class="list_simple">
+                                            <li><a href="#">John Doe <span class="muted">[ john@domain.com ]</span></a></li>
+                                            <li><a href="#">Alexey <span class="muted">[ alexey@domain.com ]</span></a></li>
+                                            <li><a href="#">Olga <span class="muted">[ olga@domain.com ]</span></a></li>
+                                            <li><a href="#">Alex <span class="muted">[ alexandr@domain.com ]</span></a></li>
+                                            <li><a href="#">Dmitry <span class="muted">[ dmitry@domain.com ]</span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                        
+                                
+                                                                
+                            </div>
+                           
+                            <div layout:fragment="content" class="span9">
+                            
+                            </div>
+                            
+                            
+                            
+                            
+                       </div>
+					
+					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="footer">
+		<div id="modal-waiting" class="modal hide fade" role="dialog">
+	        <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+	            <h3>The complaint is being processed....</h3>
+	        </div>
+	        <div class="modal-body">
+	            <p>Please wait</p>
+	        </div>
+	    </div>
+	    <div id="modal-confirm" class="modal hide fade" role="dialog">
+	        <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+	            <h3>Submit Confirmation</h3>
+	        </div>
+	        <div class="modal-body">
+	            <p>Are you sure to submit?</p>
+	        </div>
+	    </div>
+	</div>
+	
+	<div layout:fragment="modal">
+	
+	</div>
+	
+	
+	<span th:text="@{/}" id="web-context-root" style="display:none;"></span>	
+	<span th:text="${#ctx.locale.language}" id="app-locale" style="display:none"></span>
+	<div style="display:none;" id="ajax-loader"><img th:src="@{/resources/img/loader.gif}" /></div>
+	<div layout:fragment="javascript_endpage">
+	</div>
+	<script type="text/javascript">
+	
+	
+	
+	
+	   $(window).bind("load", function() {
+		   
+		   $(".navigation li a").click(function(e){
+			
+			   var level1;
+			   level1=$(this).parent();
+				
+				
+				$.cookies.set('level1',null); 
+				$.cookies.set('level2',null);
+				$.cookies.set('level3',null); 
+				//level1.addClass('active');
+				
+				
+			});
+		   
+		   
+		   $(".navigation li ul li a").click(function(e){
+			   var level2;
+			   var level1;
+			    //level3 = $(this);
+				level2=$(this).parent();
+				level1=$(this).parent().parent().parent();
+				
+				//level3.addClass('active');
+				
+				$.cookies.set('level1',level1.index()); 
+				$.cookies.set('level2',level2.index());
+				$.cookies.set('level3',null); 
+				
+				
+				
+			});
+		   $(".navigation li ul li ul li a").click(function(e){
+			   
+			   level1=$(this).parent().parent().parent().parent().parent();
+			   level2=$(this).parent().parent().parent();
+			   level3=$(this).parent();
+			   
+			   $.cookies.set('level1',level1.index()); 
+			   $.cookies.set('level2',level2.index()); 
+			   $.cookies.set('level3',level3.index());
+				
+			});
+		   
+		   $('.navigation').children().each(function(){
+			     var lvl1=$.cookies.get('level1');
+			     var lvl2=$.cookies.get('level2');
+			     var lvl3=$.cookies.get('level3');
+			     if($(this).index()==lvl1){
+					$(this).addClass('open');
+					var li1=$(this).children().children(':eq('+lvl2+')');
+					if(li1.attr('class')=='openable'){
+						li1.addClass('open');
+						li1.children().children(':eq('+lvl3+')').addClass('active');
+					}else{
+						li1.addClass('active');
+					}
+					
+			     }
+				  
+			});
+		   
+		   
+		   var contextroot=$("#web-context-root").html();
+		   
+		   var mcp=$("#mycomplaints").attr("class");
+		   if (typeof mcp !== "undefined") {
+			   $.get( contextroot+"complaint/count/mycomplaints", function( data ) {
+				   $("#mycomplaints").html(data);
+				 });
+			}
+		   
+		   var mc=$("#mycases").attr("class");
+		   if (typeof mc !== "undefined") {
+			   $.get( contextroot+"complaint/count/mycases", function( data ) {
+				   $("#mycases").html(data);
+				   $("#infoMyCase").html(data);
+				 });
+			}
+		   
+		   var m=$("#mygroup").attr("class");
+		   if (typeof m !== "undefined") {
+			   $.get( contextroot+"complaint/count/mygroup", function( data ) {
+				   $("#mygroup").html(data);
+				   $("#infoMyGroupCase").html(data);
+				 });
+			}
+		   
+		   var u=$("#unassigned").attr("class");
+		   if (typeof u !== "undefined") {
+			   $.get( contextroot+"complaint/count/unassigned", function( data ) {
+				   $("#unassigned").html(data);
+				 });
+			}
+		   var o=$("#open").attr("class");
+		   if (typeof o !== "undefined") {
+			   $.get( contextroot+"complaint/count/open", function( data ) {
+				   $("#open").html(data);
+				 });
+			}
+		   var s=$("#solved").attr("class");
+		   if (typeof s !== "undefined") {
+			   $.get( contextroot+"complaint/count/solves", function( data ) {
+				   $("#solved").html(data);
+				 });
+			}
+		   var c=$("#closed").attr("class");
+		   if (typeof c !== "undefined") {
+			   $.get( contextroot+"complaint/count/closed", function( data ) {
+				   $("#closed").html(data);
+				 });
+			}
+		   
+		   
+		   var us=$("#unassignedSv").attr("class");
+		   if (typeof us !== "undefined") {
+			   $.get( contextroot+"complaint/supervisor/count/unassigned", function( data ) {
+				   $("#unassignedSv").html(data);
+				 });
+			}
+		   var us=$("#new").attr("class");
+		   if (typeof us !== "undefined") {
+			   $.get( contextroot+"complaint/count/new", function( data ) {
+				   $("#new").html(data);
+				 });
+			}
+		   var os=$("#openSv").attr("class");
+		   if (typeof os !== "undefined") {
+			   $.get( contextroot+"complaint/supervisor/count/open", function( data ) {
+				   $("#openSv").html(data);
+				 });
+			}
+		   var ss=$("#solvedSv").attr("class");
+		   if (typeof ss !== "undefined") {
+			   $.get( contextroot+"complaint/supervisor/count/solved", function( data ) {
+				   $("#solvedSv").html(data);
+				 });
+			}
+		   var cs=$("#closedSv").attr("class");
+		   if (typeof cs !== "undefined") {
+			   $.get( contextroot+"complaint/supervisor/count/closed", function( data ) {
+				   $("#closedSv").html(data);
+				 });
+			}
+		   
+		   
+		   
+		});
+	</script>
+</body>
+</html>

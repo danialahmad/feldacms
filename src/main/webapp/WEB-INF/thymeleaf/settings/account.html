@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="decorators/theme">
+<head>
+<title>User</title>
+</head>
+<body>
+	<div layout:fragment="content">
+	<form id="register" method="POST" th:action="@{${url}}" th:object="${userForm}" enctype="multipart/form-data">
+				<input type="hidden" th:field="*{username}"/>
+			<div class="row-fluid">
+						<div class="span12">
+							<div class="block">
+								<div class="head">
+									<h2>Maklumat Pengguna</h2>
+								</div>
+								<div class="content np">
+									<div class="controls-row">
+										<div class="span3">
+											<img th:src="@{/resources/img/examples/users/no-photo.jpg}" class="img-polaroid" style="margin-bottom: 5px;" th:if="${userForm.photo == null}" />
+												 <img th:src="${userForm.photo}" class="img-polaroid" style="margin-bottom: 5px;" th:if="${userForm.photo != null}"/>
+										</div>
+										<div class="span9">
+											
+										</div>
+									</div>
+									<div class="controls-row">
+										<div class="controls-row">
+											<div class="span3">Nama :</div>
+											<div class="span9">
+												<span th:text="${userForm.name}"></span>
+											</div>
+										</div>
+										<div class="controls-row">
+											<div class="span3">ID Pengguna :</div>
+											<div class="span9">
+												<span th:text="${userForm.username}"></span>
+											</div>
+										</div>
+										
+                                       <div class="controls-row">
+										<div class="span3">Kumpulan Pengguna :</div>
+										<div class="span9">
+											
+									        <span th:text="${userForm.role.name}"></span>
+										</div>
+									  </div>
+										<div class="controls-row">
+											<div class="span3">Email :</div>
+											<div class="span9">
+												<span th:text="${userForm.email}"></span>
+											</div>
+
+										</div>
+										<div class="controls-row" th:if="${userForm.lastIp != null}">
+											<div class="span3">Last Login IP Address :</div>
+											<div class="span9">
+												 <span th:text="${userForm.lastIp}"></span>
+
+											</div>
+
+										</div>
+										
+										<div class="controls-row" th:if="${userForm.lastLogin != null}">
+											<div class="span3">Last Login Date :</div>
+											<div class="span9">
+												<span th:text="${#dates.format(userForm.lastLogin, 'dd/MM/yyyy HH:mm a')}"></span>
+											</div>
+
+										</div>
+										
+										
+									</div>
+
+
+
+								</div>
+							</div>
+
+							<div class="block">
+								<div class="head">
+									<h2>Tukar Kata Laluan</h2>
+								</div>
+								<div class="content np">
+									<div class="controls-row">
+										<div class="span3">Kata Laluan Semasa <span class="text-error">*</span> :</div>
+										<div class="span9">
+											 <input type="password" class="validate[currPassword]" th:field="*{currPassword}"/>
+										</div>
+									</div>
+									<div class="controls-row">
+										<div class="span3">Kata Laluan Baru <span class="text-error">*</span> :</div>
+										<div class="span9">
+											 <input type="password" class="validate[password]" th:field="*{password}" />
+										</div>
+									</div>
+									<div class="controls-row">
+										<div class="span3">Sahkan Kata Laluan Baru <span class="text-error">*</span> :</div>
+										<div class="span9">
+											 <input type="password" name="c_password" class="validate[equals[password]]"/>
+										</div>
+									</div>
+								
+								
+
+
+
+								</div>
+							</div>
+
+
+						</div>
+
+					</div>
+	
+<div class="row-fluid">
+                            
+                            <div class="span12">
+                                <div class="block">
+			<div class="head">
+                                             
+                        <div class="side fr">
+                        <button class="btn btn-warning" id="closeBtn">Close</button>
+                            <button class="btn btn-primary btn-request" id="submitForm" type="submit">Submit</button>
+                            
+                        </div>                        
+                    </div>
+			</div>
+			</div>
+			</div>
+
+
+
+
+</form>
+
+	</div>
+	<div layout:fragment="javascript_endpage">
+		<script type='text/javascript' th:src="@{/resources/js/select2/select2.min.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/uniform/jquery.uniform.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/tagsinput/jquery.tagsinput.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/multiselect/jquery.multi-select.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/ibutton/jquery.ibutton.min.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/colorpicker/colorpicker.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/timepicker/jquery-ui-timepicker-addon.js}"></script>
+	
+	
+	
+    <script type='text/javascript' th:src="@{/resources/js/validationengine/languages/jquery.validationEngine-en.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/validationengine/jquery.validationEngine.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/maskedinput/jquery.maskedinput.min.js}"></script>
+    <script type='text/javascript' th:src="@{/javascript/utils/load-combo-box.js}"></script>
+    <script type='text/javascript' th:src="@{/javascript/settings/account.js}"></script>
+  
+	
+		<script type="text/javascript">
+			$(document).ready(function() {
+			  
+			});
+			
+			
+			
+		</script>
+
+	</div>
+</body>
+</html>

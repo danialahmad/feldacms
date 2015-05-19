@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="decorators/theme">
+<head>
+<title>User</title>
+</head>
+<body>
+	<div layout:fragment="content">
+	<form id="register" method="POST" th:action="@{${url}}" th:object="${userForm}" enctype="multipart/form-data">
+				<input type="hidden" th:field="*{username}" />
+			<div class="row-fluid">
+						<div class="span12">
+							<div class="block">
+								<div class="head">
+									<h2>User Profile</h2>
+								</div>
+								<div class="content np">
+									<div class="controls-row">
+										<div class="span3">
+											<img id="img-prev" th:src="@{/resources/img/examples/users/no-photo.jpg}" class="img-polaroid" style="margin-bottom: 5px;" th:if="${userForm.photo == null}" />
+												 <img id="img-prev" th:src="${userForm.photo}" class="img-polaroid" style="margin-bottom: 5px;" th:if="${userForm.photo != null}"/>
+										</div>
+										<div class="span9">
+											<p class="np nm">
+												<strong>Fail:</strong> <span class="muted" id="imgPath"></span>
+											</p>
+											<input type="file" id="file" th:field="*{file}" class="uni" />
+										</div>
+									</div>
+									<div class="controls-row">
+										<div class="controls-row">
+											<div class="span3">Nama <span class="text-error">*</span> :</div>
+											<div class="span9">
+												<input type="text" class="validate[required]" th:field="*{name}" />
+											</div>
+										</div>
+										<div class="controls-row">
+											<div class="span3">Email <span class="text-error">*</span> :</div>
+											<div class="span9">
+												<input type="text" class="validate[email]" th:field="*{email}" />
+
+											</div>
+
+										</div>
+										
+										
+												<div class="controls-row">
+										<div class="span3">No. Kad Pengenalan/No. Pendafataran <span class="text-error">*</span> :</div>
+										<div class="span9">
+											<input type="text" value="" th:field="*{icNo}" />
+										</div>
+									</div>
+									<!--  div class="controls-row felda" th:if="${userForm.personCategory.id == 4}">
+										<div class="span3">Settler No :</div>
+										<div class="span9">
+											<input type="text" id="settlerNo" th:field="*{settlerNo}" />
+										</div>
+									</div-->
+									<div class="controls-row staffB" th:if="${userForm.personCategory.id == 3}">
+										<div class="span3">No. Staff <span class="text-error">*</span> :</div>
+										<div class="span9">
+											<input type="text" id="staffNo" value="" th:field="*{staffNo}" />
+										</div>
+									</div>
+											 <div class="controls-row felda" th:if="${userForm.personCategory.id == 4}">
+								<div class="span3">Wilayah <span class="text-error">*</span> :</div>
+								<div class="span9">
+									<select id="region" th:field="*{region.id}" >
+										<option value="">- Sila Pilih-</option>
+										<option th:each="obj : ${regionList}" th:text="${obj.name}" th:value="${obj.id}"></option>							
+									</select>
+									
+								</div>
+							</div>
+							
+							
+							<div class="controls-row felda" th:if="${userForm.personCategory.id == 4}">
+										<div class="span3">Tanah Rancangan <span class="text-error">*</span> :</div>
+										<div class="span9">
+											<select id="plan" th:field="*{plan.id}">
+										<option value="">- Sila Pilih -</option>
+										<option th:each="obj : ${planList}" th:text="${obj.name}" th:value="${obj.id}"></option>	
+									</select>
+										</div>
+									</div>
+									<div class="controls-row">
+										<div class="span3">Alamat :</div>
+										<div class="span4">
+											<div class="input-prepend">
+												<input type="text" value="" th:field="*{address1}" />
+											</div>
+											<div class="input-append">
+												<input type="text" value="" th:field="*{address2}" />
+											</div>
+										</div>
+									</div>
+									<div class="controls-row">
+										<div class="span3">Bandar :</div>
+										<div class="span9">
+											<input type="text" value="" th:field="*{city}" />
+										</div>
+									</div>
+									<div class="controls-row">
+										<div class="span3">Negara :</div>
+										<div class="span9">
+											<select id="country" th:field="*{country.id}">
+										<option value="">- Select One -</option>
+										<option th:each="obj : ${countryList}" th:text="${obj.country}" th:value="${obj.id}"></option>							
+									</select>
+										</div>
+									</div>
+									<div class="controls-row">
+										<div class="span3">Negeri :</div>
+										<div class="span9">
+											<select id="state" th:field="*{state.id}">
+										<option value="">- Select One -</option>
+										<option th:each="obj : ${stateList}" th:text="${obj.name}" th:value="${obj.id}"></option>	
+									</select>
+										</div>
+									</div>
+									<div class="controls-row">
+										<div class="span3">No. Telefon (M) :</div>
+										<div class="span9">
+											<input type="text"  th:field="*{mobileNo}" />
+										</div>
+									</div>
+									<div class="controls-row">
+										<div class="span3">No. Telefon (Rumah/Pejabat) :</div>
+										<div class="span9">
+											<input type="text"  th:field="*{phoneNo}" />
+
+										</div>
+									</div>
+									<div class="controls-row">
+										<div class="span3">No Fax :</div>
+										<div class="span9">
+											<input type="text" th:field="*{faxNo}" />
+
+										</div>
+									</div>
+											<div class="controls-row staffB" th:if="${userForm.personCategory.id == 3}">
+                                            <div class="span3">Jabatan :</div>
+                                            <div class="span9">
+                                                 <span th:text="${userForm.groups}"></span>
+                                            </div>
+                                        </div>
+										 <!--  div class="controls-row staffB" th:if="${userForm.groups == 'PENGURUSAN WILAYAH'}">
+								<div class="span3">Region :</div>
+								<div class="span9">
+									 <span th:text="${userForm.regionStaff.name}"></span>
+									
+								</div>
+							</div-->	
+										
+										
+									</div>
+
+
+
+								</div>
+							</div>
+
+					
+
+
+						</div>
+
+					</div>
+	
+<div class="row-fluid">
+                            
+                            <div class="span12">
+                                <div class="block">
+			<div class="head">
+                                             
+                        <div class="side fr">
+                        <button class="btn btn-warning" id="closeBtn">Tutup</button>
+                            <button class="btn btn-primary btn-request" id="submitForm" type="submit">Simpan</button>
+                            
+                        </div>                        
+                    </div>
+			</div>
+			</div>
+			</div>
+
+
+
+
+</form>
+
+	</div>
+	<div layout:fragment="javascript_endpage">
+		<script type='text/javascript' th:src="@{/resources/js/select2/select2.min.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/uniform/jquery.uniform.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/tagsinput/jquery.tagsinput.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/multiselect/jquery.multi-select.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/ibutton/jquery.ibutton.min.js}"></script>
+		<script type='text/javascript' th:src="@{/resources/js/colorpicker/colorpicker.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/timepicker/jquery-ui-timepicker-addon.js}"></script>
+	
+	
+	
+    <script type='text/javascript' th:src="@{/resources/js/validationengine/languages/jquery.validationEngine-en.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/validationengine/jquery.validationEngine.js}"></script>
+    <script type='text/javascript' th:src="@{/resources/js/maskedinput/jquery.maskedinput.min.js}"></script>
+    <script type='text/javascript' th:src="@{/javascript/utils/load-combo-box.js}"></script>
+    <script type='text/javascript' th:src="@{/javascript/settings/profile.js}"></script>
+  
+	
+		<script type="text/javascript">
+			$(document).ready(function() {
+			  
+			});
+			
+			
+			
+		</script>
+
+	</div>
+</body>
+</html>

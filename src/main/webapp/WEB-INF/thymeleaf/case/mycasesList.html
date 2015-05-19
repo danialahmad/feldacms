@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="decorators/theme">
+<head>
+	<title>Kes Yang Dikendalikan</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/fullcalendar/fullcalendar.css}" media="screen" /> 
+</head>
+<body>
+	<div layout:fragment="content">
+	
+		<div class="row-fluid all-area" style="display: none" id="search-area">
+			<div class="span12">
+	            <div class="block">
+	                <form id="search-form" th:action="@{/case/list/mycases}" th:object="${searchTicketForm}" method="post">
+		                <div class="head">
+		                    <h2>Search</h2>
+		                </div>
+		                <div class="content np">                                        
+		                    <div class="controls-row">
+		                        <div class="span3">Booking Id:</div>
+		                        <div class="span9">
+		                            <input type="text" th:field="*{id}" id="id"/>
+		                        </div>
+		                    </div>                                                                           
+		                </div>
+		                <div class="footer">
+		                    <div class="side fr">
+		                        <button type="button" class="btn" id="btn-search">Search</button>
+		                        <button class="btn btn-warning" id="btn-cancel">Cancel</button>
+		                    </div>
+		                </div>
+	                </form>                                    
+	            </div>
+	        </div>
+	    </div>
+	        
+		<div class="row-fluid all-area" id="list-area">
+	        <div class="span12">
+	            
+	            <div class="block">
+	                <div class="head">
+	                    <h2>Kes Yang DiKendalikan</h2>                                     
+	                </div>
+	                <div class="footer">
+	                    <div class="side fr" align="right">
+	                        <!--  -button type="button" class="btn" id="btn-open-search">Search</button-->
+	                    </div>
+		            </div>
+	                <div class="content np table-sorting">
+	                    
+	                    <table id="list-meeting-room" cellpadding="0" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>ID Kes</th>
+									<th>Tajuk</th>
+									<th>Tarikh</th>
+									<th>Kategori Kes</th>
+									<th>Prioriti</th>
+									<th>Status</th>
+									<th>Status Terkini</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>                                      
+	                    
+	                </div>
+	            </div>
+	            
+	        </div>
+		</div> 
+		
+		
+		             
+	</div>
+		<div layout:fragment="modal">
+		<div id="logModal" class="modal hide fade" role="dialog" >
+	        <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+	            <h3>Status Terkini</h3>
+	        </div>
+	       <div class="modal-body" >
+       <!-- remote content will be inserted here via jQuery load() -->
+        <div id="wrapper" class="screen_wide sidebar_off">
+             <div id="content">                        
+                <div class="wrap">
+                 <div class="block">
+	         
+	                <div class="content np">
+                 <table cellpadding="0" cellspacing="0" width="100%" id="eventTable" class="list">
+                                                <thead>
+                                                    <tr>
+                                                        <th width="60">Tarikh</th><th>Tindakan</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                  
+                                                                                     
+                                                </tbody>
+                                                                            
+                                            </table>
+                </div>
+                </div>
+                
+                </div> 
+             </div>
+        
+        </div>
+       			
+                
+       
+          </div>        
+	</div>
+		
+		</div>
+	<div layout:fragment="javascript_endpage">
+		<script th:src="@{/resources/js/datatables/jquery.dataTables.min.js}"></script>
+		<script th:src="@{/resources/js/datatables/jquery.dataTables.fnPagingInfo.js}"></script>
+		<script type='text/javascript' th:src="@{/javascript/case/mycasesList.js}"></script>
+		<script type='text/javascript' th:src="@{/javascript/eventLog.js}"></script>
+		<script type="text/javascript">
+             $(document).ready(function(){
+            	 
+
+             });
+         </script>
+	              
+	</div>
+</body>
+</html>
+
+

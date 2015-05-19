@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	layout:decorator="decorators/theme">
+	
+<head>
+<title>Complaint</title>
+<style layout:fragment="style">
+
+</style>
+</head>
+<body>
+	<div layout:fragment="content">
+		<form id="viewComplaint" method="POST" action="administration/sla/save"
+			th:object="${complaintForm}">
+           <input type="hidden" id="id" th:field="*{id}" />
+
+<div class="row-fluid">
+                            
+                           
+                            <div class="span12">
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>Complaint Info</h2>                                        
+                                    </div>
+                                    <div class="content np">
+                           <div class="controls-row">
+								<div class="span2">Complained by:</div>
+								<div class="span10">
+									 <address>
+                                        <strong th:text="${complaintForm.profile.name}"></strong><br/>
+                                       <span th:text="${complaintForm.profile.address1}"></span><br/>
+                                       <span th:text="${complaintForm.profile.address2}"></span> <span>42610</span><br/>
+                                       <span th:text="${complaintForm.profile.city}"></span>. <span th:text="${complaintForm.profile.state.name}"></span><br/>
+                                        <abbr title="Telephone No">Tel No : </abbr> <span th:text="${complaintForm.profile.phoneNo}"></span><br/>
+                                        <abbr title="Mobile No">Mobile No : </abbr> <span th:text="${complaintForm.profile.mobileNo}"></span><br/>
+                                        <abbr title="Email">Email : </abbr> <span th:text="${complaintForm.profile.email}"></span>
+                                    </address>
+								</div>
+							</div>
+                            <div class="controls-row">
+								<div class="span2">Date Created :</div>
+								<div class="span10">
+									<span th:text="${#dates.format(complaintForm.createDate, 'dd/MM/yyyy HH:mm a')}"></span>
+								</div>
+							</div>
+                            
+                            <div class="controls-row">
+								<div class="span2">Title :</div>
+								<div class="span10">
+									<strong> <span th:text="${complaintForm.ticketTitle}"></span> (<span th:text="${complaintForm.id}"></span>)</strong>
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Description :</div>
+								<div class="span10">
+								    <span th:text="${complaintForm.description}"></span>
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Case Group:</div>
+								<div class="span10">
+									<span th:text="${complaintForm.ticketGroup.name}"></span>
+									
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Case Category:</div>
+								<div class="span10">
+									<span th:text="${complaintForm.ticketCategory.name}"></span>
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Priority:</div>
+								<div class="span10">
+									<strong><span th:text="${complaintForm.priority.name}"></span></strong>
+								</div>
+							</div>
+							
+
+							<div class="controls-row">
+								<div class="span2">Attachments :</div>
+								<div class="span10">
+									<span id="attachmentList">
+									<span th:each="obj,rowstat : ${complaintForm.ticketFiles}" >
+									<br th:if="${rowstat.count != 1}" />
+									<a th:onclick="'Popup=window.open(\'' +@{/complaint/file/}+${obj[0]}+'\',\'Popup\',\'toolbar=yes,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=420,height=400,left=430,top=23\'); return false;'" th:href="@{/complaint/file/} + ${obj[0]}" th:text="${obj[1]}" ></a>
+									</span>
+									</span>
+								</div>
+								
+							</div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                        
+             <div class="row-fluid">
+                            
+                           
+                            <div class="span12">
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>Case Assignments</h2>                                        
+                                    </div>
+                                    <div class="content np">
+                                    <div class="controls-row">
+								<div class="span2">Assigned by:</div>
+								<div class="span10">
+									<span th:text="${complaintForm.supervisor.name}"></span>
+									
+								</div>
+							</div>
+							<div class="controls-row">
+								<div class="span2">Assign Date:</div>
+								<div class="span10">
+									<span th:text="${#dates.format(complaintForm.assignDate, 'dd/MM/yyyy HH:mm a')}"></span>
+								</div>
+							</div>
+							
+                                    
+                                    
+                                    </div>
+                                    
+                             
+                                    
+                                </div>
+                            </div>
+         </div> 
+                        
+                        
+			<div class="row-fluid">
+				<div class="span12">
+					<div class="block">
+						<div class="head">
+							<h2>Case Status</h2>
+						</div>
+						<div class="content np">
+
+							<div class="controls-row">
+								<div class="span2">Status :</div>
+								<div class="span10">
+									<select th:field="*{statusId}">
+										<option value="">-Please Select-</option>
+										<option th:each="obj : ${statusList}" th:text="${obj.name}"
+											th:value="${obj.id}"></option>
+									</select>
+
+								</div>
+							</div>
+
+						</div>
+
+
+
+					</div>
+
+				</div>
+
+			</div>
+   
+         
+         
+	
+
+			<div class="row-fluid all-area" id="list-area">
+				<div class="span12">
+
+					<div class="block">
+						<div class="head">
+							<h2>Activities</h2>
+						</div>
+					<div class="footer">
+	                    <div class="side fr" align="right">
+	                        <button type="button" class="btn" id="btn-open-setting">New Activity</button>
+	                    </div>
+		            </div>
+
+						<div class="content np table-sorting">
+                        <table id="list-activities" cellpadding="0" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Activity Type</th>
+									<th>Date Created</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>     
+							
+						</div>
+
+						<div class="footer">
+							<div class="side fr">
+								<div class="btn-group">
+									<button class="btn" type="button"
+										onClick="window.history.back();">Close</button>
+									<button class="btn btn-primary btn-request" type="submit">Submit</button>
+								</div>
+							</div>
+						</div>
+
+
+
+					</div>
+
+				</div>
+			</div>
+			</form>
+			
+			
+			
+			 <div class="row-fluid">
+                            
+                            <div class="span12">
+                                <div class="block">
+                                    <div class="head">
+                                        <h2>Chat</h2>                                        
+                                        <ul class="buttons">
+                                            <li><a href="#" class="block_loading"><span class="i-cycle"></span></a></li>
+                                            <li><a href="#" class="block_toggle"><span class="i-arrow-down-3"></span></a></li>
+                                            <li><a href="#" class="block_remove"><span class="i-cancel-2"></span></a></li>
+                                        </ul>                                        
+                                        <div class="side fr">
+                                            <span class="label label-success">+4</span>
+                                        </div>                                        
+                                    </div>
+                                    <div class="content messages npr">
+                                        <div class="scroll" id="chatContent" style="height: 180px;">
+                                           
+                                     
+                                              
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                     <div class="footer">
+                                        	<form id="chat" method="POST" action="administration/sla/save" th:object="${chatForm}">
+                                        <div class="side npb">
+                                            <textarea class="input-block-level"  th:field="*{message}" placeholder="Message..."></textarea> 
+                                                               <input type="hidden" id="ticketId" th:field="*{ticketId}"  />                                                                    
+                                        </div>
+                                        <div class="side fr npt">
+                                            <button class="btn btn-primary">Send</button>                                           
+                                        </div>
+                                        </form>
+                                    </div>
+                                    
+                                    
+                                </div>
+                             </div>
+             </div>
+			
+			 
+			  <div class="row-fluid">
+                            
+                            <div class="span12">
+                                <div class="block">
+			<div class="head">
+                                             
+                        <div class="side fr">
+                            <button class="btn btn-primary">Save</button>
+                            <button class="btn btn-warning">Close</button>
+                        </div>                        
+                    </div>
+			</div>
+			</div>
+			</div>
+	    
+	    	
+	</div>
+	<div layout:fragment="modal">
+<div id="activityModal" class="modal hide fade" role="dialog" >
+	        <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+	            <h3>Activity</h3>
+	        </div>
+	       <div class="modal-body" >
+       <!-- remote content will be inserted here via jQuery load() -->
+          </div>        
+</div>
+
+
+</div>
+
+	<div layout:fragment="javascript_endpage">
+		<script type='text/javascript'
+			th:src="@{/resources/js/select2/select2.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/uniform/jquery.uniform.min.js}"></script>
+			
+			 <script type='text/javascript' th:src="@{/resources/js/cleditor/jquery.cleditor.min.js}"></script>
+    
+			
+			
+		<script type='text/javascript'
+			th:src="@{/resources/js/tagsinput/jquery.tagsinput.min.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/multiselect/jquery.multi-select.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/ibutton/jquery.ibutton.min.js}"></script>
+
+
+
+
+		<script type='text/javascript'
+			th:src="@{/resources/js/validationengine/languages/jquery.validationEngine-en.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/validationengine/jquery.validationEngine.js}"></script>
+		<script type='text/javascript'
+			th:src="@{/resources/js/maskedinput/jquery.maskedinput.min.js}"></script>
+			
+		<script th:src="@{/resources/js/datatables/jquery.dataTables.min.js}"></script>
+		<script th:src="@{/resources/js/datatables/jquery.dataTables.fnPagingInfo.js}"></script>	
+			<script type='text/javascript'
+			th:src="@{/resources/js/timepicker/jquery-ui-timepicker-addon.js}"></script>	
+			
+		<script type='text/javascript'
+			th:src="@{/javascript/utils/load-combo-box.js}"></script>
+		
+		<script type='text/javascript'
+			th:src="@{/javascript/case/form.js}"></script>
+		
+		<script type='text/javascript' th:src="@{/javascript/case/activity.js}"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+			});
+		</script>
+
+	</div>
+	
+</body>
+</html>

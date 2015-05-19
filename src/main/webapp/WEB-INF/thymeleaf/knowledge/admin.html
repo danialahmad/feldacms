@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="decorators/theme">
+<head>
+	<title>Knowledge Base</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/fullcalendar/fullcalendar.css}" media="screen" /> 
+</head>
+<body>
+	<div layout:fragment="content">
+	
+	        
+		<div class="row-fluid all-area" id="list-area">
+	        <div class="span12">
+	            
+	            <div class="block">
+	                <div class="head">
+	                    <h2>Knowledge Base</h2>                                     
+	                </div>
+	                <form id="search-form" th:action="@{/knowledge/list}" th:object="${knowledgeForm}" method="post">
+		             <input type="hidden" id="approver" th:value="${approver}"/>
+		                <div class="content np">                                        
+		                    
+		                    <div class="controls-row">
+		                        <div class="span3">Title :</div>
+		                        <div class="span9">
+		                            <input type="text" id="title" th:field="*{title}" />
+		                        </div>
+		                    </div>  
+		                    <div class="controls-row">
+										<div class="span3">Category :</div>
+										<div class="span9">
+											<select id="ticketGroup" th:field="*{knowledgeCategory.id}">
+										<option value="">- Select One -</option>
+										<option th:each="obj : ${knowledgeCategoryList}" th:text="${obj.name}" th:value="${obj.id}"></option>							
+									</select>
+										</div>
+							</div>   
+							  <div class="controls-row">
+										<div class="span3">Status :</div>
+										<div class="span9">
+											<select id="status" th:field="*{status}">
+										<option value="">- Select One -</option>
+										<option value="DRAFT">DRAFT</option>
+										<option value="PUBLISHED">PUBLISHED</option>
+																	
+									</select>
+										</div>
+							</div>                                                                           
+		                </div>
+		                <div class="footer">
+		                    <div class="side fr">
+		                        <button type="button" class="btn" id="btn-search">Search</button>
+		                        <button class="btn btn-warning" id="btn-cancel">Cancel</button>
+		                    </div>
+		                </div>
+	                </form> 
+	                <div class="footer">
+	                    <div class="side fr" align="right">
+	                        <button type="button" class="btn" id="btn-open-setting">New Settings</button>
+	                    </div>
+		            </div>
+	                <div class="content np table-sorting">
+	                    
+	                    <table id="userTable" cellpadding="0" cellspacing="0" width="100%">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Title</th>
+									<th>Category</th>
+									<th>Published To</th>
+									<th>Create By</th>
+									<th>Create Date</th>
+									<th>Update Date</th>
+									<th>Status</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>                                      
+	                    
+	                </div>
+	            </div>
+	            
+	        </div>
+		</div> 
+		
+		
+		             
+	</div>
+	
+		<div layout:fragment="modal">
+<div id="formModal" class="modal hide fade" role="dialog" >
+	        <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+	            <h3>Plan</h3>
+	        </div>
+	       <div class="modal-body" >
+       <!-- remote content will be inserted here via jQuery load() -->
+          </div>        
+</div>
+
+
+</div>
+	
+	
+	<div layout:fragment="javascript_endpage">
+		<script th:src="@{/resources/js/datatables/jquery.dataTables.min.js}"></script>
+		<script th:src="@{/resources/js/datatables/jquery.dataTables.fnPagingInfo.js}"></script>
+		<script type='text/javascript' th:src="@{/javascript/knowledge/admin.js}"></script>
+		<script type="text/javascript">
+             $(document).ready(function(){
+            	 
+
+             });
+         </script>
+	            
+	</div>
+	 
+</body>
+</html>
+
+
