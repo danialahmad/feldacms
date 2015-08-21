@@ -71,4 +71,18 @@ public class ReportController {
 	        modelView.setViewName(viewName);
 	        return viewName;//new ModelAndView(new RedirectView(null));
 	    }
+	    
+	 	 @RequestMapping(value = "/report/borang/{reportName}", method = RequestMethod.GET)
+	  @ResponseBody  
+	 public String genBorangReport(ModelAndView modelView,@PathVariable("reportName") final String reportName, HttpServletRequest request, HttpServletResponse response) throws MalformedURLException, IOException {
+	     
+		 Map<String, String> map= new HashMap<String, String>();
+		 map.put("bulan", request.getParameter("ticket_id"));
+		
+		 
+		 reportService.generateReport(response,reportName, map);
+	        String viewName = "report";
+	        modelView.setViewName(viewName);
+	        return viewName;//new ModelAndView(new RedirectView(null));
+	    }
 }
