@@ -131,5 +131,15 @@ $(document).ready(function() {
        // this.target = 'formpopup';
     }
     
+    function genBorang()
+    {
+		
+		var ticket_id=$("#ticket_id").val();
+	
+		
+    	window.open(contextroot+'report/borang?&ticket_id='+ticket_id, 'formpopup', 'width=800,height=800,resizeable,scrollbars');
+       // this.target = 'formpopup';
+    }
+    
 		
 });
